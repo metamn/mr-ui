@@ -5,4 +5,4 @@ import { action } from '@storybook/addon-actions';
 import App from './App';
 
 storiesOf('App', module)
-	.add('default', () => <App />)
+	.add('default', () => <App />, {notes: 'A note'})
