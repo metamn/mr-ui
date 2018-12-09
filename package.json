@@ -32,7 +32,9 @@
     "@storybook/addons": "^4.0.12",
     "@storybook/react": "^4.0.12",
     "babel-loader": "^8.0.4",
+    "jest-styled-components": "^6.3.1",
     "normalize.css": "^8.0.1",
+    "react-test-renderer": "^16.6.3",
     "styled-components": "^4.1.2"
   }
 }

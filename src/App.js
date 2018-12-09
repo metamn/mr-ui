@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import 'normalize.css'
 
-const Container = styled.div``;
+const Container = styled.div`
+	overflow: hidden;
+`;
 
 class App extends Component {
 	render() {
