@@ -16,9 +16,11 @@ Good examples to learn from are:
 - [Example + Source code](https://www.tachyonstemplates.com/components/?selectedKind=Articles&selectedStory=Headline%20title%20text&full=0&down=0&left=1&panelRight=0)
 - [Proper categorization](https://opensource.appbase.io/playground/?knob-title=DataController&knob-filterLabel=Custom%20Filter%20Name&knob-defaultSelected=Harry%20Potter&knob-componentStyle=%7B%22paddingBottom%22%3A%2210px%22%7D&knob-URLParams%20%28not%20visible%20on%20storybook%29=true&knob-showFilter=true&knob-themePreset=dark&knob-dataLabel=%E2%98%85%20%20A%20customizable%20UI%20widget%20%E2%98%85&knob-visible=true&selectedKind=theme&selectedStory=Dark%20Preset%20with%20TagCloud%2FToggleButton%2FSingle%2FMultiDataList&full=0&addons=1&stories=1&panelRight=0&addonPanel=storybooks%2Fstorybook-addon-knobs)
 - [Description + Live example + Source code == Very straightforward](https://terraeclipse.github.io/react-stack/?selectedKind=Decorators&selectedStory=measure-decorator&full=0&down=1&left=1&panelRight=0&downPanel=kadirahq%2Fstorybook-addon-actions%2Factions-panel)
+
+
 ## Installation
 
-When cloning the packages used by this repo:
+To clone the setup of this repo:
 
 1. Copy `package.json` and `.storybook` folder to a new project
 2. Run `npm i`
