@@ -11,5 +11,7 @@ storiesOf('App', module)
 		() => (
 			<App width={text('Width', 'auto')} />
 		),
-		{notes: 'A note here'},
+		{
+			notes: 'A note here'
+		},
 	)
