@@ -23,6 +23,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "normalize.css": "^8.0.1",
     "styled-components": "^4.1.2"
   }
 }

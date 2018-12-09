@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import 'normalize.css';
 
 const Container = styled.div``;
 
