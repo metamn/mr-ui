@@ -1,3 +1,9 @@
+/**
+ * Text Around Circle
+ *
+ * Displays a text like beeing wrapped around a circle.
+ * 
+ */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
