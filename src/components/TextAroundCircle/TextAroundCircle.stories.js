@@ -7,6 +7,7 @@ import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
 import TextAroundCircle from './TextAroundCircle';
 import description from './TextAroundCircle.md';
 
+// This must be made somehow reusable
 const storyStyle = {
 	background: '',
 	minHeight:'80vh',
