@@ -7,10 +7,11 @@ import TextAroundCircle from './TextAroundCircle';
 import description from './TextAroundCircle.md';
 
 storiesOf('Components/Text/TextAroundCircle', module)
-	.addDecorator(withKnobs)
 	.add('default',
 		() => (
-			<TextAroundCircle />
+			<TextAroundCircle
+				text={text('Text', 'Demo test')}
+			/>
 		),
 		{
 			info: {

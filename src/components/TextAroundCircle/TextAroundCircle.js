@@ -2,7 +2,7 @@
  * Text Around Circle
  *
  * Displays a text like beeing wrapped around a circle.
- * 
+ *
  */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -24,7 +24,7 @@ const Loading = styled.div``;
  */
 class TextAroundCircle extends React.Component {
 	render() {
-		const {loading, content, className} = this.props;
+		const {text, loading, className} = this.props;
 
 		if (loading) {
 			return (
@@ -33,7 +33,7 @@ class TextAroundCircle extends React.Component {
 		}
 
 		return (
-			<Container className={className}>{content}</Container>
+			<Container className={className}>{text}</Container>
 		)
 	}
 }
@@ -43,8 +43,8 @@ class TextAroundCircle extends React.Component {
  */
 
 TextAroundCircle.propTypes = {
+	text: PropTypes.string,
 	loading: PropTypes.boolean,
-	content: PropTypes.string,
 	className: PropTypes.string,
 };
 
