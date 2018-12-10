@@ -58,10 +58,35 @@ addDecorator(
 );
 
 // By default Info is not displayed.
-// - Usually the first story overwrites this: `info: { inline: true, text: description }`
+// - Usually the first story overwrites this and displays the info:
+// - `info: { inline: true, text: description }`
+// - what can be styled: https://github.com/storybooks/storybook/blob/master/addons/info/src/components/Story.js
 addDecorator(
 	withInfo({
 		header: false,
+		styles: {
+			infoBody: {
+				backgroundColor: 'beige',
+				border: '1px solid',
+				fontFamily: 'monospace',
+				fontSize: '16px',
+			},
+			infoContent: {
+				fontFamily: 'monospace',
+				fontSize: '16px',
+				h2: {
+					fontFamily: 'monospace',
+					fontSize: '16px',
+				},
+				div: {
+					fontFamily: 'monospace',
+					fontSize: '16px',
+				},
+			},
+			propTableHead: {
+				display: 'none',
+			}
+		},
 	})
 );
 
