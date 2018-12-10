@@ -1,3 +1,4 @@
+import React from 'react';
 import { configure, addDecorator } from '@storybook/react';
 import { checkA11y } from '@storybook/addon-a11y';
 import { withNotes } from '@storybook/addon-notes';
@@ -6,12 +7,35 @@ import { withInfo } from '@storybook/addon-info';
 import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
 import { withOptions } from '@storybook/addon-options';
 import { themes } from '@storybook/components';
+import { withBackgrounds } from '@storybook/addon-backgrounds';
 import '@storybook/addon-console';
+
 
 // Pick all stories.js files within the src/ folder
 const req = require.context('../src', true, /.stories.js$/);
 
+
 // Globally avaialable addons
+// --
+
+// Backgrounds
+addDecorator(
+	withBackgrounds([
+		{ name: 'white', value: '#fff', default: true },
+		{ name: 'beige', value: 'beige' },
+	])
+);
+
+// Story
+const storyStyle = {
+	background: '',
+	minHeight:'80vh',
+	display: 'flex',
+	justifyContent: 'center',
+	alignItems: 'center',
+};
+addDecorator( story => <div style={storyStyle}>{story()}</div>)
+
 // Options and theming
 addDecorator(
 	withOptions({
