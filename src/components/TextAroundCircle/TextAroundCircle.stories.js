@@ -7,7 +7,16 @@ import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
 import TextAroundCircle from './TextAroundCircle';
 import description from './TextAroundCircle.md';
 
+const storyStyle = {
+	background: '',
+	minHeight:'80vh',
+	display: 'flex',
+	justifyContent: 'center',
+	alignItems: 'center',
+};
+
 storiesOf('Components/Text/TextAroundCircle', module)
+	.addDecorator( story => <div style={storyStyle}>{story()}</div>)
 	.add('Overview',
 		() => (
 			<TextAroundCircle
@@ -15,7 +24,10 @@ storiesOf('Components/Text/TextAroundCircle', module)
 			/>
 		),
 		{
-			info: { inline: true, text: description }
+			info: {
+				inline: true,
+				text: description,
+			}
 		}
 	)
 	.add('Simple',
