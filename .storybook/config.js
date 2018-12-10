@@ -21,8 +21,8 @@ const req = require.context('../src', true, /.stories.js$/);
 // Backgrounds
 addDecorator(
 	withBackgrounds([
-		{ name: 'white', value: '#fff', default: true },
-		{ name: 'beige', value: 'beige' },
+		{ name: 'beige', value: 'beige', default: true },
+		{ name: 'white', value: '#fff' },
 	])
 );
 
