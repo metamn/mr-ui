@@ -28,7 +28,6 @@ addDecorator(
 
 // Story
 const storyStyle = {
-	background: '',
 	minHeight:'80vh',
 	display: 'flex',
 	justifyContent: 'center',
@@ -64,24 +63,13 @@ addDecorator(
 addDecorator(
 	withInfo({
 		header: false,
+		source: false,
 		styles: {
 			infoBody: {
 				backgroundColor: 'beige',
 				border: '1px solid',
 				fontFamily: 'monospace',
 				fontSize: '16px',
-			},
-			infoContent: {
-				fontFamily: 'monospace !important',
-				fontSize: '16px !important',
-				h2: {
-					fontFamily: 'monospace',
-					fontSize: '16px',
-				},
-				div: {
-					fontFamily: 'monospace',
-					fontSize: '16px',
-				},
 			},
 			propTableHead: {
 				display: 'none',

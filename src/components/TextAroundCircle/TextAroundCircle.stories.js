@@ -12,6 +12,8 @@ storiesOf('Components/Text/TextAroundCircle', module)
 		() => (
 			<TextAroundCircle
 				text={text('Text', 'Demo test')}
+				width={text('Width', '20em')}
+				height={text('Height', '20em')}
 			/>
 		),
 		{
@@ -25,6 +27,13 @@ storiesOf('Components/Text/TextAroundCircle', module)
 		() => (
 			<TextAroundCircle
 				text={text('Text', 'Demo test')}
+				width={text('Width', '20em')}
+				height={text('Height', '20em')}
 			/>
-		)
+		),
+		{
+			info: {
+				disable: true
+			}
+		}
 	)

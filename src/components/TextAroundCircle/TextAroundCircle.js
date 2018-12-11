@@ -25,19 +25,22 @@ const Container = styled.div`
 	display: flex;
 	width: ${props => props.width ? props.width : 'auto'};
 	height: ${props => props.height ? props.height : 'auto'};
+`;
 
-	/**
-	 * Align center otherwise half of the text is won't be visible
-	 */
-	${props => props.isDemo && css`
-		margin: 0 auto;
-	`};
-
+/**
+ * The characters container
+ * - it is needed to reposition the rotated chars
+ * - otherwise they will be positioned outside the main container
+ */
+const CharsContainer = styled.div`
+	width: 100%;
+	height: 100%;
+	transform: translateX(calc(${props => props.width} / 2));
 `;
 
 
 /**
- * The character container
+ * A single character container
  */
 const Char = styled.div`
 	--angleSpan: 360deg;
@@ -57,7 +60,7 @@ const Char = styled.div`
  */
 class TextAroundCircle extends React.Component {
 	render() {
-		const {text, loading, className} = this.props;
+		const {text, width, height, loading, className} = this.props;
 		const chars=[...text];
 		const charsLength = chars.length;
 
@@ -70,22 +73,24 @@ class TextAroundCircle extends React.Component {
 		return (
 			<Container
 				isDemo={true}
-				width={'20em'}
-				height={'20em'}
+				width={width}
+				height={height}
 				className={className}
 				>
-				<Repeat numberOfTimes={charsLength} startAt={0}>
-					{(i) => <Char
-								key={i}
-								index={i}
-								charsLength={charsLength}
-								width={'20em'}
-								height={'20em'}
-								>
-								{chars[i]}
-							</Char>
-					}
-				</Repeat>
+				<CharsContainer width={width}>
+					<Repeat numberOfTimes={charsLength} startAt={0}>
+						{(i) => <Char
+									key={i}
+									index={i}
+									charsLength={charsLength}
+									width={width}
+									height={height}
+									>
+									{chars[i]}
+								</Char>
+						}
+					</Repeat>
+				</CharsContainer>
 			</Container>
 		)
 	}
@@ -95,9 +100,34 @@ class TextAroundCircle extends React.Component {
  * The prop types
  */
 TextAroundCircle.propTypes = {
-	text: PropTypes.string,
-	loading: PropTypes.boolean,
+	/**
+	 * The text to be displayed
+	 */
+	text: PropTypes.string.isRequired,
+	/**
+	 * The width of the container.
+	 */
+	width: PropTypes.string,
+	/**
+	 * The height of the container.
+	 */
+	height: PropTypes.string,
+	/**
+	 * Component is loading?
+	 */
+	loading: PropTypes.bool,
+	/**
+	 * Additional classname to add to the component
+	 */
 	className: PropTypes.string,
+};
+
+/**
+ * Default props
+ */
+TextAroundCircle.defaultProps = {
+	loading: false,
+	className: '',
 };
 
 /**
