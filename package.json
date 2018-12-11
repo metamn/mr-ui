@@ -1,47 +1,56 @@
 {
-  "name": "mr-ui",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
-  "devDependencies": {
-    "@babel/core": "^7.2.0",
-    "@storybook/addon-a11y": "^4.0.12",
-    "@storybook/addon-actions": "^4.0.12",
-    "@storybook/addon-backgrounds": "^4.0.12",
-    "@storybook/addon-console": "^1.1.0",
-    "@storybook/addon-info": "^4.0.12",
-    "@storybook/addon-knobs": "^4.0.12",
-    "@storybook/addon-links": "^4.0.12",
-    "@storybook/addon-notes": "^4.0.12",
-    "@storybook/addon-options": "^4.0.12",
-    "@storybook/addon-viewport": "^4.0.12",
-    "@storybook/addons": "^4.0.12",
-    "@storybook/react": "^4.0.12",
-    "babel-loader": "^8.0.4",
-    "jest-styled-components": "^6.3.1",
-    "normalize.css": "^8.0.1",
-    "react-test-renderer": "^16.6.3",
-    "styled-components": "^4.1.2"
-  }
+	"name": "mr-ui",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"@metamn/new-component": "file:../new-component/metamn-new-component-0.0.4.tgz",
+		"new-component": "file:../new-component/new-component-0.0.1.tgz",
+		"react": "^16.6.3",
+		"react-dom": "^16.6.3",
+		"react-scripts": "2.1.1"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject",
+		"storybook": "start-storybook -p 9009 -s public",
+		"build-storybook": "build-storybook -s public",
+		"deploy-storybook": "storybook-to-ghpages"
+	},
+	"storybook-deployer": {
+		"gitUsername": "metamn",
+		"gitEmail": "bartus.csongor@gmail.com",
+		"commitMessage": "Deploy Storybook"
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": [
+		">0.2%",
+		"not dead",
+		"not ie <= 11",
+		"not op_mini all"
+	],
+	"devDependencies": {
+		"@babel/core": "^7.2.0",
+		"@storybook/addon-a11y": "^4.0.12",
+		"@storybook/addon-actions": "^4.0.12",
+		"@storybook/addon-backgrounds": "^4.0.12",
+		"@storybook/addon-console": "^1.1.0",
+		"@storybook/addon-info": "^4.0.12",
+		"@storybook/addon-knobs": "^4.0.12",
+		"@storybook/addon-links": "^4.0.12",
+		"@storybook/addon-notes": "^4.0.12",
+		"@storybook/addon-options": "^4.0.12",
+		"@storybook/addon-viewport": "^4.0.12",
+		"@storybook/addons": "^4.0.12",
+		"@storybook/react": "^4.0.12",
+		"@storybook/storybook-deployer": "^2.8.1",
+		"babel-loader": "^8.0.4",
+		"jest-styled-components": "^6.3.1",
+		"normalize.css": "^8.0.1",
+		"react-test-renderer": "^16.6.3",
+		"styled-components": "^4.1.2"
+	}
 }
