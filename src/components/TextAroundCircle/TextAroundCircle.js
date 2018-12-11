@@ -94,7 +94,6 @@ class TextAroundCircle extends React.Component {
 /**
  * The prop types
  */
-
 TextAroundCircle.propTypes = {
 	text: PropTypes.string,
 	loading: PropTypes.boolean,

@@ -72,8 +72,8 @@ addDecorator(
 				fontSize: '16px',
 			},
 			infoContent: {
-				fontFamily: 'monospace',
-				fontSize: '16px',
+				fontFamily: 'monospace !important',
+				fontSize: '16px !important',
 				h2: {
 					fontFamily: 'monospace',
 					fontSize: '16px',
