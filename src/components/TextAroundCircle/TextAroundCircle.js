@@ -25,6 +25,7 @@ const Container = styled.div`
 	display: flex;
 	width: ${props => props.size ? props.size : 'auto'};
 	height: ${props => props.size ? props.size : 'auto'};
+	overflow: hidden;
 `;
 
 
@@ -107,6 +108,8 @@ TextAroundCircle.propTypes = {
 
 	/**
 	 * The size of rectangle (the container).
+	 * - It's more about the height than the width
+	 * - If the text overflows the container it will automatically truncated
 	 */
 	size: PropTypes.string,
 

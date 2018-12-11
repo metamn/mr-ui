@@ -1,10 +1,12 @@
+<style media="screen">
+	.Pane1 ul li a {
+		border-bottom: 1px solid;
+		background-color: beige;
+	}
+</style>
+
 <script type="text/javascript">
 	document.addEventListener('DOMContentLoaded', function(){
-		var cssLink = document.createElement("link");
-		cssLink.href = "global-style.css";
-		cssLink.rel = "stylesheet";
-		cssLink.type = "text/css";
-
 		var iframe = document.getElementById('storybook-preview-iframe');
 		iframe.onload = function() {
 			var style = document.createElement('style');
@@ -18,7 +20,10 @@
 			  '  text-transform: none !important;' +
 			  '  padding: 0 !important;' +
 			  '  margin: 18px 0 !important;' +
-			  '}'			;
+			  '}' +
+			  '#root div:nth-child(2) div div a, #root div:nth-child(2) div div > a {' +
+			  '  color: black !important'
+			  '}';
 			iframe.contentDocument.head.appendChild(style);
 		}
 	}, false);
