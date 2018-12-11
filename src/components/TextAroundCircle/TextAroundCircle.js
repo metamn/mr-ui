@@ -23,9 +23,10 @@ const Loading = styled.div``;
 const Container = styled.div`
 	position: relative;
 	display: flex;
-	width: ${props => props.width ? props.width : 'auto'};
-	height: ${props => props.height ? props.height : 'auto'};
+	width: ${props => props.size ? props.size : 'auto'};
+	height: ${props => props.size ? props.size : 'auto'};
 `;
+
 
 /**
  * The characters container
@@ -35,7 +36,7 @@ const Container = styled.div`
 const CharsContainer = styled.div`
 	width: 100%;
 	height: 100%;
-	transform: translateX(calc(${props => props.width} / 2));
+	transform: translateX(calc(${props => props.size} / 2));
 `;
 
 
@@ -43,15 +44,14 @@ const CharsContainer = styled.div`
  * A single character container
  */
 const Char = styled.div`
-	--angleSpan: 360deg;
-	--angleOffset: 0deg;
+	--angleSpan: ${props => props.angleSpan ? props.angleSpan : '360deg'};
+	--angleOffset: ${props => props.angleOffset ? props.angleOffset : '0deg'};
 	--angleOfChar: calc(var(--angleSpan) / ${props => props.charsLength});
 	--deg: calc(var(--angleOffset) + var(--angleOfChar) * ${props => props.index});
 
 	position: absolute;
-	width: 1em;
-	height: ${props => props.height ? props.height : 'auto'};
-	transform: rotate(var(--deg));
+	height: ${props => props.size ? props.size : 'auto'};
+	transform: rotate(var(--deg, 0deg));
 `;
 
 
@@ -60,7 +60,7 @@ const Char = styled.div`
  */
 class TextAroundCircle extends React.Component {
 	render() {
-		const {text, width, height, loading, className} = this.props;
+		const {text, size, angleSpan, angleOffset, loading, className} = this.props;
 		const chars=[...text];
 		const charsLength = chars.length;
 
@@ -73,18 +73,18 @@ class TextAroundCircle extends React.Component {
 		return (
 			<Container
 				isDemo={true}
-				width={width}
-				height={height}
+				size={size}
 				className={className}
 				>
-				<CharsContainer width={width}>
+				<CharsContainer size={size}>
 					<Repeat numberOfTimes={charsLength} startAt={0}>
 						{(i) => <Char
 									key={i}
 									index={i}
 									charsLength={charsLength}
-									width={width}
-									height={height}
+									size={size}
+									angleSpan={angleSpan}
+									angleOffset={angleOffset}
 									>
 									{chars[i]}
 								</Char>
@@ -104,18 +104,28 @@ TextAroundCircle.propTypes = {
 	 * The text to be displayed
 	 */
 	text: PropTypes.string.isRequired,
+
 	/**
-	 * The width of the container.
+	 * The size of rectangle (the container).
 	 */
-	width: PropTypes.string,
+	size: PropTypes.string,
+
 	/**
-	 * The height of the container.
+	 * The span of the circle.
+	 * - If it's `180deg` then it is a half circle.
 	 */
-	height: PropTypes.string,
+	angleSpan: PropTypes.string,
+
+	/**
+	 * The offset of the first char on the circle.
+	 */
+	angleSpan: PropTypes.string,
+
 	/**
 	 * Component is loading?
 	 */
 	loading: PropTypes.bool,
+
 	/**
 	 * Additional classname to add to the component
 	 */
@@ -128,6 +138,9 @@ TextAroundCircle.propTypes = {
 TextAroundCircle.defaultProps = {
 	loading: false,
 	className: '',
+	size: '20em',
+	angleSpan: '360deg',
+	angleOffset: '0deg',
 };
 
 /**

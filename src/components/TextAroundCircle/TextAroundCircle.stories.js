@@ -12,8 +12,7 @@ storiesOf('Components/Text/TextAroundCircle', module)
 		() => (
 			<TextAroundCircle
 				text={text('Text', 'Demo test')}
-				width={text('Width', '20em')}
-				height={text('Height', '20em')}
+				size={text('Size', '20em')}
 			/>
 		),
 		{
@@ -27,8 +26,36 @@ storiesOf('Components/Text/TextAroundCircle', module)
 		() => (
 			<TextAroundCircle
 				text={text('Text', 'Demo test')}
-				width={text('Width', '20em')}
-				height={text('Height', '20em')}
+				size={text('Size', '20em')}
+			/>
+		),
+		{
+			info: {
+				disable: true
+			}
+		}
+	)
+	.add('Semi circle',
+		() => (
+			<TextAroundCircle
+				text={text('Text', 'Demo test')}
+				size={text('Size', '20em')}
+				angleSpan={text('Angle span', '180deg')}
+			/>
+		),
+		{
+			info: {
+				disable: true
+			}
+		}
+	)
+	.add('Semi circle rotated',
+		() => (
+			<TextAroundCircle
+				text={text('Text', 'Demo test')}
+				size={text('Size', '20em')}
+				angleSpan={text('Angle span', '180deg')}
+				angleOffset={text('Angle offset', '-90deg')}
 			/>
 		),
 		{

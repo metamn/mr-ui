@@ -13,8 +13,10 @@ Set up a rectangle and add a text.
 
 The text should fit the rectangle. If it's too long the characters might overlap.
 
+You can use the Knobs to check whether the text fits it's container.
+
 #### Example
 
 ```React
-<TextAroundCircle text="Demo Text" width="20em" height="20" />
+<TextAroundCircle text="Demo Text" size="20em" />
 ```
