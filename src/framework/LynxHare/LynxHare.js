@@ -11,16 +11,18 @@ const Logo = styled.div``;
 
 const IntroText1 = styled.div`
 	/* background: aliceblue; */
-	font-size: 1.5em;
+	font-size: 4vmax;
 `;
 
 const IntroText2 = styled.div`
 	/* background: lightblue; */
-	font-size: 1.25em;
+	font-size: 4vmax;
 `;
 
 const Button = styled.div`
 	border: 1px solid;
+	box-sizing: border-box;
+	transform: skew(-10deg) translateX(3em);
 `;
 
 const Question = styled.div`
@@ -66,28 +68,33 @@ const Container = styledContainerQuery.div`
 		box-sizing: border-box;
 		display: inline-flex; // This makes the layout fluid, each container following it's content size.
 		padding: 1.25em;
+		font-size: 3vmax;
 	}
 
-	// Default state
+	// Default state, 1 col
 	${Logo},
 	${IntroText1},
 	${IntroText2},
 	${Button} {
 		min-height: 25vh;
+		max-width: 414px;
 	}
 
-	// Mobile and up
+	// Two cols if possible
 	&:container(min-width: 415px) {
 		> * {
-			font-size: 2em;
+			/* font-size: 2em; */
 		}
 	}
 
-	// Tablet and up
-	&:container(min-width: 1025px) {
+	// Three cols
+	&:container(min-width: 1243px) {
+		${Logo},
 		${IntroText1},
-		${IntroText2} {
-			font-size: 3em;
+		${IntroText2},
+		${Button} {
+			width: 33vw;
+			max-width: none;
 		}
 	}
 `;
