@@ -1,22 +1,25 @@
 import React, { Component } from 'react';
 import styled, { css } from 'styled-components';
+import ReactMarkdown from 'react-markdown';
+
 import 'normalize.css'
+import md from './App.md';
 
 const Container = styled.div`
-	overflow: hidden;
-	background-color: lightyellow;
-	width: ${props => props.width ? props.width : 'auto'};
+	width: 100%;
+	height: 100;
+	padding: 1.25em;
+	align-self: flex-start;
+	font-family: monospace;
 `;
 
 class App extends Component {
 	render() {
-		const width = this.props.width;
-
 		return (
-			<Container width={width}>
-			'app'
+			<Container>
+				<ReactMarkdown source={md} />
 			</Container>
-		);
+		)
 	}
 }
 

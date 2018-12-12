@@ -33,7 +33,7 @@ const storyStyle = {
 	justifyContent: 'center',
 	alignItems: 'center',
 };
-addDecorator( story => <div style={storyStyle}>{story()}</div>)
+addDecorator( story => <div class='story' style={storyStyle}>{story()}</div>)
 
 // Options and theming
 addDecorator(

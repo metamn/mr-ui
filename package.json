@@ -50,6 +50,7 @@
 		"babel-loader": "^8.0.4",
 		"jest-styled-components": "^6.3.1",
 		"normalize.css": "^8.0.1",
+		"react-markdown": "^4.0.4",
 		"react-test-renderer": "^16.6.3",
 		"styled-components": "^4.1.2"
 	}
