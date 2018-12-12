@@ -52,6 +52,7 @@
 		"normalize.css": "^8.0.1",
 		"react-markdown": "^4.0.4",
 		"react-test-renderer": "^16.6.3",
-		"styled-components": "^4.1.2"
+		"styled-components": "^4.1.2",
+		"styled-container-query": "^1.2.2"
 	}
 }
