@@ -19,7 +19,7 @@ const Logo = styled.div``;
 
 /**
 * The main container
-* - all children container must be defined in advance
+* - all children containers must be defined in advance otherwise they'll reset the queries put in the parent.
 */
 const Container = styledContainerQuery.div`
 	width: ${props => props.width ? props.width : 'auto'};
