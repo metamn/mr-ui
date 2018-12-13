@@ -4,4 +4,4 @@ By lifting state to parent elements we can reach up to have a global state. When
 
 ### Example
 
-In this example when an article is clicked it is enlarged, and the size of the logo is reduced.
+In this example when an article is clicked it's size is enlarged, and the size of the logo is reduced.
