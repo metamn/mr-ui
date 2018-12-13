@@ -32,11 +32,17 @@ Good examples to learn from are:
 
 ## Installation
 
-To clone the setup / functionality of this repo:
+To clone the setup / functionality of this repo follow these steps. 
+A quick hack although ... 
 
-1. Copy `package.json` and `.storybook` folder to a new project
-2. Run `npm i`
-3. Make tests run without sudo on Ubuntu: https://askubuntu.com/questions/1022742/react-native-watchman-error-after-npm-start-on-ubuntu-17-10#1062018
+1. Create a React App: `npx create-react-app`
+2. Add Storybook to your app: `npx -p @storybook/cli sb init`
+3. Copy `package.json` and `.storybook` folder to a new project
+4. Update `package.json` with the current project name and version 
+5. Run `npm i`
+6. Add your first story && voila !
+7. Make tests run without sudo on Ubuntu: https://askubuntu.com/questions/1022742/react-native-watchman-error-after-npm-start-on-ubuntu-17-10#1062018
+
 
 
 ## Changelog
