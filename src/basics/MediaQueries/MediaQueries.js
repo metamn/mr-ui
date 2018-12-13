@@ -17,6 +17,23 @@ const Mobile = props => <Responsive {...props} maxWidth={767} />;
 const Loading = styled.div``;
 
 /**
+ * The main container
+ */
+const Container = styled.div`
+	@media (max-width: 767px) {
+		background: aquamarine;
+	}
+
+	@media (min-width: 768px) and (max-width: 991px) {
+		background: aqua;
+	}
+
+	@media (min-width: 992px) {
+		background: antiquewhite;
+	}
+`;
+
+/**
  * The main class
  */
 class MediaQueries extends React.Component {
@@ -28,11 +45,11 @@ class MediaQueries extends React.Component {
 		}
 
 		return (
-			<>
+			<Container>
 				<Desktop>Desktop or laptop</Desktop>
 				<Tablet>Tablet</Tablet>
     			<Mobile>Mobile</Mobile>
-			</>
+			</Container>
 		)
 	}
 }
