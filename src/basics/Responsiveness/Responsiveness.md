@@ -12,6 +12,13 @@ This idea is familiar with React: every component is responsible of, and manages
 
 Fortunately React has plenty of libraries and ways to make elements be aware of their dimension and act upon changes.
 
+We have the following individual scenarios which can be combined together when necessary:
+
+1. Elements are aware of each other's state and can act upon changes collectively.
+2. An element is aware of its measures and can react to changes.
+3. An element's style can perform element queries to react to changes inside style.
+4. An element's style can perform classic media queries and react when device screen size is changed.
+
 
 ### React Measure
 
@@ -43,6 +50,9 @@ With this utility we can do decide in `render()` what version of an element is d
 </Measure>
 ```
 
+### Element Queries for Styled Components
+
+### Classic Media Queries
 
 ### Resources
 
