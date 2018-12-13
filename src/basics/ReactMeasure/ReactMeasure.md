@@ -31,6 +31,7 @@
 - **If this example flicks in Storybook please try in Code Sandbox: https://codesandbox.io/s/7zxq1w9vk6**
 - This is a simple example which updates an element (Logo) when it's own dimensions change.
 It seems trivial but no CSS media and element queries are used.
+- Resize the browser to see it in action.
 
 ### Notes
 

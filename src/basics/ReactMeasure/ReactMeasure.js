@@ -47,7 +47,7 @@ const LogoTextExtraSmall = styled(LogoText)`
 /**
 * The main class
 */
-class RM extends React.Component {
+class ReactMeasure extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -107,7 +107,7 @@ class RM extends React.Component {
 /**
 * The prop types
 */
-RM.propTypes = {
+ReactMeasure.propTypes = {
 	/**
 	* Component is loading?
 	*/
@@ -117,8 +117,8 @@ RM.propTypes = {
 /**
 * Default props
 */
-RM.defaultProps = {
+ReactMeasure.defaultProps = {
 	loading: false,
 };
 
-export default RM;
+export default ReactMeasure;
