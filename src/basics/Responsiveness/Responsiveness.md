@@ -20,40 +20,6 @@ We have the following individual scenarios which can be combined together when n
 4. **Media Queries &mdash;** An element's style can perform classic media queries and react when device screen size is changed.
 
 
-### React Measure
-
-[React Measure](https://souporserious.github.io/react-measure/) computes the measurements of a React component. Like dimension, position on screen, and more.
-
-It uses a `ResizeObserver` to make it all dynamic. When an element's measure is changing the component is notified and re-rendered.
-
-With this utility we can do decide in `render()` what version of an element is displayed.
-
-```Javascript
-<Measure ...
-	<Container ...
-		{
-			width < 150 && (
-				<LogoTextExtraSmall>Logo Extra Small</LogoTextExtraSmall>
-			)
-		}
-		{
-			width >= 150 && width <= 320 && (
-				<LogoTextSmall>Logo Small</LogoTextSmall>
-			)
-		}
-		{
-			width > 320 && (
-				<LogoText>Logo Large</LogoText>
-			)
-		}
-	</Container>
-</Measure>
-```
-
-### Element Queries for Styled Components
-
-### Classic Media Queries
-
 ### Resources
 
 - [React Measure](https://github.com/souporserious/react-measure)
