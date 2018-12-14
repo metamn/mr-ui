@@ -1,6 +1,6 @@
 ## Global State for Responsiveness
 
-By lifting state to parent elements we can reach up to have a global state. When a change occurs this global state registers the change and notifies the child elements which need to react.
+By lifting state to parent an entire UI can reach to have a global state. When a change occurs this global state registers the change and notifies the child elements which need to react.
 
 ### Example
 
