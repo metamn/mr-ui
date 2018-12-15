@@ -7,7 +7,7 @@ import { withKnobs, text, boolean, number } from "@storybook/addon-knobs";
 import GlobalState from "./GlobalState";
 import description from "./GlobalState.md";
 
-storiesOf("Basics/Responsiveness/Global State", module).add(
+storiesOf("Basics/Responsiveness ✓/Global State", module).add(
 	"Overview",
 	() => <GlobalState />,
 	{

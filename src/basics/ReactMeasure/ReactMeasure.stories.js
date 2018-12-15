@@ -7,7 +7,7 @@ import { withKnobs, text, boolean, number } from "@storybook/addon-knobs";
 import ReactMeasure from "./ReactMeasure";
 import description from "./ReactMeasure.md";
 
-storiesOf("Basics/Responsiveness/React Measure", module).add(
+storiesOf("Basics/Responsiveness ✓/React Measure", module).add(
 	"Overview",
 	() => (
 		<ReactMeasure />

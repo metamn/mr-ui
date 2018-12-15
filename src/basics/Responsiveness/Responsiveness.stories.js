@@ -6,7 +6,7 @@ import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
 
 import Responsiveness from './Responsiveness';
 
-storiesOf('Basics/Responsiveness', module)
+storiesOf('Basics/Responsiveness ✓', module)
 	.add('Overview',
 		() => ( <Responsiveness/> ),
 	)
