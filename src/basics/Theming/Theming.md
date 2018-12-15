@@ -73,6 +73,10 @@ With native CSS variables we get what we had in SASS. More over, as Ana Tudor sh
 
 It's better to use HSL notation since they are better programmable than RGB codes, and are more intuitive than the RGBA notation.
 
+Resources:
+
+- https://css-tricks.com/1-element-css-rainbow-gradient-infinity/
+
 ### Typography
 
 It has to be rethinked. The old, standard way (Bauhaus, Swiss, minimal) was perfect in a static environment like print. Now we have animated type, dynamic CSS units, variable fonts and viewports, and less attention.
