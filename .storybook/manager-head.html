@@ -30,7 +30,12 @@
 			  '#root pre {' +
 			  '  border: 1px solid;' +
 			  '  font-size: 75%;' +
-			  '  padding: 1.25em;' +
+			  '  padding: 1.25em !important;' +
+			  '  background-color: transparent !important;' +
+			  '  overflow-x: auto !important;' +
+			  '}' +
+			  '#root pre code {' +
+			  '  background-color: transparent !important;' +
 			  '}'
 			  ;
 			iframe.contentDocument.head.appendChild(style);
