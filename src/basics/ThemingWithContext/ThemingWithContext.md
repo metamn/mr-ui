@@ -52,6 +52,7 @@ class ThemingWithContext extends React.Component {
 		return (
 			<Container>
 				<Button theme={theme}>Styled by the theme</Button>
+				<Button>Unstyled</Button>
 			</Container>
 		)
 	}

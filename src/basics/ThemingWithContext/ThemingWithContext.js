@@ -16,7 +16,11 @@ const Loading = styled.div``
 /**
 * The main container
 */
-const Container = styled.div``
+const Container = styled.div`
+	> * {
+		margin: 1.25em;
+	}
+`
 
 /**
 * The main class
@@ -33,6 +37,7 @@ class ThemingWithContext extends React.Component {
 		return (
 			<Container className={className}>
 				<Button theme={theme}>Styled by the theme</Button>
+				<Button>Unstyled</Button>
 			</Container>
 		)
 	}

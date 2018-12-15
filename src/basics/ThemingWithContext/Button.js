@@ -9,5 +9,4 @@ const Button = styled.button`
 	background-color: ${props => props.theme.background};
 	color: ${props => props.theme.foreground};
 `
-
 export default Button
