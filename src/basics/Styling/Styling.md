@@ -32,6 +32,28 @@ It seems Styled Components are the current best practice. It's the most popular 
 
 CSS Modules might be an alternative. Avoid Emotionjs for now &mdash; very messy documentation and look, however it was meant to be the ultimate styling framework borrowing what's best from all others.
 
+### No framework
+
+Thi.ng says we can quickly build up a standard library of named, reusable and composable component functions to build complex UIs. No need for a framework.
+
+```Javascript
+/**
+ * @param href link target
+ * @param body link body
+ */
+const link = (href, body) => ["a", {href}, body];
+
+/**
+ * @param src image URL
+ * @param alt (optional)
+ */
+const img = (src, alt = "no desc") => ["img", {src, alt}];
+
+link("http://thi.ng/hiccup-dom", "hiccup-dom");
+
+link("http://thi.ng/hiccup-dom", img("foo.png"));
+```
+
 ### CSS Variables
 
 Using styling frameworks and utilities is less and less popular. The [more standards, less frameworks](https://developer.salesforce.com/blogs/2018/12/introducing-lightning-web-components.html) approach is to follow.
@@ -42,6 +64,7 @@ For example, with the CSS Variables standard we get what we had in SASS. More ov
 
 ### Resources
 
+- [Thi.ng: How to UI in 2018](https://medium.com/@thi.ng/how-to-ui-in-2018-ac2ae02acdf3)
 - [Ana Tudor: DRY Switching with CSS Variables](https://css-tricks.com/dry-switching-with-css-variables-the-difference-of-one-declaration/)
 - [More standards, less frameworks](https://developer.salesforce.com/blogs/2018/12/introducing-lightning-web-components.html)
 - [Composing with Polished](https://github.com/styled-components/polished)
