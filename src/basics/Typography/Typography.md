@@ -14,7 +14,7 @@ Classic used to style old-form content like long text &mdash; we can't avoid thi
 
 Experimental used to style presentational content like landing pages, storytelling, and whatever needs a short span of attention.
 
-## Classic typography
+### Classic typography
 
 *Invented* by Bauhaus a century ago classic typography is still relevant today. Everything static on print &mdash; books, magazines, newspapers, posters &mdash; and everything static on screen &mdash; graphic design, blogs, marketing websites, social networks &mdash; are using its principles.
 
@@ -50,7 +50,27 @@ Today with smartwatches, smartphones, tablets, emojis, interactive installations
 2. People want tangible, immersive, immediate consumable experiences.
 3. The medium is infinitely variable.
 
-### Resources
+To set up the rules of this new experimental typography is an ongoing process. Here we will touch some basic ideas and hopefully someday we can come up with a system.
 
-- [Only @font-face strategy is supported with FOIT](https://stackoverflow.com/questions/42675725/isolated-styled-components-with-font-face)
-- The best overview of [all font loading strategies](https://www.zachleat.com/web/comprehensive-webfonts/) together with a [checklist](https://www.zachleat.com/web/font-checklist/)
+### Skim reading and storytelling
+
+- We do skim read long text.
+- If we want to trick the user to read the whole story we should:
+ - Make the long text look shorter
+ - Break the flow with all sort of elements like images, special blockquotes, graphic dividers, ... Frank Chimero has a good attempt on this technique
+ - New breed visual content editors (WordPress Gutenberg) decompose long text into small, individual blocks which can be styled individually
+ - Add sliders to content which compacts (TL;DR) and extends (original length) the content, and gives variations in between.
+
+### Semantic content
+
+- Every content block can be equipped with semantic metadata and grow independently on the distributed web. This makes view count, shares, likes, comments to be mandatory elements attached to every content block. And it's a design challenge which might break the skim reading habit and make any long form content interesting again.
+
+
+### Dynamic units
+
+- vh, vw, vmax, vmin, em, rem, variable fonts
+
+
+### CSS Shapes, emojis, color fonts
+
+- they can again break the monotony of a long form text
