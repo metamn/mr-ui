@@ -74,3 +74,13 @@ To set up the rules of this new experimental typography is an ongoing process. H
 ### CSS Shapes, emojis, color fonts
 
 - they can again break the monotony of a long form text
+
+
+### Intrinsic ratio
+
+- It was useful up until now but difficult to implement. let's see it again with React.
+
+### Experimental layouts
+
+- See Jen Simmons Lab
+- Put classic content w. classic typography on classic layout: Medium like, centered
