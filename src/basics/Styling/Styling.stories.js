@@ -9,4 +9,9 @@ import Styling from './Styling';
 storiesOf('Basics/Styling ✗', module)
 	.add('Overview',
 		() => ( <Styling/> ),
+		{
+			info: {
+				disable: true
+			}
+		}
 	)

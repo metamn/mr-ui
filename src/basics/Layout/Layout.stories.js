@@ -4,11 +4,11 @@ import { action } from '@storybook/addon-actions';
 import { withInfo } from '@storybook/addon-info';
 import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
 
-import Theming from './Theming';
+import Layout from './Layout';
 
-storiesOf('Basics/Theming ✗', module)
+storiesOf('Basics/Layout ✗', module)
 	.add('Overview',
-		() => ( <Theming/> ),
+		() => ( <Layout/> ),
 		{
 			info: {
 				disable: true

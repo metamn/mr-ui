@@ -9,4 +9,9 @@ import Basics from './Basics';
 storiesOf('Basics', module)
 	.add('Overview',
 		() => ( <Basics/> ),
+		{
+			info: {
+				disable: true
+			}
+		}
 	)

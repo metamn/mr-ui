@@ -9,4 +9,9 @@ import Components from './Components';
 storiesOf('Components', module)
 	.add('Overview',
 		() => ( <Components/> ),
+		{
+			info: {
+				disable: true
+			}
+		}
 	)

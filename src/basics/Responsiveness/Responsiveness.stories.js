@@ -9,4 +9,9 @@ import Responsiveness from './Responsiveness';
 storiesOf('Basics/Responsiveness ✓', module)
 	.add('Overview',
 		() => ( <Responsiveness/> ),
+		{
+			info: {
+				disable: true
+			}
+		}
 	)

@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 
 import 'normalize.css'
-import md from './Styling.md';
+import md from './Typography.md';
 
 const Container = styled.div`
 	width: 100%;
@@ -19,7 +19,7 @@ const Container = styled.div`
 	line-height: 1.5;
 `;
 
-class Styling extends Component {
+class Typography extends Component {
 	render() {
 		return (
 			<Container>
@@ -29,4 +29,4 @@ class Styling extends Component {
 	}
 }
 
-export default Styling;
+export default Typography;
