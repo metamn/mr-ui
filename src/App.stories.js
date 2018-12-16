@@ -9,4 +9,9 @@ import App from './App';
 storiesOf('About', module)
 	.add('Overview',
 		() => ( <App/> ),
+		{
+			info: {
+				disable: true
+			}
+		}
 	)
