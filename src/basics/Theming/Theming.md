@@ -1,10 +1,10 @@
 ## Theming
 
-Theming is a large subject. Let's divide it.
+Theming is foremost about global style variables: let the application access a common set of parameters like colors, fonts, spacing, and more.
 
-### Global styles and style composition
+It has a sibling &mdash; Styling &mdash; which makes all these parameters re-usable and composabel inside componenets.
 
-Theming is foremost about global style variables and reusable, composable element styles similar to mixins found in the SASS language.
+Theming is mandatory. Now the operating system can request a light and dark mode for every app or website.
 
 When entering the React / CSS-in-JS realm these simple things got utterly complicated. Mark Dalgleish explained why, and presented all major approaches like CSS Modules, JSS, Styled Components, Styletron, Aphrodite, Polished, Yoga, Emotion &mdash; to come up finally with a beautiful solution:
 

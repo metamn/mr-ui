@@ -7,7 +7,7 @@ import { withKnobs, text, boolean, number } from "@storybook/addon-knobs";
 import LynxHare from "./LynxHare";
 import description from "./LynxHare.md";
 
-storiesOf("Framework/Responsiveness/Demo", module)
+storiesOf("Playground", module)
 	.add('Lynx & Hare',
 		() => (
 			<LynxHare />

@@ -16,4 +16,5 @@ Beside code all resources influencing design decisions and offering inspiration 
 ### Structure
 
 1. **Basics &mdash;** Basic building blocks like responsiveness, font loading, images and videos.
-2. **Components &mdash;** Re-usable, hand made components specific to this UI library.
+2. **Components &mdash;** Re-usable, styleable hand made components.
+3. **Playground &mdash;** Mini projects to play with.
