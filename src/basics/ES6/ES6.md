@@ -11,19 +11,30 @@ In short, the *rules* are:
 
 1. When an argument is missing it becomes `undefined`.
 2. Passed arguments can have default values.
+3. Passed arguments can be functions, objects too.
+4. When an argument is an object if has to be destructured with `{} = {}`
 
 ```Javascript
 // Simple arguments
 const add = (a = 10, b = 12) => a + b
-console.log(add()) // 22
+console.log(add()) // => 22
 
 // Argument as a function
 const add2 = (a = 10, b = add()) => a + b
-console.log(add2()) // 32
+console.log(add2()) // => 32
+
+// Arguments as object
+// - in this case the argument object has to be destructured with {}
+// - https://simonsmith.io/destructuring-objects-as-function-parameters-in-es6/
+const add3 = ({a = 10, b = 20, c = 30} = {}) => {
+  return a + b + c
+}
+console.log(add3()) // => 60
 ```
 
 Sources:
 - https://repl.it/@metamn/FunctionArguments
+- https://simonsmith.io/destructuring-objects-as-function-parameters-in-es6/
 - https://javascript.info/function-basics
 
 ### Function declaration
