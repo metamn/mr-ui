@@ -8,6 +8,51 @@ In short, the *rules* are:
 2. Declare functions with the arrow `() => {}` syntax.
 3. Pass arguments with `(...args)`.
 
+### The spread operator
+
+1. Any Iterable can be destructured into it's individual elements
+2. The result of the spread can be cast to an array, object
+3. Can be used to compose anything iterable with anything else
+
+```Javascript
+// Any iterable - array, string, ... - can be spread it into individual elements
+const spreadArray = [1, 2, 3]
+console.log(...spreadArray) // => 1 2 3
+
+const spreadString = 'Spread'
+console.log(...spreadString) // => S p r e a d
+
+// The result of the spread can be cast into an array, object
+const charsArray = [...spreadString]
+console.log(charsArray) // => [ 'S', 'p', 'r', 'e', 'a', 'd' ]
+
+const charsObject = {...spreadString}
+console.log(charsObject) // => { '0': 'S', '1': 'p', '2': 'r', '3': 'e', '4': 'a', '5': 'd' }
+
+const numbersArray = [...spreadArray]
+console.log(numbersArray) // => [1, 2, 3]
+
+// Can be used to compose anything iterable with anything else
+console.log(...spreadArray, spreadString) // => 1 2 3 'Spread'
+console.log(...spreadArray, ...spreadString) // => 1 2 3 'S' 'p' 'r' 'e' 'a' 'd'
+console.log([...spreadArray, ...charsArray, ...numbersArray, 'x', 'y', 'z', ...spreadString]) // => [ 1, 2, 3, 'S', 'p', 'r', 'e', 'a', 'd', 1, 2, 3, 'x', 'y', 'z', 'S', 'p', 'r', 'e', 'a', 'd' ]
+
+// Combining objects
+const func = (...args) => {console.log(args)}
+
+const defaultColors = { color: 'black', background: 'white' }
+const defaultFonts = { fontFamily: 'monospace', fontSize: '1em' }
+
+func({...defaultColors, ...defaultFonts}) // => [ { color: 'black' background: 'white', fontFamily: 'monospace', fontSize: '1em' } ]
+
+const overwriteColors = {color: 'red'}
+func({...defaultColors, ...overwriteColors}) // => [ { color: 'red', background: 'white' } ]
+```
+
+Sources:
+- https://repl.it/@metamn/Spread
+- https://github.com/metagrover/ES6-for-humans#4-spread--rest-operator
+
 ### Function arguments
 
 1. When an argument is missing it becomes `undefined`.
@@ -32,17 +77,17 @@ console.log(add3()) // => 60
 
 // The default arguments object
 function add4(a) {
-  console.log(`a[0]: ${arguments[0]}`)
+  console.log(`arguments[0]: ${arguments[0]}`)
 }
-console.log(add4(10)) // a[0]: 10
+console.log(add4(10)) // arguments[0]: 10
 
-// The default arguments object is not available
-const add5 = (a) => console.log(`a[0]: ${arguments[0]}`)
+// The default arguments object is not avaiable
+const add5 = (a) => console.log(`arguments[0]: ${arguments[0]}`)
 console.log(add5(20)) // ReferenceError: arguments is not defined
 
 // ... but the rest operator can be used
-const add6 = (...args) => console.log(`a[0]: ${args[0]}`)
-console.log(add6(200)) // => a[0]: 200
+const add6 = (...args) => console.log(`args[0]: ${args[0]}`)
+console.log(add6(200)) // => args[0]: 200
 ```
 
 Sources:
