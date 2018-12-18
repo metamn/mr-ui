@@ -6,13 +6,15 @@ In short, the *rules* are:
 
 1. Use `const` in favor of `let`.
 2. Declare functions with the arrow `() => {}` syntax.
+3. Pass arguments with `(...args)`.
 
 ### Function arguments
 
 1. When an argument is missing it becomes `undefined`.
 2. Passed arguments can have default values.
-3. Passed arguments can be functions, objects too.
-4. When an argument is an object if has to be destructured with `{} = {}`
+3. Passed arguments can be functions, objects, arrays too.
+4. With arrow notation arrays can be passed only with the `...` rest operator since the default `arguments` object is not available in arrow functions
+5. When an argument is an object it has to be destructured with `{} = {}`
 
 ```Javascript
 // Simple arguments
@@ -24,18 +26,30 @@ const add2 = (a = 10, b = add()) => a + b
 console.log(add2()) // => 32
 
 // Arguments as object
-// - in this case the argument object has to be destructured with {}
-// - https://simonsmith.io/destructuring-objects-as-function-parameters-in-es6/
-const add3 = ({a = 10, b = 20, c = 30} = {}) => {
-  return a + b + c
-}
+// - in this case the argument object has to have {} as default value to let destructuring work
+const add3 = ({a = 10, b = 20, c = 30} = {}) => a + b + c
 console.log(add3()) // => 60
+
+// The default arguments object
+function add4(a) {
+  console.log(`a[0]: ${arguments[0]}`)
+}
+console.log(add4(10)) // a[0]: 10
+
+// The default arguments object is not available
+const add5 = (a) => console.log(`a[0]: ${arguments[0]}`)
+console.log(add5(20)) // ReferenceError: arguments is not defined
+
+// ... but the rest operator can be used
+const add6 = (...args) => console.log(`a[0]: ${args[0]}`)
+console.log(add6(200)) // => a[0]: 200
 ```
 
 Sources:
 - https://repl.it/@metamn/FunctionArguments
 - https://simonsmith.io/destructuring-objects-as-function-parameters-in-es6/
 - https://javascript.info/function-basics
+- https://javascript.info/destructuring-assignment#smart-function-parameters
 
 ### Function declaration
 
