@@ -7,6 +7,48 @@ In short, the *rules* are:
 1. Use `const` in favor of `let`.
 2. Declare functions with the arrow `() => {}` syntax.
 3. Pass arguments with `(...args)`.
+4. Use destructuring `{} =` for better readable code. 
+
+And below, the details.
+
+### Destructuring
+
+1. Any array, object can be destructured to it's components.
+2. This makes writing and reading code easier.
+3. Nested constructs can be destructured.
+4. When destructuring an alias can be defined for long component names.
+
+```Javascript
+const theme = {
+  colors: {
+    background: 'white',
+    text: 'black'
+  },
+  fonts: {
+    family: 'monospace',
+    size: '1em'
+  }
+}
+
+// Destructuring makes code clear
+const {colors, fonts} = theme
+console.log(colors) // => { background: 'white', text: 'black' }
+console.log(fonts) // => { family: 'monospace', size: '1em' }
+
+// Nested destructuring
+const {text} = theme
+console.log(text) // => undefined
+
+const {background} = theme.colors
+console.log(background) // => white
+
+const {fonts:{family}} = theme
+console.log(family) // => monospace
+
+// Destructuring with alias
+const {fonts:{size: s}} = theme
+console.log(s) // => 1em
+```
 
 ### The spread operator
 
