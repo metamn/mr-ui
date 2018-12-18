@@ -2,6 +2,7 @@ import React from "react";
 
 export function LinkCSS({...props}) {
 	return {
-		color: 'black',
+		color: 'blue',
+		textDecoration: 'underline',
 	}
 }

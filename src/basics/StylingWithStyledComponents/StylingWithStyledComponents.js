@@ -4,16 +4,8 @@
 */
 import React from "react";
 import PropTypes from "prop-types";
-//import Link from "./DesignSystem";
+import {Link} from "./DesignSystem";
 
-
-import {LinkHTML} from './HTML'
-import {LinkCSS} from './CSS'
-import styled, { css } from "styled-components"
-
-export const Link = styled(LinkHTML)`
-	${LinkCSS()}
-`
 
 /**
 * The main class
