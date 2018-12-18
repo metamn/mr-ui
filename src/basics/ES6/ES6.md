@@ -6,10 +6,85 @@ In short, the *rules* are:
 
 1. Use `const` in favor of `let`.
 2. Declare functions with the arrow `() => {}` syntax.
-3. Pass arguments with `(...args)`.
-4. Use destructuring `{} =` for better readable code. 
+3. Pass arguments with `(...args)`. Or better, `({...args})`
+4. Use destructuring `{} =` for better readable code.
+5. Both named and default export / import with modules is easy.
 
 And below, the details.
+
+### Modules
+
+1. A module can export default, and/or named exports
+2. Default exports are imported naked, named exports are imported wrapped into {}
+
+```Javascript
+// theme.js
+//
+
+// Named export
+export const colors = {
+  background: 'white',
+  text: 'black',
+}
+
+// Named export
+export const font = {
+  family: 'monospace',
+  size: '1em',
+}
+
+// Default export
+export default function theme() {
+  return {...colors, ...font}
+}
+
+/*
+export default const theme = () => {...colors, ...font}
+// => Syntax error: Only expressions, functions or classes are allowed as the `default` export. (20:16)
+*/
+
+// App.js
+//
+import theme, {colors, font} from './theme'
+```
+
+Sources:
+- https://repl.it/@metamn/Modules
+- http://exploringjs.com/es6/ch_modules.html
+
+### Classes
+
+1. Pass arguments with `({...args})`
+
+```Javascript
+class Component {
+  constructor(props) {
+    this.props = props
+  }
+
+  displayProps() {
+    const str = JSON.stringify(this.props)
+    console.log(str)
+  }
+}
+
+const props = {
+  theme: 'dark'
+}
+
+const c1 = new Component(props)
+c1.displayProps() // => {"theme":"dark"}
+
+// const c2 = new Component(...props) // => TypeError: props is not iterable
+
+const c3 = new Component({...props})
+c3.displayProps() // => {"theme":"dark"}
+
+//const c4 = new Component([...props]) // => TypeError: props is not iterable
+```
+
+Sources:
+- https://repl.it/@metamn/Class-with-props
 
 ### Destructuring
 
@@ -49,6 +124,10 @@ console.log(family) // => monospace
 const {fonts:{size: s}} = theme
 console.log(s) // => 1em
 ```
+
+Sources:
+- https://repl.it/@metamn/Destructuring
+- https://javascript.info/destructuring-assignment
 
 ### The spread operator
 
