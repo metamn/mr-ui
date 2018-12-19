@@ -1,5 +1,6 @@
 ## Lists
 
+Loading long lists is a continuous problem today both on web and native UIs. A working solution has to be found.
 
 ### Resources
 
