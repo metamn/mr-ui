@@ -1,6 +1,6 @@
 ## Colors
 
-It's better to use HSL notation since they are better programmable than RGB codes, and are more intuitive than the RGBA notation.
+It's better to use HSL notation since they are better programmable than hex codes, and are more intuitive than the RGBA notation.
 
 ### Resources
 

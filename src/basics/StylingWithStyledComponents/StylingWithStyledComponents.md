@@ -53,7 +53,9 @@ export function LinkHTML({className, ...props}) {
 		</a>
 	)
 }
+```
 
+```Javascript
 // in CSS.js
 //
 export function LinkCSS({...props}) {
@@ -62,7 +64,9 @@ export function LinkCSS({...props}) {
 		textDecoration: 'underline',
 	}
 }
+```
 
+```Javascript
 // in DesignSystem.js
 //
 import {LinkHTML} from './HTML'
@@ -72,7 +76,9 @@ import styled from "styled-components"
 export const Link = styled(LinkHTML)`
 	${LinkCSS()}
 `
+```
 
+```Javascript
 // in StylingWithStyledComponents.js
 //
 import {Link} from "./DesignSystem";
