@@ -8,126 +8,145 @@ In short, the *rules* are:
 2. Declare functions with the arrow `() => {}` syntax.
 3. Pass arguments with `(...args)`. Or better, `({...args})`
 4. Use destructuring `{} =` for better readable code.
-5. Both named and default export / import with modules is easy.
+5. Both named and default exports / imports are easy with modules.
 
 And below, the details.
 
-### Modules
+### Let
 
-1. A module can export default, and/or named exports
-2. Default exports are imported naked, named exports are imported wrapped into {}
+Replaces `var` with a main difference:
+
+1. `let` is accessible only inside a block, ie it's *block scoped*.
 
 ```Javascript
-// theme.js
-//
+// It will be accessible after the block
+var a = 2
 
-// Named export
-export const colors = {
-  background: 'white',
-  text: 'black',
+{
+  // It will be accessible only inside the block
+  let b = 3
+  console.log(`b: ${b}`)
 }
 
-// Named export
-export const font = {
-  family: 'monospace',
-  size: '1em',
-}
-
-// Default export
-export default function theme() {
-  return {...colors, ...font}
-}
-
-/*
-export default const theme = () => {...colors, ...font}
-// => Syntax error: Only expressions, functions or classes are allowed as the `default` export. (20:16)
-*/
-
-// App.js
-//
-import theme, {colors, font} from './theme'
+console.log(`a: ${a}`) // a:2
+console.log(`b: ${b}`) // ReferenceError: b is not defined
 ```
 
 Sources:
-- https://repl.it/@metamn/Modules
-- http://exploringjs.com/es6/ch_modules.html
+- https://repl.it/@metamn/Let
+- https://javascript.info/var
+- https://github.com/metagrover/ES6-for-humans#1-let-const-and-block-scoping
 
-### Classes
 
-1. Pass arguments with `({...args})`
+### Const
+
+1. It's block scoped.
+2. If references an `Array` or `Object` the contents of the Array or Object can be changed, however a re-assigment is forbidden.
+3. Try to always use `const` over `let`.
 
 ```Javascript
-class Component {
-  constructor(props) {
-    this.props = props
-  }
+{
+  // This can't be changed.
+  const a = 2
+  a = 3 // TypeError: Assignment to constant variable.
 
-  displayProps() {
-    const str = JSON.stringify(this.props)
-    console.log(str)
-  }
+  // The values can be changed
+  const b = [1, 2, 3]
+  b.push(4)
+  console.log(`b: ${b}`) // => b:1,2,3,4
+  b = 5 // TypeError: Assignment to constant variable.
 }
 
-const props = {
-  theme: 'dark'
-}
-
-const c1 = new Component(props)
-c1.displayProps() // => {"theme":"dark"}
-
-// const c2 = new Component(...props) // => TypeError: props is not iterable
-
-const c3 = new Component({...props})
-c3.displayProps() // => {"theme":"dark"}
-
-//const c4 = new Component([...props]) // => TypeError: props is not iterable
+// Const is block scoped and can't be accessed here
+console.log(`a: ${a}`) // ReferenceError: a is not defined
 ```
 
 Sources:
-- https://repl.it/@metamn/Class-with-props
+- https://repl.it/@metamn/Const
+- https://github.com/metagrover/ES6-for-humans#1-let-const-and-block-scoping
 
-### Destructuring
 
-1. Any array, object can be destructured to it's components.
-2. This makes writing and reading code easier.
-3. Nested constructs can be destructured.
-4. When destructuring an alias can be defined for long component names.
+### Function declaration
+
+1. There is a short hand notation: `const func = (args) => {body}`.
+2. Both `()` and `{}` can be skipped in some cases.
 
 ```Javascript
-const theme = {
-  colors: {
-    background: 'white',
-    text: 'black'
-  },
-  fonts: {
-    family: 'monospace',
-    size: '1em'
-  }
+// Old school
+function addOldSchool(a, b) {
+  return a + b
 }
+console.log(addOldSchool(2, 3))
 
-// Destructuring makes code clear
-const {colors, fonts} = theme
-console.log(colors) // => { background: 'white', text: 'black' }
-console.log(fonts) // => { family: 'monospace', size: '1em' }
+// Arrow functions
+const add = (a, b) => {
+  return a + b
+}
+console.log(add(2, 3))
 
-// Nested destructuring
-const {text} = theme
-console.log(text) // => undefined
+// When return is a simple line {} can be skipped
+const addSimple = (a, b) => a + b
+console.log(addSimple(2, 3))
 
-const {background} = theme.colors
-console.log(background) // => white
+// When a single argument is passed () can be skipped
+const addSingleArgument = a => a + a
+console.log(addSingleArgument(2))
 
-const {fonts:{family}} = theme
-console.log(family) // => monospace
-
-// Destructuring with alias
-const {fonts:{size: s}} = theme
-console.log(s) // => 1em
+// When there are no arguments () should be present
+const hello = () => 'Hello, world!'
+console.log(hello())
 ```
 
 Sources:
-- https://repl.it/@metamn/Destructuring
-- https://javascript.info/destructuring-assignment
+- https://repl.it/@metamn/Function
+- https://javascript.info/function-expressions-arrows#arrow-functions
+- https://github.com/metagrover/ES6-for-humans#2-arrow-functions
+
+
+### Function arguments
+
+1. When an argument is missing it becomes `undefined`.
+2. Passed arguments can have default values.
+3. Passed arguments can be functions, objects, arrays too.
+4. With arrow notation arrays can be passed only with the `...` rest operator since the default `arguments` object is not available in arrow functions
+5. When an argument is an object it has to be destructured with `{} = {}`
+
+```Javascript
+// Simple arguments
+const add = (a = 10, b = 12) => a + b
+console.log(add()) // => 22
+
+// Argument as a function
+const add2 = (a = 10, b = add()) => a + b
+console.log(add2()) // => 32
+
+// Arguments as object
+// - in this case the argument object has to have {} as default value to let destructuring work
+const add3 = ({a = 10, b = 20, c = 30} = {}) => a + b + c
+console.log(add3()) // => 60
+
+// The default arguments object
+function add4(a) {
+  console.log(`arguments[0]: ${arguments[0]}`)
+}
+console.log(add4(10)) // arguments[0]: 10
+
+// The default arguments object is not avaiable
+const add5 = (a) => console.log(`arguments[0]: ${arguments[0]}`)
+console.log(add5(20)) // ReferenceError: arguments is not defined
+
+// ... but the rest operator can be used
+const add6 = (...args) => console.log(`args[0]: ${args[0]}`)
+console.log(add6(200)) // => args[0]: 200
+```
+
+Sources:
+- https://repl.it/@metamn/FunctionArguments
+- https://simonsmith.io/destructuring-objects-as-function-parameters-in-es6/
+- https://javascript.info/function-basics
+- https://javascript.info/destructuring-assignment#smart-function-parameters
+
+
 
 ### The spread operator
 
@@ -174,135 +193,126 @@ Sources:
 - https://repl.it/@metamn/Spread
 - https://github.com/metagrover/ES6-for-humans#4-spread--rest-operator
 
-### Function arguments
 
-1. When an argument is missing it becomes `undefined`.
-2. Passed arguments can have default values.
-3. Passed arguments can be functions, objects, arrays too.
-4. With arrow notation arrays can be passed only with the `...` rest operator since the default `arguments` object is not available in arrow functions
-5. When an argument is an object it has to be destructured with `{} = {}`
+### Destructuring
+
+1. Any array, object can be destructured to it's components.
+2. This makes writing and reading code easier.
+3. Nested constructs can be destructured.
+4. When destructuring an alias can be defined for long component names.
 
 ```Javascript
-// Simple arguments
-const add = (a = 10, b = 12) => a + b
-console.log(add()) // => 22
-
-// Argument as a function
-const add2 = (a = 10, b = add()) => a + b
-console.log(add2()) // => 32
-
-// Arguments as object
-// - in this case the argument object has to have {} as default value to let destructuring work
-const add3 = ({a = 10, b = 20, c = 30} = {}) => a + b + c
-console.log(add3()) // => 60
-
-// The default arguments object
-function add4(a) {
-  console.log(`arguments[0]: ${arguments[0]}`)
+const theme = {
+  colors: {
+    background: 'white',
+    text: 'black'
+  },
+  fonts: {
+    family: 'monospace',
+    size: '1em'
+  }
 }
-console.log(add4(10)) // arguments[0]: 10
 
-// The default arguments object is not avaiable
-const add5 = (a) => console.log(`arguments[0]: ${arguments[0]}`)
-console.log(add5(20)) // ReferenceError: arguments is not defined
+// Destructuring makes code clear
+const {colors, fonts} = theme
+console.log(colors) // => { background: 'white', text: 'black' }
+console.log(fonts) // => { family: 'monospace', size: '1em' }
 
-// ... but the rest operator can be used
-const add6 = (...args) => console.log(`args[0]: ${args[0]}`)
-console.log(add6(200)) // => args[0]: 200
+// Nested destructuring
+const {text} = theme
+console.log(text) // => undefined
+
+const {background} = theme.colors
+console.log(background) // => white
+
+const {fonts:{family}} = theme
+console.log(family) // => monospace
+
+// Destructuring with alias
+const {fonts:{size: s}} = theme
+console.log(s) // => 1em
 ```
 
 Sources:
-- https://repl.it/@metamn/FunctionArguments
-- https://simonsmith.io/destructuring-objects-as-function-parameters-in-es6/
-- https://javascript.info/function-basics
-- https://javascript.info/destructuring-assignment#smart-function-parameters
+- https://repl.it/@metamn/Destructuring
+- https://javascript.info/destructuring-assignment
 
-### Function declaration
 
-1. There is a short hand notation: `const func = (args) => {body}`.
-2. Both `()` and `{}` can be skipped in some cases.
+### Classes
+
+1. Pass arguments with `({...args})`
 
 ```Javascript
-// Old school
-function addOldSchool(a, b) {
-  return a + b
+class Component {
+  constructor(props) {
+    this.props = props
+  }
+
+  displayProps() {
+    const str = JSON.stringify(this.props)
+    console.log(str)
+  }
 }
-console.log(addOldSchool(2, 3))
 
-// Arrow functions
-const add = (a, b) => {
-  return a + b
+const props = {
+  theme: 'dark'
 }
-console.log(add(2, 3))
 
-// When return is a simple line {} can be skipped
-const addSimple = (a, b) => a + b
-console.log(addSimple(2, 3))
+const c1 = new Component(props)
+c1.displayProps() // => {"theme":"dark"}
 
-// When a single argument is passed () can be skipped
-const addSingleArgument = a => a + a
-console.log(addSingleArgument(2))
+// const c2 = new Component(...props) // => TypeError: props is not iterable
 
-// When there are no arguments () should be present
-const hello = () => 'Hello, world!'
-console.log(hello())
+const c3 = new Component({...props})
+c3.displayProps() // => {"theme":"dark"}
+
+//const c4 = new Component([...props]) // => TypeError: props is not iterable
 ```
 
 Sources:
-- https://repl.it/@metamn/Function
-- https://javascript.info/function-expressions-arrows#arrow-functions
-- https://github.com/metagrover/ES6-for-humans#2-arrow-functions
+- https://repl.it/@metamn/Class-with-props
 
-### Const
 
-1. It's block scoped.
-2. If references an `Array` or `Object` their contents can be changed, however a re-assigment is forbidden.
-3. Try to always use `const` over `let`.
+### Modules
+
+1. A module can export default, and/or named exports
+2. Default exports are imported naked, named exports are imported wrapped into {}
 
 ```Javascript
-{
-  // This can't be changed.
-  const a = 2
-  a = 3 // TypeError: Assignment to constant variable.
+// theme.js
+//
 
-  // The values can be changed
-  const b = [1, 2, 3]
-  b.push(4)
-  console.log(`b: ${b}`) // => b:1,2,3,4
-  b = 5 // TypeError: Assignment to constant variable.
+// Named export
+export const colors = {
+  background: 'white',
+  text: 'black',
 }
 
-// Const is block scoped and can't be accessed here
-console.log(`a: ${a}`) // ReferenceError: a is not defined
+// Named export
+export const font = {
+  family: 'monospace',
+  size: '1em',
+}
+
+// Default export
+export default function theme() {
+  return {...colors, ...font}
+}
+
+/*
+export default const theme = () => {...colors, ...font}
+// => Syntax error: Only expressions, functions or classes are allowed as the `default` export. (20:16)
+*/
+
+// App.js
+//
+import theme, {colors, font} from './theme'
 ```
 
 Sources:
-- https://repl.it/@metamn/Const
-- https://github.com/metagrover/ES6-for-humans#1-let-const-and-block-scoping
+- https://repl.it/@metamn/Modules
+- http://exploringjs.com/es6/ch_modules.html
 
-### Let
-
-Replaces `var` with a main difference:
-
-1. `let` is accessible only inside a block, ie it's *block scoped*.
-
-```Javascript
-// It will be accessible after the block
-var a = 2
-
-{
-  // It will be accessible only inside the block
-  let b = 3
-  console.log(`b: ${b}`)
-}
-
-console.log(`a: ${a}`) // a:2
-console.log(`b: ${b}`) // ReferenceError: b is not defined
-```
-
-Sources:
-- https://repl.it/@metamn/Let
-- https://github.com/metagrover/ES6-for-humans#1-let-const-and-block-scoping
 
 ### Resources
 

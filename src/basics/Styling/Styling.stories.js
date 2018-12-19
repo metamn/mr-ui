@@ -6,7 +6,7 @@ import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
 
 import Styling from './Styling';
 
-storiesOf('Basics/Styling ✗', module)
+storiesOf('Basics/Styling ✓', module)
 	.add('Overview',
 		() => ( <Styling/> ),
 		{

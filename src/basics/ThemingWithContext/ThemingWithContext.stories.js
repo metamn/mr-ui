@@ -7,7 +7,7 @@ import { withKnobs, text, boolean, number } from "@storybook/addon-knobs";
 import ThemingWithContext from "./ThemingWithContext";
 import description from "./ThemingWithContext.md";
 
-storiesOf("Basics/Theming ✗/Global styles with React Context", module).add(
+storiesOf("Basics/Theming ✓/Global styles with React Context", module).add(
 	"Overview",
 	() => <ThemingWithContext />,
 	{

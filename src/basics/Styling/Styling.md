@@ -1,66 +1,58 @@
 ## Styling
 
-Styling is about CSS: using a theme to style individual components.
+Styling is about writing compact, reusable and composable CSS usually with the help of a framework.
 
 ### Style composition
 
-To keep style consistent the style composing technique must be used: a component can borrow styles from other components, or offer them its own.
+To keep style consistent a component has to be able to borrow styles from other components, and to offer its own for reuse.
 
-The CSS3 web standard lately became highly advanced but still not enough powerful to implement style composing like frameworks &mdash; SASS, Less, Styled Components &mdash; do.
+The CSS3 web standard is not ready yet to implement such style composing like other frameworks &mdash; SASS, Less, Styled Components &mdash; do.
 
-In React there are [lots of styling frameworks](https://medium.com/seek-blog/a-unified-styling-language-d0c208de2660) and Polished is the current best practice.
+In the React ecosystem even if there are [lots of styling frameworks](https://medium.com/seek-blog/a-unified-styling-language-d0c208de2660) neither one is a silver bullet.
 
-It has two different usages, a decision must be made which one is better:
+It seems Styled Components are the current best practice. It's the most popular and has the largest ecosystem. Together with Polished they can offer what one has accustomed with SASS / SCSS.
+
+The aim is something like:
 
 ```Javascript
-// Styles as object usage
-const styles = {
-   ...clearFix(),
-}
+import {
+  PageBlock,
+  Card,
+  Text
+} from 'seek-style-guide/react'
 
-// styled-components usage
-const div = styled.div`
-  ${clearFix()}
-`
+const App = () => (
+  <PageBlock>
+    <Card>
+      <Text heading>Hello World!</Text>
+    </Card>
+  </PageBlock>
+)
 ```
 
-### Styling framework
+and
 
-Writing plain CSS is still very time consuming and ineffective. To fix this there are various style frameworks to help.
+```Javascript
+const Text = {
+  ...rules,
+  ...moreRules,
+  fontFamily: 'Comic Sans MS',
+  color: 'blue'
+}
+```
 
-It seems Styled Components are the current best practice. It's the most popular and has the largest ecosystem.
 
 CSS Modules might be an alternative. Avoid Emotionjs for now &mdash; very messy documentation and look, however it was meant to be the ultimate styling framework borrowing what's best from all others.
-
-### No framework
-
-Thi.ng says we can quickly build up a standard library of named, reusable and composable component functions to build complex UIs. No need for a framework.
-
-```Javascript
-/**
- * @param href link target
- * @param body link body
- */
-const link = (href, body) => ["a", {href}, body];
-
-/**
- * @param src image URL
- * @param alt (optional)
- */
-const img = (src, alt = "no desc") => ["img", {src, alt}];
-
-link("http://thi.ng/hiccup-dom", "hiccup-dom");
-
-link("http://thi.ng/hiccup-dom", img("foo.png"));
-```
 
 ### CSS Variables
 
 Using styling frameworks and utilities is less and less popular. The [more standards, less frameworks](https://developer.salesforce.com/blogs/2018/12/introducing-lightning-web-components.html) approach is to follow.
 
-Web standards are catching up rendering frameworks obsolete.
+Web standards are catching up and rendering frameworks obsolete.
 
 For example, with the CSS Variables standard we get what we had in SASS. More over, as Ana Tudor shows, CSS variables are really magic compared to their old, framework-specific counterparts.
+
+Replacing Styled Components with CSS variables has to be analysed.
 
 ### Resources
 

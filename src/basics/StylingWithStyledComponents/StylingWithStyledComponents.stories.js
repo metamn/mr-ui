@@ -7,7 +7,7 @@ import { withKnobs, text, boolean, number } from "@storybook/addon-knobs";
 import StylingWithStyledComponents from "./StylingWithStyledComponents";
 import description from "./StylingWithStyledComponents.md";
 
-storiesOf("Basics/Styling ✗/Styling With Styled Components", module)
+storiesOf("Basics/Styling ✓/Styling With Styled Components", module)
 	.add(
 		"Overview",
 		() => <StylingWithStyledComponents />,

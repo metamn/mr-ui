@@ -6,7 +6,7 @@ import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
 
 import Theming from './Theming';
 
-storiesOf('Basics/Theming ✗', module)
+storiesOf('Basics/Theming ✓', module)
 	.add('Overview',
 		() => ( <Theming/> ),
 		{
