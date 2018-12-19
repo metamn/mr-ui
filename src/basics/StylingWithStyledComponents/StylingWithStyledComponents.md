@@ -35,12 +35,61 @@ export function BlockquoteHTML({className, ...props}) {
 This makes worth starting your own Design System from scratch, and later be able to add accessibility, annotation and any future extension easily.
 
 
-### The example
+### How it works?
 
-- A `LinkHTML` component is set up together with a `LinkCSS` component.
-- They are glued together with Styled Components and the Polished-inspired *mixin* technique: `export const Link = styled(LinkHTML)'${LinkCSS()}'`
-- The main React component is importing the already glued `Link` component and is using it like `return <Link href="...">metamn.io</Link>`
+1. A `LinkHTML` component is set up together with a `LinkCSS` component.
+2. They are glued together with Styled Components and the Polished-inspired *mixin* technique: `export const Link = styled(LinkHTML)'${LinkCSS()}'`
+3. The main React component is importing the already glued `Link` component and is using it like `return <Link href="...">metamn.io</Link>`
 
+### Example
+
+```Javascript
+// in HTML.js
+//
+export function LinkHTML({className, ...props}) {
+	return (
+		<a className={className} href={props.href} title={props.title}>
+			{props.children}
+		</a>
+	)
+}
+
+// in CSS.js
+//
+export function LinkCSS({...props}) {
+	return {
+		color: 'blue',
+		textDecoration: 'underline',
+	}
+}
+
+// in DesignSystem.js
+//
+import {LinkHTML} from './HTML'
+import {LinkCSS} from './CSS'
+import styled from "styled-components"
+
+export const Link = styled(LinkHTML)`
+	${LinkCSS()}
+`
+
+// in StylingWithStyledComponents.js
+//
+import {Link} from "./DesignSystem";
+class StylingWithStyledComponents extends React.Component {
+	render() {
+		return (
+			<Link
+				className='link'
+				href='http://metamn.io'
+				title='metamn.io'
+			>
+				A custom made Link component pointing to http://metamn.io
+			</Link>
+		)
+	}
+}
+```
 
 ### Resources:
 

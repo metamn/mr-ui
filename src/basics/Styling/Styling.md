@@ -2,45 +2,19 @@
 
 Styling is about writing compact, reusable and composable CSS usually with the help of a framework.
 
-### Style composition
+Without a framework React offers inline styling as default where style is attached directly to an element in DOM instead of being loaded from a classic `.css` file.
 
-To keep style consistent a component has to be able to borrow styles from other components, and to offer its own for reuse.
-
-The CSS3 web standard is not ready yet to implement such style composing like other frameworks &mdash; SASS, Less, Styled Components &mdash; do.
-
-In the React ecosystem even if there are [lots of styling frameworks](https://medium.com/seek-blog/a-unified-styling-language-d0c208de2660) neither one is a silver bullet.
-
-It seems Styled Components are the current best practice. It's the most popular and has the largest ecosystem. Together with Polished they can offer what one has accustomed with SASS / SCSS.
-
-The aim is something like:
-
-```Javascript
-import {
-  PageBlock,
-  Card,
-  Text
-} from 'seek-style-guide/react'
-
-const App = () => (
-  <PageBlock>
-    <Card>
-      <Text heading>Hello World!</Text>
-    </Card>
-  </PageBlock>
-)
+```html
+<button style="background-color: palevioletred; color: papayawhip;" />
 ```
 
-and
+Inline styles only support a subset of CSS without pseudo selectors, media queries, keyframes etc. No design system can live without them.
 
-```Javascript
-const Text = {
-  ...rules,
-  ...moreRules,
-  fontFamily: 'Comic Sans MS',
-  color: 'blue'
-}
-```
+### Frameworks
 
+The React ecosystem has [dozens of styling frameworks](https://medium.com/seek-blog/a-unified-styling-language-d0c208de2660).
+
+It seems Styled Components are the current best practice. It's the most popular and has the largest ecosystem. It offers the important `mixin` feature if one comes from SASS / SCSS.
 
 CSS Modules might be an alternative. Avoid Emotionjs for now &mdash; very messy documentation and look, however it was meant to be the ultimate styling framework borrowing what's best from all others.
 
@@ -56,6 +30,7 @@ Replacing Styled Components with CSS variables has to be analysed.
 
 ### Resources
 
+- [The difference between React default inline styling and CSS-in-JS offered by frameworks](https://mxstbr.blog/2016/11/inline-styles-vs-css-in-js/)
 - [Thi.ng: How to UI in 2018](https://medium.com/@thi.ng/how-to-ui-in-2018-ac2ae02acdf3)
 - [Ana Tudor: DRY Switching with CSS Variables](https://css-tricks.com/dry-switching-with-css-variables-the-difference-of-one-declaration/)
 - [More standards, less frameworks](https://developer.salesforce.com/blogs/2018/12/introducing-lightning-web-components.html)
