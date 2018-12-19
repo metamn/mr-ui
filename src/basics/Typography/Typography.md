@@ -84,3 +84,8 @@ To set up the rules of this new experimental typography is an ongoing process. H
 
 - See Jen Simmons Lab
 - Put classic content w. classic typography on classic layout: Medium like, centered
+
+
+### Resources
+
+- [Typography and Augmented Reality](http://www.aetherpoint.com/blogpost/breaking-boxes-typography-and-augmented-reality/)

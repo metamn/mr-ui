@@ -15,7 +15,13 @@ class StylingWithStyledComponents extends React.Component {
 		const { loading, className } = this.props
 
 		return (
-			<Link className='link' href='https://alika.ro' title='alika.ro'>alika.ro</Link>
+			<Link
+				className='link'
+				href='http://metamn.io'
+				title='metamn.io'
+			>
+				A custom made Link component pointing to http://metamn.io
+			</Link>
 		)
 	}
 }
