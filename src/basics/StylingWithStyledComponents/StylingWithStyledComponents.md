@@ -2,7 +2,7 @@
 
 ### A short detour
 
-- Since building components in React is a breeze one can realise a long time dream: build a component system from bottom up, starting with simple HTML elements like `<a>` or `<p>`.
+- Since building components in React is a breeze &mdash; one can realise a long time dream: to build a component system from bottom up, starting with simple HTML elements like `<a>` or `<p>`.
 - This sounds unnecessarily complicated unless we take into consideration the distributed and semantic web, where every content block (a paragraph perhaps) is annotated and lives its own life on the net, being capable to grow and return that growth back to it's author.
 - In short we will need soon something like this:
 
@@ -35,11 +35,11 @@ export function BlockquoteHTML({className, ...props}) {
 This makes worth starting your own Design System from scratch, and later be able to add accessibility, annotation and any future extension easily.
 
 
-### How it works?
+### Back from detour &mdash; How the current example works?
 
 1. A `LinkHTML` component is set up together with a `LinkCSS` component.
-2. They are glued together with Styled Components and the Polished-inspired *mixin* technique: `export const Link = styled(LinkHTML)'${LinkCSS()}'`
-3. The main React component is importing the already glued `Link` component and is using it like `return <Link href="...">metamn.io</Link>`
+2. They are glued together with Styled Components and the Polished-inspired *mixin* technique.
+3. The main React component imports and uses the glued `Link` component.
 
 ### Example
 

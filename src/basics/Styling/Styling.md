@@ -8,7 +8,7 @@ Without a framework React offers inline styling as default where style is attach
 <button style="background-color: palevioletred; color: papayawhip;" />
 ```
 
-Inline styles only support a subset of CSS without pseudo selectors, media queries, keyframes etc. No design system can live without them.
+Inline styles only support a subset of CSS without pseudo selectors, media queries, keyframes etc. No design system can live without these.
 
 ### Frameworks
 

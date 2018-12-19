@@ -1,9 +1,9 @@
 ## Global Styles With React Context
 
 - It's the most simple an unobtrusive way of theming, inspired by [React's own Dynamic Context.](https://reactjs.org/docs/context.html#dynamic-context)
-- Define once the theme, use only where necessary, without having to pass down the component tree.
-- Skipping the pass down on the component tree is important when a.) the theme can be dynamically changed and b.) not all components depend on the theme. In this case a theme change is rippled down even to components which might not need it.
-- If all your components are depending on a theme then the whole React Context story can be skipped and just pass the theme down as any regular `prop`.
+- Define once the theme, use only where necessary, without having to pass it down the component tree.
+- Skipping the pass down is important when a.) the theme can be dynamically changed and b.) not all components depend on the theme. In this case a theme change is rippled down even to components which might not need it.
+- If all components are depending on a theme React Context can be fully skipped and the theme passed as any other `prop`.
 - Other solutions which use constructs like [<ThemeProvider>](https://www.styled-components.com/docs/advanced#theming) usually end in wrapping hell.
 
 ### How it works?
