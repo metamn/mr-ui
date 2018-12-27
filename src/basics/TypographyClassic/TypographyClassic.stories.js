@@ -25,7 +25,26 @@ storiesOf("Basics/Typography ✗/Classic", module)
 		() => (
 			<TypographyClassic
 				rhytm={true}
+				resetAll={true}
+			/>
+		)
+	)
+	.add('In rhytm with headings',
+		() => (
+			<TypographyClassic
+				rhytm={true}
+				resetAll={true}
 				styleHeadings={true}
+			/>
+		)
+	)
+	.add('In rhytm with parapgraph margins',
+		() => (
+			<TypographyClassic
+				rhytm={true}
+				resetAll={true}
+				styleHeadings={true}
+				parapgraphMargins={true}
 			/>
 		)
 	)

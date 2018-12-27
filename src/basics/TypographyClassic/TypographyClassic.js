@@ -21,48 +21,65 @@ const Loading = styled.div``
 */
 const Container = styled.div`
 	overflow-x: hidden;
+	padding: 1.25em;
 
 	@media (max-width: 767px) {
 		font-size: ${props => props.typographicGrid.mobile.fontSize};
 		line-height: ${props => props.typographicGrid.mobile.lineHeight};
-		padding: ${props => props.typographicGrid.mobile.lem};
+		//padding: ${props => props.typographicGrid.mobile.lem};
 	}
 
 	@media (min-width: 768px) and (max-width: 1023px) {
 		font-size: ${props => props.typographicGrid.tablet.fontSize};
 		line-height: ${props => props.typographicGrid.tablet.lineHeight};
-		padding: ${props => props.typographicGrid.tablet.lem};
+		//padding: ${props => props.typographicGrid.tablet.lem};
 		background: aqua;
 	}
 
 	@media (min-width: 1024px) and (max-width: 1365px) {
 		font-size: ${props => props.typographicGrid.tabletL.fontSize};
 		line-height: ${props => props.typographicGrid.tabletL.lineHeight};
-		padding: ${props => props.typographicGrid.tabletL.lem};
+		//padding: ${props => props.typographicGrid.tabletL.lem};
 		background: pink;
 	}
 
 	@media (min-width: 1366px) and (max-width: 1559px) {
 		font-size: ${props => props.typographicGrid.laptop.fontSize};
 		line-height: ${props => props.typographicGrid.laptop.lineHeight};
-		padding: ${props => props.typographicGrid.laptop.lem};
+		//padding: ${props => props.typographicGrid.laptop.lem};
 		background: lightblue;
 	}
 
 	@media (min-width: 1600px) {
 		font-size: ${props => props.typographicGrid.desktop.fontSize};
 		line-height: ${props => props.typographicGrid.desktop.lineHeight};
-		padding: ${props => props.typographicGrid.desktop.lem};
+		//padding: ${props => props.typographicGrid.desktop.lem};
 	}
 
-	${props => props.styleHeadings && css`
-		padding: 0 !important;
-
-		> * {
+	${props => props.resetAll && css`
+		h1, h2, h3 {
 			font-size: 1em;
 			font-weight: normal;
+		}
+
+		> * {
 			margin: 0;
 			padding: 0;
+			box-sizing: border-box;
+		}
+	`}
+
+	${props => props.styleHeadings && css`
+		h1 { font-size:1.5em; padding:1.45833em 0; }
+		h2 { font-size:1.33333em; padding:1.25em 0; }
+		h3 { font-size:1.16667em; padding:1.51785em 0; }
+	`}
+
+	${props => props.parapgraphMargins && css`
+		p {
+			+ p {
+				margin-top: 2.5em;
+			}
 		}
 	`}
 `
@@ -113,7 +130,7 @@ const Line = styled.div`
 */
 class TypographyClassic extends React.Component {
 	render() {
-		const { styleHeadings, rhytm, loading, className } = this.props
+		const { parapgraphMargins, resetAll, styleHeadings, rhytm, loading, className } = this.props
 
 		if (loading) {
 			return <Loading className={className}>Loading ...</Loading>
@@ -124,7 +141,9 @@ class TypographyClassic extends React.Component {
 				<Container
 					className={className}
 					typographicGrid={typographicGrid}
+					resetAll={resetAll}
 					styleHeadings={styleHeadings}
+					parapgraphMargins={parapgraphMargins}
 				>
 					<ReactMarkdown source={sample} />
 				</Container>
