@@ -1,3 +1,5 @@
+123456789 10 123456789 20 123456789 30 123456789 40 123456789 50 123456789 60
+
 # Classic Typography
 
 ## Theory
@@ -21,4 +23,68 @@ Minimal typography's basic rule is to set the body text first:
 
 ## Practice in a responsive environment
 
-In 2009 there was no responsive design. 
+In 2009 there was no responsive design. To make Iain's idea responsive the only thing one should do is to create a typographic grid for every device type.
+
+As a practice we are making this text to be displayed on 60-80 characters in a row on all devices. You can test in on the `Viewports` tab below.
+
+And the code is:
+```Javascript
+// typographic-grid.js
+//
+import React from 'react'
+
+const TypographicGrid = {
+	mobile: {
+		fontSize: '100%',
+		lineHeight: '1.25',
+		lem: '1.25em',
+	},
+	tablet: {
+		fontSize: '110%',
+		lineHeight: '1.25',
+		lem: '1.375em',
+	},
+	tabletL: {
+		fontSize: '140%',
+		lineHeight: '1.25',
+		lem: '1.75em',
+	},
+	laptop: {
+		fontSize: '160%',
+		lineHeight: '1.25',
+		lem: '2em',
+	},
+	desktop: {
+		fontSize: '200%',
+		lineHeight: '1.25',
+		lem: '2.5em',
+	}
+}
+
+export default TypographicGrid
+```  
+
+``` Javascript
+// TypographyClassic.js
+//
+
+....
+const Container = styled.div`
+	overflow-x: hidden;
+
+	@media (max-width: 767px) {
+		font-size: ${props => props.typographicGrid.mobile.fontSize};
+		line-height: ${props => props.typographicGrid.mobile.lineHeight};
+		padding: ${props => props.typographicGrid.mobile.lem};
+	}
+	....
+	`
+```
+
+### Notes:
+
+- The `lem` variable is the "lambda in em" from Iain's notation.
+- On mobile we can't put 60 chars in a row unless we highly reduce font size below 100% which destroys the readability of the text.
+
+
+123456789 10 123456789 20 123456789 30 123456789 40 123456789 50 123456789 60

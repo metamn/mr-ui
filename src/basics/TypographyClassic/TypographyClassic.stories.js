@@ -10,10 +10,4 @@ import description from "./TypographyClassic.md";
 storiesOf("Basics/Typography ✗/Classic", module).add(
 	"Overview",
 	() => <TypographyClassic />,
-	{
-		info: {
-			inline: true,
-			text: description
-		}
-	}
 );
