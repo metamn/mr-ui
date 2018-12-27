@@ -7,7 +7,25 @@ import { withKnobs, text, boolean, number } from "@storybook/addon-knobs";
 import TypographyClassic from "./TypographyClassic";
 import description from "./TypographyClassic.md";
 
-storiesOf("Basics/Typography ✗/Classic", module).add(
-	"Overview",
-	() => <TypographyClassic />,
-);
+storiesOf("Basics/Typography ✗/Classic", module)
+	.add('Overview',
+		() => (
+			<TypographyClassic
+			/>
+		)
+	)
+	.add('Out of rhytm',
+		() => (
+			<TypographyClassic
+				rhytm={true}
+			/>
+		)
+	)
+	.add('In rhytm',
+		() => (
+			<TypographyClassic
+				rhytm={true}
+				styleHeadings={true}
+			/>
+		)
+	)
