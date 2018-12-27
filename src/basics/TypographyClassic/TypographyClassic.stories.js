@@ -38,13 +38,24 @@ storiesOf("Basics/Typography ✗/Classic", module)
 			/>
 		)
 	)
-	.add('In rhytm with parapgraph margins',
+	.add('In rhytm with paragraph margins',
 		() => (
 			<TypographyClassic
 				rhytm={true}
 				resetAll={true}
 				styleHeadings={true}
 				parapgraphMargins={true}
+			/>
+		)
+	)
+	.add('Vertical grid',
+		() => (
+			<TypographyClassic
+				rhytm={true}
+				resetAll={true}
+				styleHeadings={true}
+				parapgraphMargins={true}
+				verticalRhytm={true}
 			/>
 		)
 	)

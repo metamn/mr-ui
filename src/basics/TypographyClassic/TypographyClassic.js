@@ -82,10 +82,23 @@ const Container = styled.div`
 			}
 		}
 	`}
+
+	${props => props.verticalRhytm && css`
+		p {
+			+ p {
+				margin-left: 2.5em;
+			}
+		}
+
+		ul, ol {
+			margin-left: 5em;
+			max-width: calc(1.25em * 15);
+		}
+	`}
 `
 
 /**
- * The vertical rhytm container
+ * The horizontal rhytm container
  */
 const Rhytm = styled.div`
 	position: absolute;
@@ -97,7 +110,7 @@ const Rhytm = styled.div`
 `
 
 /**
- * A vertical line
+ * A horizontal line
  */
 const Line = styled.div`
 	width: 100%;
@@ -125,12 +138,50 @@ const Line = styled.div`
 	}
 `
 
+const VerticalRhytm = styled.div`
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: ${props => props.verticalRhytm ? 'flex' : 'none'};
+	flex-wrap: wrap;
+`
+
+const VerticalLine = styled.div`
+	height: 100%;
+	border-right: 1px solid;
+	box-sizing: border-box;
+
+	@media (max-width: 767px) {
+		width: ${props => props.typographicGrid.mobile.lem};
+	}
+
+	@media (min-width: 768px) and (max-width: 1023px) {
+		width: ${props => props.typographicGrid.tablet.lem};
+	}
+
+	@media (min-width: 1024px) and (max-width: 1365px) {
+		width: ${props => props.typographicGrid.tabletL.lem};
+	}
+
+	@media (min-width: 1366px) and (max-width: 1559px) {
+		width: ${props => props.typographicGrid.laptop.lem};
+	}
+
+	@media (min-width: 1600px) {
+		width: ${props => props.typographicGrid.desktop.lem};
+	}
+`
+
+
+
 /**
 * The main class
 */
 class TypographyClassic extends React.Component {
 	render() {
-		const { parapgraphMargins, resetAll, styleHeadings, rhytm, loading, className } = this.props
+		const { verticalRhytm, parapgraphMargins, resetAll, styleHeadings, rhytm, loading, className } = this.props
 
 		if (loading) {
 			return <Loading className={className}>Loading ...</Loading>
@@ -144,6 +195,7 @@ class TypographyClassic extends React.Component {
 					resetAll={resetAll}
 					styleHeadings={styleHeadings}
 					parapgraphMargins={parapgraphMargins}
+					verticalRhytm={verticalRhytm}
 				>
 					<ReactMarkdown source={sample} />
 				</Container>
@@ -156,6 +208,15 @@ class TypographyClassic extends React.Component {
 						}
 					</Repeat>
 				</Rhytm>
+				<VerticalRhytm verticalRhytm={verticalRhytm}>
+					<Repeat numberOfTimes={100} startAt={0}>
+						{(i) => <VerticalLine
+									key={i}
+									typographicGrid={typographicGrid}
+								/>
+						}
+					</Repeat>
+				</VerticalRhytm>
 			</>
 		);
 	}
