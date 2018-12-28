@@ -54,6 +54,10 @@ const Container = styled.div`
 
 	${props => props.mdSource && css`
 		font-family: monospace;
+
+		${Box} {
+			display: none;
+		}
 	`}
 
 	${props => props.resetAll && css`
@@ -174,6 +178,16 @@ const VerticalLine = styled.div`
 	}
 `
 
+/**
+ * The box container
+ */
+const Box = styled.div`
+	width: calc(1.25em * 10);
+	height: calc(1.25em * 10);
+	background: black;
+	margin-bottom: 1.25em;
+`
+
 
 /**
 * The main class
@@ -198,6 +212,7 @@ class TypographyClassic extends React.Component {
 					verticalRhytm={verticalRhytm}
 					mdSource={mdSource}
 				>
+					<Box />
 					<ReactMarkdown source={source} />
 				</Container>
 				<Rhytm rhytm={rhytm}>
