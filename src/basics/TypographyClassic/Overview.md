@@ -1,6 +1,8 @@
+123456789 10 123456789 20 123456789 30 123456789 40 123456789 50 123456789 60
+
 # Classical typography
 
-Classical typography sets up a typographic grid and lies text (mostly) and other objects (images, decorations) upon.
+Classical typography sets up a typographic grid and lays text (mostly) and other objects (images, decorations) upon that grid.
 
 The typographic grid is set in such way to help the reader to consume long form text. The font is set to a size which is highly readable; the lines of the text is set to 60-80 characters in a row; the distance between the lines are set to make the long form text enjoyable.
 
@@ -48,3 +50,50 @@ Converting the grid size from `px` to `em` is easy since `em` is equals the body
 2. This lead us to set the font size to 100% in the <body> tag ("Whatever the value of the browser’s setting for font-size, it first cascades into the DOM to effect the font-size of the <body> element." &mdash; that's why not in the <html> tag)
 3. Having an unitless line height provides us an universal grid regardless of the child elements size and scale.
 4. The grid is measured in `em` to provide proportional scaling to the font size.
+
+```css
+body {
+	font-size: 100%; // 16px by default, or 1em
+	line-height: 1.25; // grid cell size is (16px * 1.25) = 20px, or (1em * 1.25) = 1.25em
+}
+```
+
+## Responsiveness
+
+The default font size of 16px makes text unreadable on large screens like 1K, or 2K. We should grow the font-size as the viewport grows.
+
+It's annoying when the first thing we must do after a website loads is to zoom out to be able to read text. Instead the site should present an already optimized experience.
+
+With the system proposed by Iain setting up the a responsive grid is a breeze. The basic container should increase font size as the viewport grows:
+
+```css
+const TypographicGrid = {
+	lineHeight: '1.25',
+
+	mobile: {
+		fontSize: '100%',
+	},
+	tablet: {
+		fontSize: '110%',
+	},
+	tabletL: {
+		fontSize: '140%',
+	},
+	laptop: {
+		fontSize: '160%',
+	},
+	desktop: {
+		fontSize: '200%',
+	}
+}
+```
+
+## The example
+
+- This example sets up a responsive grid which tries to display around 60 characters in a row, on every device.
+- It adds different sized child elements like the headings and source code snippets, all of them aligned to the grid.
+- Positions elements on the grid easily with `em`.
+- It draws both the vertical and horizontal grid lines to make sure everything is aligned to the grid.  
+
+
+123456789 10 123456789 20 123456789 30 123456789 40 123456789 50 123456789 60

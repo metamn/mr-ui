@@ -7,8 +7,8 @@ import PropTypes from "prop-types"
 import styled, { css } from "styled-components"
 
 import ReactMarkdown from 'react-markdown'
-import sample from './SampleText.md'
-import rules from './Rules.md'
+import Overview from './Overview.md'
+import Rules from './Rules.md'
 import typographicGrid from './typographic-grid'
 import Repeat from './../../helpers'
 
@@ -23,27 +23,27 @@ const Loading = styled.div``
 const ResponsiveContainer = styled.div`
 	@media (max-width: 767px) {
 		font-size: ${props => props.typographicGrid.mobile.fontSize};
-		line-height: ${props => props.typographicGrid.mobile.lineHeight};
+		line-height: ${props => props.typographicGrid.lineHeight};
 	}
 
 	@media (min-width: 768px) and (max-width: 1023px) {
 		font-size: ${props => props.typographicGrid.tablet.fontSize};
-		line-height: ${props => props.typographicGrid.tablet.lineHeight};
+		line-height: ${props => props.typographicGrid.lineHeight};
 	}
 
 	@media (min-width: 1024px) and (max-width: 1365px) {
 		font-size: ${props => props.typographicGrid.tabletL.fontSize};
-		line-height: ${props => props.typographicGrid.tabletL.lineHeight};
+		line-height: ${props => props.typographicGrid.lineHeight};
 	}
 
 	@media (min-width: 1366px) and (max-width: 1559px) {
 		font-size: ${props => props.typographicGrid.laptop.fontSize};
-		line-height: ${props => props.typographicGrid.laptop.lineHeight};
+		line-height: ${props => props.typographicGrid.lineHeight};
 	}
 
 	@media (min-width: 1600px) {
 		font-size: ${props => props.typographicGrid.desktop.fontSize};
-		line-height: ${props => props.typographicGrid.desktop.lineHeight};
+		line-height: ${props => props.typographicGrid.lineHeight};
 	}
 `
 
@@ -75,7 +75,7 @@ const Container = styled(ResponsiveContainer)`
 	`}
 
 	${props => props.resetAll && css`
-		h1, h2, h3 {
+		h1, h2, h3, blockquote, pre {
 			font-size: 1em;
 			font-weight: normal;
 		}
@@ -161,7 +161,7 @@ const Box = styled.div`
 	width: calc(1.25em * 10);
 	height: calc(1.25em * 10);
 	background: black;
-	margin-bottom: 1.25em;
+	margin: 1.25em;
 `
 
 
@@ -171,7 +171,7 @@ const Box = styled.div`
 class TypographyClassic extends React.Component {
 	render() {
 		const { mdSource, verticalRhytm, parapgraphMargins, resetAll, styleHeadings, rhytm, loading, className } = this.props
-		const source = mdSource ? rules : sample
+		const source = mdSource ? Rules : Overview
 
 		if (loading) {
 			return <Loading className={className}>Loading ...</Loading>
@@ -188,11 +188,11 @@ class TypographyClassic extends React.Component {
 					verticalRhytm={verticalRhytm}
 					mdSource={mdSource}
 				>
-					<Box />
 					<ReactMarkdown source={source} />
+					<Box />
 				</Container>
 				<Rhytm rhytm={rhytm}>
-					<Repeat numberOfTimes={150} startAt={0}>
+					<Repeat numberOfTimes={200} startAt={0}>
 						{(i) => <Line
 									key={i}
 									typographicGrid={typographicGrid}
