@@ -8,6 +8,7 @@ import styled, { css } from "styled-components"
 
 import ReactMarkdown from 'react-markdown'
 import sample from './SampleText.md'
+import rules from './Rules.md'
 import typographicGrid from './typographic-grid'
 import Repeat from './../../helpers'
 
@@ -26,35 +27,34 @@ const Container = styled.div`
 	@media (max-width: 767px) {
 		font-size: ${props => props.typographicGrid.mobile.fontSize};
 		line-height: ${props => props.typographicGrid.mobile.lineHeight};
-		//padding: ${props => props.typographicGrid.mobile.lem};
 	}
 
 	@media (min-width: 768px) and (max-width: 1023px) {
 		font-size: ${props => props.typographicGrid.tablet.fontSize};
 		line-height: ${props => props.typographicGrid.tablet.lineHeight};
-		//padding: ${props => props.typographicGrid.tablet.lem};
 		background: aqua;
 	}
 
 	@media (min-width: 1024px) and (max-width: 1365px) {
 		font-size: ${props => props.typographicGrid.tabletL.fontSize};
 		line-height: ${props => props.typographicGrid.tabletL.lineHeight};
-		//padding: ${props => props.typographicGrid.tabletL.lem};
 		background: pink;
 	}
 
 	@media (min-width: 1366px) and (max-width: 1559px) {
 		font-size: ${props => props.typographicGrid.laptop.fontSize};
 		line-height: ${props => props.typographicGrid.laptop.lineHeight};
-		//padding: ${props => props.typographicGrid.laptop.lem};
 		background: lightblue;
 	}
 
 	@media (min-width: 1600px) {
 		font-size: ${props => props.typographicGrid.desktop.fontSize};
 		line-height: ${props => props.typographicGrid.desktop.lineHeight};
-		//padding: ${props => props.typographicGrid.desktop.lem};
 	}
+
+	${props => props.mdSource && css`
+		font-family: monospace;
+	`}
 
 	${props => props.resetAll && css`
 		h1, h2, h3 {
@@ -175,13 +175,13 @@ const VerticalLine = styled.div`
 `
 
 
-
 /**
 * The main class
 */
 class TypographyClassic extends React.Component {
 	render() {
-		const { verticalRhytm, parapgraphMargins, resetAll, styleHeadings, rhytm, loading, className } = this.props
+		const { mdSource, verticalRhytm, parapgraphMargins, resetAll, styleHeadings, rhytm, loading, className } = this.props
+		const source = mdSource ? rules : sample
 
 		if (loading) {
 			return <Loading className={className}>Loading ...</Loading>
@@ -196,11 +196,12 @@ class TypographyClassic extends React.Component {
 					styleHeadings={styleHeadings}
 					parapgraphMargins={parapgraphMargins}
 					verticalRhytm={verticalRhytm}
+					mdSource={mdSource}
 				>
-					<ReactMarkdown source={sample} />
+					<ReactMarkdown source={source} />
 				</Container>
 				<Rhytm rhytm={rhytm}>
-					<Repeat numberOfTimes={100} startAt={0}>
+					<Repeat numberOfTimes={150} startAt={0}>
 						{(i) => <Line
 									key={i}
 									typographicGrid={typographicGrid}

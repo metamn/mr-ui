@@ -59,3 +59,10 @@ storiesOf("Basics/Typography ✗/Classic", module)
 			/>
 		)
 	)
+	.add('Rules',
+		() => (
+			<TypographyClassic
+				mdSource={'rules'}
+			/>
+		)
+	)
