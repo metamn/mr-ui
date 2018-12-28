@@ -18,12 +18,9 @@ import Repeat from './../../helpers'
 const Loading = styled.div``
 
 /**
-* The main container
-*/
-const Container = styled.div`
-	overflow-x: hidden;
-	padding: 1.25em;
-
+ * The responsive container
+ */
+const ResponsiveContainer = styled.div`
 	@media (max-width: 767px) {
 		font-size: ${props => props.typographicGrid.mobile.fontSize};
 		line-height: ${props => props.typographicGrid.mobile.lineHeight};
@@ -32,24 +29,41 @@ const Container = styled.div`
 	@media (min-width: 768px) and (max-width: 1023px) {
 		font-size: ${props => props.typographicGrid.tablet.fontSize};
 		line-height: ${props => props.typographicGrid.tablet.lineHeight};
-		background: aqua;
 	}
 
 	@media (min-width: 1024px) and (max-width: 1365px) {
 		font-size: ${props => props.typographicGrid.tabletL.fontSize};
 		line-height: ${props => props.typographicGrid.tabletL.lineHeight};
-		background: pink;
 	}
 
 	@media (min-width: 1366px) and (max-width: 1559px) {
 		font-size: ${props => props.typographicGrid.laptop.fontSize};
 		line-height: ${props => props.typographicGrid.laptop.lineHeight};
-		background: lightblue;
 	}
 
 	@media (min-width: 1600px) {
 		font-size: ${props => props.typographicGrid.desktop.fontSize};
 		line-height: ${props => props.typographicGrid.desktop.lineHeight};
+	}
+`
+
+/**
+* The main container
+*/
+const Container = styled(ResponsiveContainer)`
+	overflow-x: hidden;
+	padding: 1.25em;
+
+	@media (min-width: 768px) and (max-width: 1023px) {
+		background: aqua;
+	}
+
+	@media (min-width: 1024px) and (max-width: 1365px) {
+		background: pink;
+	}
+
+	@media (min-width: 1366px) and (max-width: 1559px) {
+		background: lightblue;
 	}
 
 	${props => props.mdSource && css`
@@ -116,30 +130,11 @@ const Rhytm = styled.div`
 /**
  * A horizontal line
  */
-const Line = styled.div`
+const Line = styled(ResponsiveContainer)`
 	width: 100%;
 	border-bottom: 1px solid;
 	box-sizing: border-box;
-
-	@media (max-width: 767px) {
-		height: ${props => props.typographicGrid.mobile.lem};
-	}
-
-	@media (min-width: 768px) and (max-width: 1023px) {
-		height: ${props => props.typographicGrid.tablet.lem};
-	}
-
-	@media (min-width: 1024px) and (max-width: 1365px) {
-		height: ${props => props.typographicGrid.tabletL.lem};
-	}
-
-	@media (min-width: 1366px) and (max-width: 1559px) {
-		height: ${props => props.typographicGrid.laptop.lem};
-	}
-
-	@media (min-width: 1600px) {
-		height: ${props => props.typographicGrid.desktop.lem};
-	}
+	height: 1.25em;
 `
 
 const VerticalRhytm = styled.div`
@@ -152,30 +147,11 @@ const VerticalRhytm = styled.div`
 	flex-wrap: wrap;
 `
 
-const VerticalLine = styled.div`
+const VerticalLine = styled(ResponsiveContainer)`
 	height: 100%;
 	border-right: 1px solid;
 	box-sizing: border-box;
-
-	@media (max-width: 767px) {
-		width: ${props => props.typographicGrid.mobile.lem};
-	}
-
-	@media (min-width: 768px) and (max-width: 1023px) {
-		width: ${props => props.typographicGrid.tablet.lem};
-	}
-
-	@media (min-width: 1024px) and (max-width: 1365px) {
-		width: ${props => props.typographicGrid.tabletL.lem};
-	}
-
-	@media (min-width: 1366px) and (max-width: 1559px) {
-		width: ${props => props.typographicGrid.laptop.lem};
-	}
-
-	@media (min-width: 1600px) {
-		width: ${props => props.typographicGrid.desktop.lem};
-	}
+	width: 1.25em;
 `
 
 /**

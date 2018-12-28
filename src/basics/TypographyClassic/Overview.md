@@ -20,6 +20,31 @@ And the browser sets font size by default to 16px, and line height [roughly](htt
 
 Iain suggests to set up font size in % instead of any other unit. This is an unobtrusive way of setting font size. It doesn't overwrite the font size set in the browser preferences, and it allows users to increase or decrease font size with keyboard shortcuts.
 
-Line height should be set unitless. This way the `font-size * line-height` combo will define an universal grid even if later the font size of other elements is changed.
+Line height should be set unitless. This way the `font-size * line-height` combo will define an universal grid. Even if later the font size of other elements is changed the grid stays the same.
 
 With these two settings we've defined the typographic grid. With a `font-size: 100%; line-height: 1.25` the grid cell size will be '`16px * 1.25 = 20px`'. Notice that `100%` instructs the browser to use the default font size which is `16px`.
+
+In short, on our new typographic grid every text line fits in a row which has a 20px height.
+
+## Sizing child elements &mdash; only with `em`
+
+So far our grid is measured in pixels even if we used `%` and an unitless measure to set it up.
+
+Sizing child elements on a grid with pixels is a bad practice.
+
+[Pixels don't scale](https://stackoverflow.com/questions/609517/why-em-instead-of-px), or more precisely they scale but not in a proportional way. If you zoom a page set in pixels the elements will overflow. If you zoom a page set with relative, elastic units like `em` or `rem` they will scale nicely and proportionally.
+
+To keep our grid unobtrusive we should use elastic instead of absolute measures. There are many elastic measures &mdash; em, rem, vw, vh, vmax, vmin &mdash; of them [only](https://css-tricks.com/confused-rem-em/) `em` is based on the <body> font size. We are lucky, we have a single choice to take.
+
+> The mechanics of the em unit offer an excellent way to size child elements in relation to their parents. In fact, if every child element defines its sizing values in em, a chain reaction is set off. Each child becomes proportionally bound to its parent, which in turn is bound to its parent, all the way up to the root element, ancestor of all. In this way, the proportions of the whole document end up being defined in relation to a single, shared value: the font-size of the <body>.
+
+> Documents sized in this way enjoy a golden property, one that most web pages would do well to provide: proportional scaling. Should the user or designer change the base font-size, all the other elements on the page will resize accordingly, preserving their original proportion to the <body>. It will look as if the view has just been zoomed in or out.   
+
+Converting the grid size from `px` to `em` is easy since `em` is equals the body font size. In our formula of `16px * 1.25` we can replace `16px` with `1em` to get 1.25em as the grid size.
+
+## Summing up
+
+1. We try to use the browser default values and add as less CSS as possible to stay unobtrusive.
+2. This lead us to set the font size to 100% in the <body> tag ("Whatever the value of the browser’s setting for font-size, it first cascades into the DOM to effect the font-size of the <body> element." &mdash; that's why not in the <html> tag)
+3. Having an unitless line height provides us an universal grid regardless of the child elements size and scale.
+4. The grid is measured in `em` to provide proportional scaling to the font size.
