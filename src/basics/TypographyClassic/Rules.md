@@ -95,3 +95,9 @@ Then content can be placed with media queries: if screen size is 16lem then in a
 Or if screen size < 16lem get display an image of 320px width; on the next level an image of 640px which takes the full two columns; on the next level perhaps an image of 640px width and a text with 320px width; ... and so on;
 
 In any ways the nature of the content, the capabilities of the content defines the approach, not vice versa.
+
+
+## Can't change `line-height`
+
+See the code in example breaks the grid. What if a heading spans multiple lines and the line-height has to be reduced?
+ 
