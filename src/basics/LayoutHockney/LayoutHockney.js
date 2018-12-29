@@ -148,10 +148,15 @@ const Header = styled(ResponsiveContainer)`
 
 	@media (min-width: 320px) {
 		margin: 0 auto;
+
 		${Logo},
 		${HamburgerMenu} {
 			grid-row: 1;
 		}
+	}
+
+	@media (min-width: 1920px) {
+		grid-column: 2;
 	}
 `
 
@@ -159,15 +164,32 @@ const Menu = styled(ResponsiveContainer)`
 	width: var(--grid-column-width);
 	background: black;
 	color: white;
+	grid-column: 1;
 
 	@media (min-width: 320px) {
 		margin: 0 auto;
 	}
+
+	@media (min-width: 960px) {
+		width: calc( 2 * var(--grid-column-width));
+		grid-column: 2 / 3;
+		grid-row: 1;
+
+		ul {
+			display: flex;
+
+			li + li {
+				margin-left: var(--lem);
+			}
+		}
+	}
+
 `
 
 const Content = styled(ResponsiveContainer)`
 	background: black;
 	color: white;
+	grid-column: 1;
 
 	@media (min-width: 320px) {
 		width: var(--grid-column-width);
@@ -176,6 +198,24 @@ const Content = styled(ResponsiveContainer)`
 
 	@media (min-width: 640px) {
 		width: calc(2 * var(--grid-column-width));
+	}
+
+	@media (min-width: 960px) {
+		grid-column: 1 / 3;
+		grid-row: 2;
+	}
+
+	@media (min-width: 1280px) {
+		grid-column: 2;
+		grid-row: 1;
+	}
+
+	@media (min-width: 1600px) {
+		width: calc(3 * var(--grid-column-width));
+	}
+
+	@media (min-width: 1920px) {
+		grid-column: 3;
 	}
 `
 
@@ -192,7 +232,6 @@ const Container = styled(ResponsiveContainer)`
 
 	display: grid;
 	justify-items: start;
-	grid-template-rows: auto auto auto;
 
 	@media (min-width: var(--grid-column-width)) {
 		grid-template-columns: [col-1] var(--grid-column-width)
@@ -235,11 +274,11 @@ class LayoutHockney extends React.Component {
 				className={className}
 				typographicGrid={typographicGrid}
 				>
-				<Header typographicGrid={typographicGrid}>
-					<Logo typographicGrid={typographicGrid}>Logo</Logo>
-					<HamburgerMenu typographicGrid={typographicGrid}>☰</HamburgerMenu>
+				<Header className='header' typographicGrid={typographicGrid}>
+					<Logo className='logo' typographicGrid={typographicGrid}>Logo</Logo>
+					<HamburgerMenu className='hamburger-menu' typographicGrid={typographicGrid}>☰</HamburgerMenu>
 				</Header>
-				<Menu typographicGrid={typographicGrid}>
+				<Menu className="menu" typographicGrid={typographicGrid}>
 					<ul>
 						<li>Menu item 1</li>
 						<li>Menu item 2</li>
@@ -248,7 +287,7 @@ class LayoutHockney extends React.Component {
 						<li>Menu item 5</li>
 					</ul>
 				</Menu>
-				<Content typographicGrid={typographicGrid}>
+				<Content className='content' typographicGrid={typographicGrid}>
 					<ReactMarkdown source={text} />
 				</Content>
 				<Rhytm rhytm={rhytm}>
