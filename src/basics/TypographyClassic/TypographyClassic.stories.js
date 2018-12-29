@@ -5,7 +5,6 @@ import { withInfo } from "@storybook/addon-info";
 import { withKnobs, text, boolean, number } from "@storybook/addon-knobs";
 
 import TypographyClassic from "./TypographyClassic";
-import description from "./TypographyClassic.md";
 
 storiesOf("Basics/Typography ✗/Classic", module)
 	.add('Overview',
@@ -56,13 +55,6 @@ storiesOf("Basics/Typography ✗/Classic", module)
 				styleHeadings={true}
 				parapgraphMargins={true}
 				verticalRhytm={true}
-			/>
-		)
-	)
-	.add('Rules',
-		() => (
-			<TypographyClassic
-				mdSource={'rules'}
 			/>
 		)
 	)

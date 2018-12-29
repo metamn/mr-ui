@@ -7,8 +7,7 @@ import PropTypes from "prop-types"
 import styled, { css } from "styled-components"
 
 import ReactMarkdown from 'react-markdown'
-import Overview from './Overview.md'
-import Rules from './Rules.md'
+import text from "./TypographyClassic.md"
 import typographicGrid from './typographic-grid'
 import Repeat from './../../helpers'
 
@@ -65,14 +64,6 @@ const Container = styled(ResponsiveContainer)`
 	@media (min-width: 1366px) and (max-width: 1559px) {
 		background: lightblue;
 	}
-
-	${props => props.mdSource && css`
-		font-family: monospace;
-
-		${Box} {
-			display: none;
-		}
-	`}
 
 	${props => props.resetAll && css`
 		h1, h2, h3, blockquote, pre {
@@ -155,23 +146,11 @@ const VerticalLine = styled(ResponsiveContainer)`
 `
 
 /**
- * The box container
- */
-const Box = styled.div`
-	width: calc(1.25em * 10);
-	height: calc(1.25em * 10);
-	background: black;
-	margin: 1.25em;
-`
-
-
-/**
 * The main class
 */
 class TypographyClassic extends React.Component {
 	render() {
-		const { mdSource, verticalRhytm, parapgraphMargins, resetAll, styleHeadings, rhytm, loading, className } = this.props
-		const source = mdSource ? Rules : Overview
+		const { verticalRhytm, parapgraphMargins, resetAll, styleHeadings, rhytm, loading, className } = this.props
 
 		if (loading) {
 			return <Loading className={className}>Loading ...</Loading>
@@ -186,10 +165,8 @@ class TypographyClassic extends React.Component {
 					styleHeadings={styleHeadings}
 					parapgraphMargins={parapgraphMargins}
 					verticalRhytm={verticalRhytm}
-					mdSource={mdSource}
-				>
-					<ReactMarkdown source={source} />
-					<Box />
+					>
+					<ReactMarkdown source={text} />
 				</Container>
 				<Rhytm rhytm={rhytm}>
 					<Repeat numberOfTimes={200} startAt={0}>
