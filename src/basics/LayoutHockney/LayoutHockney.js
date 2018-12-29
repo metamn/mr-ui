@@ -4,7 +4,7 @@
 */
 import React from "react";
 import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
+import styled, { css, createGlobalStyle } from "styled-components";
 
 import typographicGrid from './typographic-grid'
 import Repeat from './../../helpers'
@@ -15,13 +15,19 @@ import Repeat from './../../helpers'
 */
 const Loading = styled.div``;
 
+const GlobalStyle = createGlobalStyle`
+	.body {
+		font-size: 100%;
+		line-height: 1.25;
+	}
+`
+
 /**
  * The responsive container
  */
 const ResponsiveContainer = styled.div`
-	font-size: 100%;
-	line-height: 1.25;
 	--lem: 1.25em;
+	--grid-column-width: calc(var(--lem) * 16);
 
 	@media (max-width: 767px) {
 		font-size: ${props => props.typographicGrid.mobile.fontSize};
@@ -110,7 +116,7 @@ const GridLines = styled.div`
 /**
  * A grid line
  */
-const GridLine = styled(ResponsiveContainer)`
+const GridLine = styled.div`
 	height: 100%;
 	border-right: 1px solid red;
 	box-sizing: border-box;
@@ -119,18 +125,28 @@ const GridLine = styled(ResponsiveContainer)`
 
 
 const Logo = styled(ResponsiveContainer)`
-	width: calc(var(--lem) * 14);
-	height: calc(var(--lem) * 3);
+	width: calc(var(--lem) * 12);
+	height: calc(var(--lem) * 2);
 	background: black;
 `
 
 const HamburgerMenu = styled(ResponsiveContainer)`
-	width: calc(var(--lem) * 1);
-	height: calc(var(--lem) * 1);
+	width: calc(var(--lem) * 2);
+	height: calc(var(--lem) * 2);
+	margin-left: var(--lem);
 	background: black;
 `
 
-const Header = styled.div`
+const Header = styled(ResponsiveContainer)`
+	display: grid;
+	justify-items: stretch;
+
+	@media (min-width: 320px) {
+		${Logo},
+		${HamburgerMenu} {
+			grid-row: 1;
+		}
+	}
 `
 
 /**
@@ -145,30 +161,31 @@ const Container = styled(ResponsiveContainer)`
 	width: 100%;
 
 	display: grid;
-	--grid-column-width: calc(var(--lem) * 16);
+	justify-items: start;
+	grid-template-rows: auto auto auto;
 
-	@media (min-width: 320px) {
-		grid-template-columns: [col-1] 320px;
+	@media (min-width: var(--grid-column-width)) {
+		grid-template-columns: [col-1] var(--grid-column-width)
 	}
 
 	@media (min-width: 640px) {
-		grid-template-columns: [col-1] 320px [col-2] 320px;
+		grid-template-columns: [col-1] var(--grid-column-width) [col-2] var(--grid-column-width)
 	}
 
 	@media (min-width: 960px) {
-		grid-template-columns: [col-1] 320px [col-2] 320px [col-3] 320px;
+		grid-template-columns: [col-1] var(--grid-column-width) [col-2] var(--grid-column-width) [col-3] var(--grid-column-width)
 	}
 
 	@media (min-width: 1280px) {
-		grid-template-columns: [col-1] 320px [col-2] 320px [col-3] 320px [col-4] 320px;
+		grid-template-columns: [col-1] var(--grid-column-width) [col-2] var(--grid-column-width) [col-3] var(--grid-column-width) [col-4] var(--grid-column-width)
 	}
 
 	@media (min-width: 1600px) {
-		grid-template-columns: [col-1] 320px [col-2] 320px [col-3] 320px [col-4] 320px [col-5] 320px;
+		grid-template-columns: [col-1] var(--grid-column-width) [col-2] var(--grid-column-width) [col-3] var(--grid-column-width) [col-4] var(--grid-column-width) [col-5] var(--grid-column-width)
 	}
 
 	@media (min-width: 1920px) {
-		grid-template-columns: [col-1] 320px [col-2] 320px [col-3] 320px [col-4] 320px [col-5] 320px [col-6] 320px;
+		grid-template-columns: [col-1] var(--grid-column-width) [col-2] var(--grid-column-width) [col-3] var(--grid-column-width) [col-4] var(--grid-column-width) [col-5] var(--grid-column-width) [col-6] var(--grid-column-width)
 	}
 `
 
@@ -188,7 +205,7 @@ class LayoutHockney extends React.Component {
 				className={className}
 				typographicGrid={typographicGrid}
 				>
-				<Header>
+				<Header typographicGrid={typographicGrid}>
 					<Logo typographicGrid={typographicGrid} />
 					<HamburgerMenu typographicGrid={typographicGrid}/>
 				</Header>
