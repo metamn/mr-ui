@@ -12,7 +12,7 @@ const Container = styled.div`
 
 	align-self: flex-start;
 	margin-right: auto;
-	
+
 	font-family: monospace;
 	font-size: 150%;
 	max-width: 45em;
