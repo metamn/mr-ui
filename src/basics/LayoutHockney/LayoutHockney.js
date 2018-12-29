@@ -68,7 +68,7 @@ const Line = styled(ResponsiveContainer)`
 	width: 100%;
 	border-bottom: 1px solid;
 	box-sizing: border-box;
-	height: 1.25em;
+	height: var(--lem);
 `
 
 /**
@@ -91,17 +91,47 @@ const VerticalLine = styled(ResponsiveContainer)`
 	height: 100%;
 	border-right: 1px solid;
 	box-sizing: border-box;
-	width: 1.25em;
+	width: var(--lem);
 `
 
 /**
- * A responsive CSS grid
+ * The grid lines container
  */
-function ResponsiveGrid({...props}) {
-	return {
-		display: 'grid',
-	}
-}
+const GridLines = styled.div`
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: ${props => props.gridLines ? 'flex' : 'none'};
+	flex-wrap: wrap;
+`
+
+/**
+ * A grid line
+ */
+const GridLine = styled(ResponsiveContainer)`
+	height: 100%;
+	border-right: 1px solid red;
+	box-sizing: border-box;
+	width: var(--grid-column-width);
+`
+
+
+const Logo = styled(ResponsiveContainer)`
+	width: calc(var(--lem) * 14);
+	height: calc(var(--lem) * 3);
+	background: black;
+`
+
+const HamburgerMenu = styled(ResponsiveContainer)`
+	width: calc(var(--lem) * 1);
+	height: calc(var(--lem) * 1);
+	background: black;
+`
+
+const Header = styled.div`
+`
 
 /**
 * The main container
@@ -111,7 +141,35 @@ const Container = styled(ResponsiveContainer)`
 		box-sizing: border-box;
 	}
 
-	${ResponsiveGrid()}
+	align-self: flex-start;
+	width: 100%;
+
+	display: grid;
+	--grid-column-width: calc(var(--lem) * 16);
+
+	@media (min-width: 320px) {
+		grid-template-columns: [col-1] 320px;
+	}
+
+	@media (min-width: 640px) {
+		grid-template-columns: [col-1] 320px [col-2] 320px;
+	}
+
+	@media (min-width: 960px) {
+		grid-template-columns: [col-1] 320px [col-2] 320px [col-3] 320px;
+	}
+
+	@media (min-width: 1280px) {
+		grid-template-columns: [col-1] 320px [col-2] 320px [col-3] 320px [col-4] 320px;
+	}
+
+	@media (min-width: 1600px) {
+		grid-template-columns: [col-1] 320px [col-2] 320px [col-3] 320px [col-4] 320px [col-5] 320px;
+	}
+
+	@media (min-width: 1920px) {
+		grid-template-columns: [col-1] 320px [col-2] 320px [col-3] 320px [col-4] 320px [col-5] 320px [col-6] 320px;
+	}
 `
 
 /**
@@ -119,7 +177,7 @@ const Container = styled(ResponsiveContainer)`
 */
 class LayoutHockney extends React.Component {
 	render() {
-		const { rhytm, verticalRhytm, loading, className } = this.props;
+		const { gridLines, rhytm, verticalRhytm, loading, className } = this.props;
 
 		if (loading) {
 			return <Loading className={className}>Loading ...</Loading>;
@@ -130,6 +188,10 @@ class LayoutHockney extends React.Component {
 				className={className}
 				typographicGrid={typographicGrid}
 				>
+				<Header>
+					<Logo typographicGrid={typographicGrid} />
+					<HamburgerMenu typographicGrid={typographicGrid}/>
+				</Header>
 				<Rhytm rhytm={rhytm}>
 					<Repeat numberOfTimes={200} startAt={0}>
 						{(i) => <Line
@@ -148,6 +210,15 @@ class LayoutHockney extends React.Component {
 						}
 					</Repeat>
 				</VerticalRhytm>
+				<GridLines gridLines={gridLines}>
+					<Repeat numberOfTimes={6} startAt={0}>
+						{(i) => <GridLine
+									key={i}
+									typographicGrid={typographicGrid}
+								/>
+						}
+					</Repeat>
+				</GridLines>
 			</Container>
 		)
 	}
@@ -162,7 +233,8 @@ LayoutHockney.propTypes = {
 	*/
 	loading: PropTypes.bool,
 	rhytm: PropTypes.bool,
-	verticalRhytm: PropTypes.bool
+	verticalRhytm: PropTypes.bool,
+	gridLines: PropTypes.bool,
 };
 
 /**
@@ -172,6 +244,7 @@ LayoutHockney.defaultProps = {
 	loading: false,
 	rhytm: true,
 	verticalRhytm: true,
+	gridLines: true,
 };
 
 export default LayoutHockney;
