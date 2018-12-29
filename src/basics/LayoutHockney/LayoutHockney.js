@@ -9,6 +9,9 @@ import styled, { css, createGlobalStyle } from "styled-components";
 import typographicGrid from './typographic-grid'
 import Repeat from './../../helpers'
 
+import ReactMarkdown from 'react-markdown'
+import text from "./LayoutHockney.md"
+
 
 /**
 * The loading container
@@ -27,7 +30,7 @@ const GlobalStyle = createGlobalStyle`
  */
 const ResponsiveContainer = styled.div`
 	--lem: 1.25em;
-	--grid-column-width: calc(var(--lem) * 16);
+	--grid-column-width: calc(var(--lem) * 16); // again, the scrollbar makes this less :(
 
 	@media (max-width: 767px) {
 		font-size: ${props => props.typographicGrid.mobile.fontSize};
@@ -125,9 +128,10 @@ const GridLine = styled.div`
 
 
 const Logo = styled(ResponsiveContainer)`
-	width: calc(var(--lem) * 12);
+	width: calc(var(--lem) * 13);
 	height: calc(var(--lem) * 2);
 	background: black;
+	color: white;
 `
 
 const HamburgerMenu = styled(ResponsiveContainer)`
@@ -135,6 +139,7 @@ const HamburgerMenu = styled(ResponsiveContainer)`
 	height: calc(var(--lem) * 2);
 	margin-left: var(--lem);
 	background: black;
+	color: white;
 `
 
 const Header = styled(ResponsiveContainer)`
@@ -142,10 +147,35 @@ const Header = styled(ResponsiveContainer)`
 	justify-items: stretch;
 
 	@media (min-width: 320px) {
+		margin: 0 auto;
 		${Logo},
 		${HamburgerMenu} {
 			grid-row: 1;
 		}
+	}
+`
+
+const Menu = styled(ResponsiveContainer)`
+	width: var(--grid-column-width);
+	background: black;
+	color: white;
+
+	@media (min-width: 320px) {
+		margin: 0 auto;
+	}
+`
+
+const Content = styled(ResponsiveContainer)`
+	background: black;
+	color: white;
+
+	@media (min-width: 320px) {
+		width: var(--grid-column-width);
+		margin: 0 auto;
+	}
+
+	@media (min-width: 640px) {
+		width: calc(2 * var(--grid-column-width));
 	}
 `
 
@@ -206,9 +236,21 @@ class LayoutHockney extends React.Component {
 				typographicGrid={typographicGrid}
 				>
 				<Header typographicGrid={typographicGrid}>
-					<Logo typographicGrid={typographicGrid} />
-					<HamburgerMenu typographicGrid={typographicGrid}/>
+					<Logo typographicGrid={typographicGrid}>Logo</Logo>
+					<HamburgerMenu typographicGrid={typographicGrid}>☰</HamburgerMenu>
 				</Header>
+				<Menu typographicGrid={typographicGrid}>
+					<ul>
+						<li>Menu item 1</li>
+						<li>Menu item 2</li>
+						<li>Menu item 3</li>
+						<li>Menu item 4</li>
+						<li>Menu item 5</li>
+					</ul>
+				</Menu>
+				<Content typographicGrid={typographicGrid}>
+					<ReactMarkdown source={text} />
+				</Content>
 				<Rhytm rhytm={rhytm}>
 					<Repeat numberOfTimes={200} startAt={0}>
 						{(i) => <Line
