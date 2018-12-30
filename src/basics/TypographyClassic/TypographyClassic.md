@@ -46,7 +46,7 @@ Converting the grid size from `px` to `em` is easy. `1em` equals the body font s
 
 ## `<body>`
 
-If possible set the grid in the `<body>` element. This way the whole page will have an universal grid layout.
+If possible set the grid in the `<body>` element. This way the whole page will have an universal grid layout all children can inherit and build upon.
 
 ```css
 body {
@@ -127,3 +127,6 @@ However if one follows [Frank Chimero's approach](https://frankchimero.com/writi
 To further refine this technique one should:
 
 1. Create a function to calculate the padding and size of the headings in a free-form manner. Currently Iain's calculator has opinions baked in. Perhaps a Modular Scale support should be added.
+
+
+123456789 10 123456789 20 123456789 30 123456789 40 123456789 50 123456789 60
