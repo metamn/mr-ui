@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 import styled, { css, createGlobalStyle } from "styled-components";
 
 import TypographicGrid from './../../components/TypographicGrid'
+import HockneyGrid from './../../components/HockneyGrid'
 import typographicGrid from './typographic-grid'
 import Repeat from './../../helpers'
 
@@ -19,14 +20,6 @@ import markdownText from "./LayoutHockney.md"
 */
 const Loading = styled.div``;
 
-/**
- * Set up the global typographic grid
- */
-const GlobalStyle = createGlobalStyle`
-	body {
-		--grid-column-width: calc(var(--lem) * 16); // again, the scrollbar makes this less :(
-	}
-`
 
 /**
  * The responsive container
@@ -52,30 +45,6 @@ const ResponsiveContainer = styled.div`
 		font-size: ${props => props.typographicGrid.desktop.fontSize};
 	}
 `
-
-/**
- * The grid lines container
- */
-const GridLines = styled.div`
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	display: ${props => props.gridLines ? 'flex' : 'none'};
-	flex-wrap: wrap;
-`
-
-/**
- * A grid line
- */
-const GridLine = styled.div`
-	width: var(--grid-column-width);
-	height: 100%;
-	border-right: 1px solid red;
-	box-sizing: border-box;
-`
-
 
 const Logo = styled.div`
 	width: calc(var(--lem) * 13);
@@ -173,39 +142,7 @@ const Content = styled.div`
 * The main container
 */
 const Container = styled(ResponsiveContainer)`
-	> * {
-		box-sizing: border-box;
-	}
-
 	align-self: flex-start;
-	width: 100%;
-
-	display: grid;
-	justify-items: start;
-
-	@media (min-width: var(--grid-column-width)) {
-		grid-template-columns: [col-1] var(--grid-column-width)
-	}
-
-	@media (min-width: 640px) {
-		grid-template-columns: [col-1] var(--grid-column-width) [col-2] var(--grid-column-width)
-	}
-
-	@media (min-width: 960px) {
-		grid-template-columns: [col-1] var(--grid-column-width) [col-2] var(--grid-column-width) [col-3] var(--grid-column-width)
-	}
-
-	@media (min-width: 1280px) {
-		grid-template-columns: [col-1] var(--grid-column-width) [col-2] var(--grid-column-width) [col-3] var(--grid-column-width) [col-4] var(--grid-column-width)
-	}
-
-	@media (min-width: 1600px) {
-		grid-template-columns: [col-1] var(--grid-column-width) [col-2] var(--grid-column-width) [col-3] var(--grid-column-width) [col-4] var(--grid-column-width) [col-5] var(--grid-column-width)
-	}
-
-	@media (min-width: 1920px) {
-		grid-template-columns: [col-1] var(--grid-column-width) [col-2] var(--grid-column-width) [col-3] var(--grid-column-width) [col-4] var(--grid-column-width) [col-5] var(--grid-column-width) [col-6] var(--grid-column-width)
-	}
 `
 
 /**
@@ -234,7 +171,6 @@ class LayoutHockney extends React.Component {
 
 		return (
 			<>
-			<GlobalStyle />
 			<TypographicGrid
 				numberOfVerticalLines={400}
 				numberOfHorizontalLines={150}
@@ -243,31 +179,24 @@ class LayoutHockney extends React.Component {
 				className={className}
 				typographicGrid={typographicGrid}
 				>
-				<Header className='header' typographicGrid={typographicGrid}>
-					<Logo className='logo' typographicGrid={typographicGrid}>Logo</Logo>
-					<HamburgerMenu className='hamburger-menu' typographicGrid={typographicGrid}>☰</HamburgerMenu>
-				</Header>
-				<Menu className="menu" typographicGrid={typographicGrid}>
-					<ul>
-						<li>Menu item 1</li>
-						<li>Menu item 2</li>
-						<li>Menu item 3</li>
-						<li>Menu item 4</li>
-						<li>Menu item 5</li>
-					</ul>
-				</Menu>
-				<Content className='content' typographicGrid={typographicGrid}>
-					<ReactMarkdown source={mdSource} />
-				</Content>
-				<GridLines gridLines={gridLines}>
-					<Repeat numberOfTimes={6} startAt={0}>
-						{(i) => <GridLine
-									key={i}
-									typographicGrid={typographicGrid}
-								/>
-						}
-					</Repeat>
-				</GridLines>
+				<HockneyGrid>
+					<Header className='header' typographicGrid={typographicGrid}>
+						<Logo className='logo' typographicGrid={typographicGrid}>Logo</Logo>
+						<HamburgerMenu className='hamburger-menu' typographicGrid={typographicGrid}>☰</HamburgerMenu>
+					</Header>
+					<Menu className="menu" typographicGrid={typographicGrid}>
+						<ul>
+							<li>Menu item 1</li>
+							<li>Menu item 2</li>
+							<li>Menu item 3</li>
+							<li>Menu item 4</li>
+							<li>Menu item 5</li>
+						</ul>
+					</Menu>
+					<Content className='content' typographicGrid={typographicGrid}>
+						<ReactMarkdown source={mdSource} />
+					</Content>
+				</HockneyGrid>
 			</Container>
 			</>
 		)

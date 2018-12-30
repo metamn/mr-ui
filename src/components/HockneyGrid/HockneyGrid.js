@@ -90,7 +90,8 @@ class HockneyGrid extends React.Component {
 			loading,
 			className,
 			displayGridLines,
-			lineColor
+			lineColor,
+			children,
 		} = this.props;
 
 		if (loading) {
@@ -111,7 +112,11 @@ class HockneyGrid extends React.Component {
 					</Repeat>
 				</GridLines>
 			}
-			<Container className={className} />
+			<Container
+				className={className}
+				>
+				{children}
+			</Container>
 			</>
 		)
 	}
