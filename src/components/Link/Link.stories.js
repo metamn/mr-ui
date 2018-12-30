@@ -7,7 +7,7 @@ import { withKnobs, text, boolean, number } from "@storybook/addon-knobs";
 import Link from "./Link";
 import description from "./Link.md";
 
-storiesOf("Elements/Link", module)
+storiesOf("Components/HTML Elements/Link", module)
 	.add(
 		"Overview",
 		() => <Link />,

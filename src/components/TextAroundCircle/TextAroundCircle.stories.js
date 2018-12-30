@@ -7,7 +7,7 @@ import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
 import TextAroundCircle from './TextAroundCircle';
 import description from './TextAroundCircle.md';
 
-storiesOf('Components/Text/TextAroundCircle', module)
+storiesOf('Components/Text/Text Around Circle', module)
 	.add('Overview',
 		() => (
 			<TextAroundCircle
