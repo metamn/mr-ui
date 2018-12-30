@@ -10,7 +10,7 @@ const TypographicGrid = {
 		fontSize: '100%',
 	},
 	tabletL: {
-		fontSize: '130%',
+		fontSize: '120%',
 	},
 	laptop: {
 		fontSize: '160%',

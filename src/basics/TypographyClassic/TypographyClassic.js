@@ -20,6 +20,8 @@ const Loading = styled.div``
  * The responsive container
  */
 const ResponsiveContainer = styled.div`
+	font-family: 'monospace';
+
 	@media (max-width: 767px) {
 		font-size: ${props => props.typographicGrid.mobile.fontSize};
 		line-height: ${props => props.typographicGrid.lineHeight};
@@ -52,18 +54,6 @@ const ResponsiveContainer = styled.div`
 const Container = styled(ResponsiveContainer)`
 	overflow-x: hidden;
 	padding: 1.25em;
-
-	@media (min-width: 768px) and (max-width: 1023px) {
-		background: aqua;
-	}
-
-	@media (min-width: 1024px) and (max-width: 1365px) {
-		background: pink;
-	}
-
-	@media (min-width: 1366px) and (max-width: 1559px) {
-		background: lightblue;
-	}
 
 	${props => props.resetAll && css`
 		h1, h2, h3, blockquote, pre {
