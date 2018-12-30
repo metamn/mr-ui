@@ -19,7 +19,6 @@ import markdownText from "./LayoutHockney.md"
 */
 const Loading = styled.div``;
 
-
 /**
  * Set up the global typographic grid
  */
@@ -71,10 +70,10 @@ const GridLines = styled.div`
  * A grid line
  */
 const GridLine = styled.div`
+	width: var(--grid-column-width);
 	height: 100%;
 	border-right: 1px solid red;
 	box-sizing: border-box;
-	width: var(--grid-column-width);
 `
 
 

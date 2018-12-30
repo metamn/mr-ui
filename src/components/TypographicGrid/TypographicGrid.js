@@ -56,11 +56,7 @@ const HorizontalRhythm = styled(Rhythm)`
 */
 const Line = styled.div`
 	box-sizing: border-box;
-
-	${props => props.lineColor && css`
-		border-color: props.lineColor;
-		`
-	}
+	border-color: ${props => props.lineColor ? props.lineColor : 'transparent'};
 `
 
 /**
@@ -97,6 +93,7 @@ class TypographicGrid extends React.Component {
 			displayHorizontalRhytm,
 			numberOfHorizontalLines,
 			numberOfVerticalLines,
+			lineColor,
 			loading,
 			className,
 		} = this.props;
@@ -114,6 +111,7 @@ class TypographicGrid extends React.Component {
 							<Repeat numberOfTimes={numberOfHorizontalLines} startAt={0}>
 								{(i) => <HorizontalRhythmLine
 											key={i}
+											lineColor={lineColor}
 										/>
 								}
 							</Repeat>
@@ -124,6 +122,7 @@ class TypographicGrid extends React.Component {
 							<Repeat numberOfTimes={numberOfVerticalLines} startAt={0}>
 								{(i) => <VerticalRhythmLine
 											key={i}
+											lineColor={lineColor}
 										/>
 								}
 							</Repeat>
