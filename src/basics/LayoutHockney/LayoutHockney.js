@@ -31,7 +31,6 @@ const GlobalStyle = createGlobalStyle`
 	}
 `
 
-
 /**
  * The responsive container
  */
