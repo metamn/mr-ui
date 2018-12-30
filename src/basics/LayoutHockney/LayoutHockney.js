@@ -4,7 +4,7 @@
 */
 import React from "react";
 import PropTypes from "prop-types";
-import styled, { css, createGlobalStyle } from "styled-components";
+import styled, { css } from "styled-components";
 
 import typographicGrid from './typographic-grid'
 import Repeat from './../../helpers'
@@ -18,12 +18,6 @@ import text from "./LayoutHockney.md"
 */
 const Loading = styled.div``;
 
-const GlobalStyle = createGlobalStyle`
-	.body {
-		font-size: 100%;
-		line-height: 1.25;
-	}
-`
 
 /**
  * The responsive container
