@@ -1,0 +1,170 @@
+/**
+* A classic typographic grid
+*
+*/
+import React from "react";
+import PropTypes from "prop-types";
+import styled, { css, createGlobalStyle } from "styled-components";
+import Repeat from './../../helpers'
+
+
+/**
+* The loading container
+*/
+const Loading = styled.div``;
+
+
+/**
+* Set up the global typographic grid
+*/
+const GlobalStyle = createGlobalStyle`
+	body {
+		font-size: 100%;
+		line-height: 1.25;
+		--lem: 1.25em;
+	}
+`
+
+/**
+* The rhythm container
+*/
+const Rhythm = styled.div`
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+`
+
+/**
+* The vertical rhythm container
+*/
+const VerticalRhythm = styled(Rhythm)`
+	display: ${props => props.displayVerticalRhytm ? 'flex' : 'none'};
+	flex-wrap: wrap;
+`
+
+/**
+* The horizontal rhythm container
+*/
+const HorizontalRhythm = styled(Rhythm)`
+	display: ${props => props.displayHoriozontalRhytm ? 'block' : 'none'};
+`
+
+/**
+* A line in the grid
+*/
+const Line = styled.div`
+	box-sizing: border-box;
+
+	${props => props.lineColor && css`
+		border-color: props.lineColor;
+		`
+	}
+`
+
+/**
+* A vertical rhythm line
+*/
+const VerticalRhythmLine = styled(Line)`
+	width: var(--lem);
+	height: 100%;
+	border-right: 1px solid;
+`
+
+/**
+* A horizontal rhythm line
+*/
+const HorizontalRhythmLine = styled(Line)`
+	width: 100%;
+	height: var(--lem);
+	border-bottom: 1px solid;
+`
+
+/**
+* The main container
+*/
+const Container = styled.div``;
+
+
+/**
+* The main class
+*/
+class TypographicGrid extends React.Component {
+	render() {
+		const props = this.props;
+		const { numberOfHorizontalLines, numberOfVerticalLines, loading, className } = this.props;
+
+		if (loading) {
+			return <Loading className={className}>Loading ...</Loading>;
+		}
+
+		return (
+			<>
+				<GlobalStyle />
+				<Container className={className}>
+					<HorizontalRhythm {...props} >
+						<Repeat numberOfTimes={numberOfHorizontalLines} startAt={0}>
+							{(i) => <HorizontalRhythmLine
+										key={i}
+									/>
+							}
+						</Repeat>
+					</HorizontalRhythm>
+					<VerticalRhythm {...props}>
+						<Repeat numberOfTimes={numberOfVerticalLines} startAt={0}>
+							{(i) => <VerticalRhythmLine
+										key={i}
+									/>
+							}
+						</Repeat>
+					</VerticalRhythm>
+				</Container>
+			</>
+		)
+	}
+}
+
+/**
+* The prop types
+*/
+TypographicGrid.propTypes = {
+	/**
+	* Component is loading?
+	*/
+	loading: PropTypes.bool,
+	/**
+	* Display horizontal lines?
+	*/
+	displayHoriozontalRhytm: PropTypes.bool,
+	/**
+	* Display vertica lines?
+	*/
+	displayVerticalRhytm: PropTypes.bool,
+	/**
+	* Number of horizontal lines on the grid
+	*/
+	numberOfHorizontalLines: PropTypes.number,
+	/**
+	* Number of vertical lines on the grid
+	*/
+	numberOfVerticalLines: PropTypes.number,
+	/**
+	 * The color of the grid line
+	 */
+	lineColor: PropTypes.string,
+};
+
+/**
+* Default props
+*/
+TypographicGrid.defaultProps = {
+	loading: false,
+	displayHoriozontalRhytm: true,
+	displayVerticalRhytm: true,
+	numberOfHorizontalLines: 50,
+	numberOfVerticalLines: 100,
+	lineColor: 'black',
+};
+
+export default TypographicGrid;
