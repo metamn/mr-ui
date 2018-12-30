@@ -48,7 +48,7 @@ const VerticalRhythm = styled(Rhythm)`
 * The horizontal rhythm container
 */
 const HorizontalRhythm = styled(Rhythm)`
-	display: ${props => props.displayHoriozontalRhytm ? 'block' : 'none'};
+	display: ${props => props.displayHorizontalRhytm ? 'block' : 'none'};
 `
 
 /**
@@ -92,8 +92,14 @@ const Container = styled.div``;
 */
 class TypographicGrid extends React.Component {
 	render() {
-		const props = this.props;
-		const { numberOfHorizontalLines, numberOfVerticalLines, loading, className } = this.props;
+		const {
+			displayVerticalRhytm,
+			displayHorizontalRhytm,
+			numberOfHorizontalLines,
+			numberOfVerticalLines,
+			loading,
+			className,
+		} = this.props;
 
 		if (loading) {
 			return <Loading className={className}>Loading ...</Loading>;
@@ -103,22 +109,26 @@ class TypographicGrid extends React.Component {
 			<>
 				<GlobalStyle />
 				<Container className={className}>
-					<HorizontalRhythm {...props} >
-						<Repeat numberOfTimes={numberOfHorizontalLines} startAt={0}>
-							{(i) => <HorizontalRhythmLine
-										key={i}
-									/>
-							}
-						</Repeat>
-					</HorizontalRhythm>
-					<VerticalRhythm {...props}>
-						<Repeat numberOfTimes={numberOfVerticalLines} startAt={0}>
-							{(i) => <VerticalRhythmLine
-										key={i}
-									/>
-							}
-						</Repeat>
-					</VerticalRhythm>
+					{displayHorizontalRhytm &&
+						<HorizontalRhythm displayHorizontalRhytm={displayHorizontalRhytm} >
+							<Repeat numberOfTimes={numberOfHorizontalLines} startAt={0}>
+								{(i) => <HorizontalRhythmLine
+											key={i}
+										/>
+								}
+							</Repeat>
+						</HorizontalRhythm>
+					}
+					{displayVerticalRhytm &&
+						<VerticalRhythm displayVerticalRhytm={displayVerticalRhytm}>
+							<Repeat numberOfTimes={numberOfVerticalLines} startAt={0}>
+								{(i) => <VerticalRhythmLine
+											key={i}
+										/>
+								}
+							</Repeat>
+						</VerticalRhythm>
+					}
 				</Container>
 			</>
 		)
@@ -136,7 +146,7 @@ TypographicGrid.propTypes = {
 	/**
 	* Display horizontal lines?
 	*/
-	displayHoriozontalRhytm: PropTypes.bool,
+	displayHorizontalRhytm: PropTypes.bool,
 	/**
 	* Display vertica lines?
 	*/
@@ -160,7 +170,7 @@ TypographicGrid.propTypes = {
 */
 TypographicGrid.defaultProps = {
 	loading: false,
-	displayHoriozontalRhytm: true,
+	displayHorizontalRhytm: true,
 	displayVerticalRhytm: true,
 	numberOfHorizontalLines: 50,
 	numberOfVerticalLines: 100,
