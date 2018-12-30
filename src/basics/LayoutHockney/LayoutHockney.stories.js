@@ -10,5 +10,5 @@ import description from "./LayoutHockney.md";
 storiesOf("Basics/Layout ✗/Hockney style composition", module)
 	.add(
 		"Overview",
-		() => <LayoutHockney />,
+		() => <LayoutHockney isStorybook={true} />,
 	)

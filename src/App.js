@@ -5,6 +5,8 @@ import ReactMarkdown from 'react-markdown';
 import 'normalize.css'
 import md from './App.md';
 
+import LayoutHockney from './basics/LayoutHockney'
+
 const Container = styled.div`
 	width: 100%;
 	height: 100;
@@ -22,9 +24,7 @@ const Container = styled.div`
 class App extends Component {
 	render() {
 		return (
-			<Container>
-				<ReactMarkdown source={md} />
-			</Container>
+			<LayoutHockney/>
 		)
 	}
 }

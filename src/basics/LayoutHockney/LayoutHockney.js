@@ -4,13 +4,13 @@
 */
 import React from "react";
 import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
+import styled, { css, createGlobalStyle } from "styled-components";
 
 import typographicGrid from './typographic-grid'
 import Repeat from './../../helpers'
 
 import ReactMarkdown from 'react-markdown'
-import text from "./LayoutHockney.md"
+import markdownText from "./LayoutHockney.md"
 
 
 /**
@@ -20,35 +20,40 @@ const Loading = styled.div``;
 
 
 /**
+ * Set up the global typographic grid
+ */
+const GlobalStyle = createGlobalStyle`
+	body {
+		font-size: 100%;
+		line-height: 1.25;
+		--lem: 1.25em;
+		--grid-column-width: calc(var(--lem) * 16); // again, the scrollbar makes this less :(
+	}
+`
+
+
+/**
  * The responsive container
  */
 const ResponsiveContainer = styled.div`
-	--lem: 1.25em;
-	--grid-column-width: calc(var(--lem) * 16); // again, the scrollbar makes this less :(
-
 	@media (max-width: 767px) {
 		font-size: ${props => props.typographicGrid.mobile.fontSize};
-		line-height: ${props => props.typographicGrid.lineHeight};
 	}
 
 	@media (min-width: 768px) and (max-width: 1023px) {
 		font-size: ${props => props.typographicGrid.tablet.fontSize};
-		line-height: ${props => props.typographicGrid.lineHeight};
 	}
 
 	@media (min-width: 1024px) and (max-width: 1365px) {
 		font-size: ${props => props.typographicGrid.tabletL.fontSize};
-		line-height: ${props => props.typographicGrid.lineHeight};
 	}
 
 	@media (min-width: 1366px) and (max-width: 1559px) {
 		font-size: ${props => props.typographicGrid.laptop.fontSize};
-		line-height: ${props => props.typographicGrid.lineHeight};
 	}
 
 	@media (min-width: 1600px) {
 		font-size: ${props => props.typographicGrid.desktop.fontSize};
-		line-height: ${props => props.typographicGrid.lineHeight};
 	}
 `
 
@@ -67,7 +72,7 @@ const Rhytm = styled.div`
 /**
  * A horizontal line
  */
-const Line = styled(ResponsiveContainer)`
+const Line = styled.div`
 	width: 100%;
 	border-bottom: 1px solid;
 	box-sizing: border-box;
@@ -90,7 +95,7 @@ const VerticalRhytm = styled.div`
 /**
  * A vertical line
  */
-const VerticalLine = styled(ResponsiveContainer)`
+const VerticalLine = styled.div`
 	height: 100%;
 	border-right: 1px solid;
 	box-sizing: border-box;
@@ -121,14 +126,14 @@ const GridLine = styled.div`
 `
 
 
-const Logo = styled(ResponsiveContainer)`
+const Logo = styled.div`
 	width: calc(var(--lem) * 13);
 	height: calc(var(--lem) * 2);
 	background: black;
 	color: white;
 `
 
-const HamburgerMenu = styled(ResponsiveContainer)`
+const HamburgerMenu = styled.div`
 	width: calc(var(--lem) * 2);
 	height: calc(var(--lem) * 2);
 	margin-left: var(--lem);
@@ -136,7 +141,7 @@ const HamburgerMenu = styled(ResponsiveContainer)`
 	color: white;
 `
 
-const Header = styled(ResponsiveContainer)`
+const Header = styled.div`
 	display: grid;
 	justify-items: stretch;
 
@@ -154,7 +159,7 @@ const Header = styled(ResponsiveContainer)`
 	}
 `
 
-const Menu = styled(ResponsiveContainer)`
+const Menu = styled.div`
 	width: var(--grid-column-width);
 	background: black;
 	color: white;
@@ -180,7 +185,7 @@ const Menu = styled(ResponsiveContainer)`
 
 `
 
-const Content = styled(ResponsiveContainer)`
+const Content = styled.div`
 	background: black;
 	color: white;
 	grid-column: 1;
@@ -256,14 +261,29 @@ const Container = styled(ResponsiveContainer)`
 * The main class
 */
 class LayoutHockney extends React.Component {
+	constructor(props) {
+		super(props)
+		this.state = { md: null }
+	}
+
+	componentWillMount() {
+		fetch(markdownText)
+			.then((response) => response.text())
+			.then((text) => { this.setState({ md: text }) })
+	}
+
 	render() {
-		const { gridLines, rhytm, verticalRhytm, loading, className } = this.props;
+		const { isStorybook, gridLines, rhytm, verticalRhytm, loading, className } = this.props;
+		const { md } = this.state;
+		const mdSource = isStorybook ? markdownText : md;
 
 		if (loading) {
 			return <Loading className={className}>Loading ...</Loading>;
 		}
 
 		return (
+			<>
+			<GlobalStyle />
 			<Container
 				className={className}
 				typographicGrid={typographicGrid}
@@ -282,7 +302,7 @@ class LayoutHockney extends React.Component {
 					</ul>
 				</Menu>
 				<Content className='content' typographicGrid={typographicGrid}>
-					<ReactMarkdown source={text} />
+					<ReactMarkdown source={mdSource} />
 				</Content>
 				<Rhytm rhytm={rhytm}>
 					<Repeat numberOfTimes={200} startAt={0}>
@@ -312,6 +332,7 @@ class LayoutHockney extends React.Component {
 					</Repeat>
 				</GridLines>
 			</Container>
+			</>
 		)
 	}
 }

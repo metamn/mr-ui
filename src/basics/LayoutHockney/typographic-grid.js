@@ -1,8 +1,6 @@
 import React from 'react'
 
 const TypographicGrid = {
-	lineHeight: '1.25',
-
 	mobile: {
 		fontSize: '100%',
 	},
@@ -13,10 +11,10 @@ const TypographicGrid = {
 		fontSize: '100%',
 	},
 	laptop: {
-		fontSize: '100%',
+		fontSize: '110%',
 	},
 	desktop: {
-		fontSize: '100%',
+		fontSize: '120%',
 	}
 }
 
