@@ -6,6 +6,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled, { css, createGlobalStyle } from "styled-components";
 
+import TypographicGrid from './../../components/TypographicGrid'
 import typographicGrid from './typographic-grid'
 import Repeat from './../../helpers'
 
@@ -24,9 +25,6 @@ const Loading = styled.div``;
  */
 const GlobalStyle = createGlobalStyle`
 	body {
-		font-size: 100%;
-		line-height: 1.25;
-		--lem: 1.25em;
 		--grid-column-width: calc(var(--lem) * 16); // again, the scrollbar makes this less :(
 	}
 `
@@ -54,51 +52,6 @@ const ResponsiveContainer = styled.div`
 	@media (min-width: 1600px) {
 		font-size: ${props => props.typographicGrid.desktop.fontSize};
 	}
-`
-
-/**
- * The horizontal rhytm container
- */
-const Rhytm = styled.div`
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	display: ${props => props.rhytm ? 'block' : 'none'};
-`
-
-/**
- * A horizontal line
- */
-const Line = styled.div`
-	width: 100%;
-	border-bottom: 1px solid;
-	box-sizing: border-box;
-	height: var(--lem);
-`
-
-/**
- * The vertical rhytm container
- */
-const VerticalRhytm = styled.div`
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	display: ${props => props.verticalRhytm ? 'flex' : 'none'};
-	flex-wrap: wrap;
-`
-
-/**
- * A vertical line
- */
-const VerticalLine = styled.div`
-	height: 100%;
-	border-right: 1px solid;
-	box-sizing: border-box;
-	width: var(--lem);
 `
 
 /**
@@ -283,6 +236,10 @@ class LayoutHockney extends React.Component {
 		return (
 			<>
 			<GlobalStyle />
+			<TypographicGrid
+				numberOfVerticalLines={400}
+				numberOfHorizontalLines={150}
+				/>
 			<Container
 				className={className}
 				typographicGrid={typographicGrid}
@@ -303,24 +260,6 @@ class LayoutHockney extends React.Component {
 				<Content className='content' typographicGrid={typographicGrid}>
 					<ReactMarkdown source={mdSource} />
 				</Content>
-				<Rhytm rhytm={rhytm}>
-					<Repeat numberOfTimes={200} startAt={0}>
-						{(i) => <Line
-									key={i}
-									typographicGrid={typographicGrid}
-								/>
-						}
-					</Repeat>
-				</Rhytm>
-				<VerticalRhytm verticalRhytm={verticalRhytm}>
-					<Repeat numberOfTimes={550} startAt={0}>
-						{(i) => <VerticalLine
-									key={i}
-									typographicGrid={typographicGrid}
-								/>
-						}
-					</Repeat>
-				</VerticalRhytm>
 				<GridLines gridLines={gridLines}>
 					<Repeat numberOfTimes={6} startAt={0}>
 						{(i) => <GridLine
