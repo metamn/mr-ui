@@ -8,7 +8,6 @@ import styled, { css, createGlobalStyle } from "styled-components";
 
 import TypographicGrid from './../../components/TypographicGrid'
 import HockneyGrid from './../../components/HockneyGrid'
-import typographicGrid from './typographic-grid'
 import Repeat from './../../helpers'
 
 import ReactMarkdown from 'react-markdown'
@@ -20,31 +19,6 @@ import markdownText from "./LayoutHockney.md"
 */
 const Loading = styled.div``;
 
-
-/**
- * The responsive container
- */
-const ResponsiveContainer = styled.div`
-	@media (max-width: 767px) {
-		font-size: ${props => props.typographicGrid.mobile.fontSize};
-	}
-
-	@media (min-width: 768px) and (max-width: 1023px) {
-		font-size: ${props => props.typographicGrid.tablet.fontSize};
-	}
-
-	@media (min-width: 1024px) and (max-width: 1365px) {
-		font-size: ${props => props.typographicGrid.tabletL.fontSize};
-	}
-
-	@media (min-width: 1366px) and (max-width: 1559px) {
-		font-size: ${props => props.typographicGrid.laptop.fontSize};
-	}
-
-	@media (min-width: 1600px) {
-		font-size: ${props => props.typographicGrid.desktop.fontSize};
-	}
-`
 
 const Logo = styled.div`
 	width: calc(var(--lem) * 13);
@@ -63,7 +37,7 @@ const HamburgerMenu = styled.div`
 
 const Header = styled.div`
 	display: grid;
-	justify-items: stretch;
+	grid-column: 1;
 
 	@media (min-width: 320px) {
 		margin: 0 auto;
@@ -141,8 +115,9 @@ const Content = styled.div`
 /**
 * The main container
 */
-const Container = styled(ResponsiveContainer)`
+const Container = styled.div`
 	align-self: flex-start;
+	width: 100%;
 `
 
 /**
@@ -175,16 +150,13 @@ class LayoutHockney extends React.Component {
 				numberOfVerticalLines={400}
 				numberOfHorizontalLines={150}
 				/>
-			<Container
-				className={className}
-				typographicGrid={typographicGrid}
-				>
+			<Container>
 				<HockneyGrid>
-					<Header className='header' typographicGrid={typographicGrid}>
-						<Logo className='logo' typographicGrid={typographicGrid}>Logo</Logo>
-						<HamburgerMenu className='hamburger-menu' typographicGrid={typographicGrid}>☰</HamburgerMenu>
+					<Header className='header'>
+						<Logo className='logo'>Logo</Logo>
+						<HamburgerMenu className='hamburger-menu'>☰</HamburgerMenu>
 					</Header>
-					<Menu className="menu" typographicGrid={typographicGrid}>
+					<Menu className='menu'>
 						<ul>
 							<li>Menu item 1</li>
 							<li>Menu item 2</li>
@@ -193,7 +165,7 @@ class LayoutHockney extends React.Component {
 							<li>Menu item 5</li>
 						</ul>
 					</Menu>
-					<Content className='content' typographicGrid={typographicGrid}>
+					<Content className='content'>
 						<ReactMarkdown source={mdSource} />
 					</Content>
 				</HockneyGrid>

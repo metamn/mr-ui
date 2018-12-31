@@ -105,9 +105,12 @@ class TypographicGrid extends React.Component {
 		return (
 			<>
 				<GlobalStyle />
-				<Container className={className}>
+				<Container className='typographic-grid'>
 					{displayHorizontalRhytm &&
-						<HorizontalRhythm displayHorizontalRhytm={displayHorizontalRhytm} >
+						<HorizontalRhythm
+							className='horizontal-lines'
+							displayHorizontalRhytm={displayHorizontalRhytm}
+							>
 							<Repeat numberOfTimes={numberOfHorizontalLines} startAt={0}>
 								{(i) => <HorizontalRhythmLine
 											key={i}
@@ -118,7 +121,10 @@ class TypographicGrid extends React.Component {
 						</HorizontalRhythm>
 					}
 					{displayVerticalRhytm &&
-						<VerticalRhythm displayVerticalRhytm={displayVerticalRhytm}>
+						<VerticalRhythm
+							className='vertical-lines'
+							displayVerticalRhytm={displayVerticalRhytm}
+							>
 							<Repeat numberOfTimes={numberOfVerticalLines} startAt={0}>
 								{(i) => <VerticalRhythmLine
 											key={i}

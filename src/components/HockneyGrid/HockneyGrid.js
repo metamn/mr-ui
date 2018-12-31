@@ -102,7 +102,10 @@ class HockneyGrid extends React.Component {
 			<>
 			<GlobalStyle />
 			{displayGridLines &&
-				<GridLines displayGridLines={displayGridLines}>
+				<GridLines
+					className='hockney-grid'
+					displayGridLines={displayGridLines}
+					>
 					<Repeat numberOfTimes={6} startAt={0}>
 						{(i) => <GridLine
 									key={i}
@@ -113,7 +116,7 @@ class HockneyGrid extends React.Component {
 				</GridLines>
 			}
 			<Container
-				className={className}
+				className='hockney-grid-container'
 				>
 				{children}
 			</Container>
