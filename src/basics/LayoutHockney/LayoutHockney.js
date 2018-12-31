@@ -32,26 +32,23 @@ const Mockup = styled.div`
 
 const Logo = styled(Mockup)`
 	width: calc(var(--lem) * 13);
-	height: calc(var(--lem) * 2);
+	height: calc(var(--lem) * 1);
 `
 
 const HamburgerMenu = styled(Mockup)`
 	width: calc(var(--lem) * 2);
-	height: calc(var(--lem) * 2);
+	height: calc(var(--lem) * 1);
 	margin-left: var(--lem);
 `
 
 const Header = styled.div`
-	display: grid;
 	grid-column: 1;
 
-	@media (min-width: 320px) {
-		margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
 
-		${Logo},
-		${HamburgerMenu} {
-			grid-row: 1;
-		}
+	@media (min-width: 640px) {
+		grid-column: 1 / 3;
 	}
 
 	@media (min-width: 1920px) {
@@ -60,15 +57,17 @@ const Header = styled.div`
 `
 
 const Menu = styled(Mockup)`
-	width: var(--grid-column-width);
 	grid-column: 1;
 
 	@media (min-width: 320px) {
-		margin: 0 auto;
+		margin-top: var(--lem);
+	}
+
+	@media (min-width: 640px) {
+		grid-column: 1 / 3;
 	}
 
 	@media (min-width: 960px) {
-		width: calc( 2 * var(--grid-column-width));
 		grid-column: 2 / 3;
 		grid-row: 1;
 
@@ -81,18 +80,20 @@ const Menu = styled(Mockup)`
 		}
 	}
 
+	@media (min-width: 1920px) {
+		order: 1;
+	}
 `
 
 const Content = styled(Mockup)`
 	grid-column: 1;
 
 	@media (min-width: 320px) {
-		width: var(--grid-column-width);
-		margin: 0 auto;
+		margin-top: var(--lem);
 	}
 
 	@media (min-width: 640px) {
-		width: calc(2 * var(--grid-column-width));
+		grid-column: 1 / 3;
 	}
 
 	@media (min-width: 960px) {
@@ -106,7 +107,6 @@ const Content = styled(Mockup)`
 	}
 
 	@media (min-width: 1600px) {
-		width: calc(3 * var(--grid-column-width));
 	}
 
 	@media (min-width: 1920px) {
