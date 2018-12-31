@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import styled, { css } from 'styled-components';
-import ReactMarkdown from 'react-markdown';
+import CSSReset from './components/CSSReset'
 
-import 'normalize.css'
+import ReactMarkdown from 'react-markdown';
 import md from './App.md';
 
 import LayoutHockney from './basics/LayoutHockney'
@@ -24,7 +24,10 @@ const Container = styled.div`
 class App extends Component {
 	render() {
 		return (
-			<LayoutHockney/>
+			<>
+				<CSSReset/>
+				<LayoutHockney/>
+			</>
 		)
 	}
 }
