@@ -24,9 +24,11 @@ const Loading = styled.div``;
  * The mockup container
  */
 const Mockup = styled.div`
-	border: 1px solid;
+	background: lightcyan;
 `
 
+/** The mockups
+*/
 
 const Logo = styled(Mockup)`
 	width: calc(var(--lem) * 13);
@@ -39,7 +41,7 @@ const HamburgerMenu = styled(Mockup)`
 	margin-left: var(--lem);
 `
 
-const Header = styled(Mockup)`
+const Header = styled.div`
 	display: grid;
 	grid-column: 1;
 

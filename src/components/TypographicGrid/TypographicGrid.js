@@ -22,14 +22,6 @@ const GlobalStyle = createGlobalStyle`
 		font-size: 100%;
 		line-height: 1.25;
 		--lem: 1.25em;
-
-		box-sizing: border-box;
-
-		*,
-		*::before,
-		*::after {
-			box-sizing: inherit;
-		}
 	}
 `
 
