@@ -20,22 +20,26 @@ import markdownText from "./LayoutHockney.md"
 const Loading = styled.div``;
 
 
-const Logo = styled.div`
-	width: calc(var(--lem) * 13);
-	height: calc(var(--lem) * 2);
-	background: black;
-	color: white;
+/**
+ * The mockup container
+ */
+const Mockup = styled.div`
+	border: 1px solid;
 `
 
-const HamburgerMenu = styled.div`
+
+const Logo = styled(Mockup)`
+	width: calc(var(--lem) * 13);
+	height: calc(var(--lem) * 2);
+`
+
+const HamburgerMenu = styled(Mockup)`
 	width: calc(var(--lem) * 2);
 	height: calc(var(--lem) * 2);
 	margin-left: var(--lem);
-	background: black;
-	color: white;
 `
 
-const Header = styled.div`
+const Header = styled(Mockup)`
 	display: grid;
 	grid-column: 1;
 
@@ -53,10 +57,8 @@ const Header = styled.div`
 	}
 `
 
-const Menu = styled.div`
+const Menu = styled(Mockup)`
 	width: var(--grid-column-width);
-	background: black;
-	color: white;
 	grid-column: 1;
 
 	@media (min-width: 320px) {
@@ -79,9 +81,7 @@ const Menu = styled.div`
 
 `
 
-const Content = styled.div`
-	background: black;
-	color: white;
+const Content = styled(Mockup)`
 	grid-column: 1;
 
 	@media (min-width: 320px) {

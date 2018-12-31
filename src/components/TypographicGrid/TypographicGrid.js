@@ -22,6 +22,14 @@ const GlobalStyle = createGlobalStyle`
 		font-size: 100%;
 		line-height: 1.25;
 		--lem: 1.25em;
+
+		box-sizing: border-box;
+
+		*,
+		*::before,
+		*::after {
+			box-sizing: inherit;
+		}
 	}
 `
 
@@ -57,6 +65,7 @@ const HorizontalRhythm = styled(Rhythm)`
 const Line = styled.div`
 	box-sizing: border-box;
 	border-color: ${props => props.lineColor ? props.lineColor : 'transparent'};
+	border-width: 1px;
 `
 
 /**
@@ -65,7 +74,7 @@ const Line = styled.div`
 const VerticalRhythmLine = styled(Line)`
 	width: var(--lem);
 	height: 100%;
-	border-right: 1px solid;
+	border-right-style: solid;
 `
 
 /**
@@ -74,7 +83,7 @@ const VerticalRhythmLine = styled(Line)`
 const HorizontalRhythmLine = styled(Line)`
 	width: 100%;
 	height: var(--lem);
-	border-bottom: 1px solid;
+	border-bottom-style: solid;
 `
 
 /**
@@ -179,7 +188,7 @@ TypographicGrid.defaultProps = {
 	displayVerticalRhytm: true,
 	numberOfHorizontalLines: 50,
 	numberOfVerticalLines: 100,
-	lineColor: 'black',
+	lineColor: 'lightgrey',
 };
 
 export default TypographicGrid;
