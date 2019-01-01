@@ -52,6 +52,7 @@ const GridLine = styled.div`
 */
 const Container = styled.div`
 	display: grid;
+	justify-content: center;
 
 	grid-template-columns: repeat(1, var(--grid-column-width)) auto;
 
