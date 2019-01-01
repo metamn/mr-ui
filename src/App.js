@@ -26,7 +26,7 @@ const ResponsiveTypographyContainer = styled.div`
 		font-size: 120%;
 	}
 
-	@media (min-width: 1600px) {
+	@media (min-width: 1280px) {
 		font-size: 130%;
 	}
 `

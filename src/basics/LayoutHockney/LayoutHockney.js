@@ -56,7 +56,7 @@ const Header = styled.div`
 	}
 
 	@media (min-width: 960px) {
-		grid-column: 1 / 3;
+		grid-column: 1 / 2;
 		margin-top: 0;
 	}
 `
@@ -73,8 +73,13 @@ const Menu = styled(Mockup)`
 	}
 
 	@media (min-width: 960px) {
-		grid-column: 1 / 3;
-		margin-top: var(--lem);
+		grid-column: 2 / 4;
+		grid-row: 1;
+		margin-top: 0;
+
+		ul {
+			display: flex;
+		}
 	}
 `
 
@@ -90,7 +95,7 @@ const Content = styled(Mockup)`
 	}
 
 	@media (min-width: 960px) {
-		grid-column: 1 / 3;
+		grid-column: 1 / 4;
 		margin-top: var(--lem);
 	}
 `
