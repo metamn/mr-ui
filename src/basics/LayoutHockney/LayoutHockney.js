@@ -54,6 +54,11 @@ const Header = styled.div`
 		grid-column: 1 / 3;
 		margin-top: var(--lem);
 	}
+
+	@media (min-width: 960px) {
+		grid-column: 1 / 3;
+		margin-top: 0;
+	}
 `
 
 const Menu = styled(Mockup)`
@@ -66,6 +71,11 @@ const Menu = styled(Mockup)`
 		grid-column: 1 / 3;
 		margin-top: var(--lem);
 	}
+
+	@media (min-width: 960px) {
+		grid-column: 1 / 3;
+		margin-top: var(--lem);
+	}
 `
 
 const Content = styled(Mockup)`
@@ -75,6 +85,11 @@ const Content = styled(Mockup)`
 	}
 
 	@media (min-width: 640px) {
+		grid-column: 1 / 3;
+		margin-top: var(--lem);
+	}
+
+	@media (min-width: 960px) {
 		grid-column: 1 / 3;
 		margin-top: var(--lem);
 	}
@@ -119,7 +134,7 @@ class LayoutHockney extends React.Component {
 				numberOfHorizontalLines={150}
 				/>
 			<Container>
-				<HockneyGrid>
+				<HockneyGrid displayGridLines={false}>
 					<Header className='header'>
 						<Logo className='logo'>Logo</Logo>
 						<HamburgerMenu className='hamburger-menu'>☰</HamburgerMenu>

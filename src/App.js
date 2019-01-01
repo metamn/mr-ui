@@ -21,13 +21,23 @@ const Container = styled.div`
 	line-height: 1.5;
 `;
 
+const ResponsiveTypographyContainer = styled.div`
+	@media (min-width: 640px) {
+		font-size: 120%;
+	}
+
+	@media (min-width: 1600px) {
+		font-size: 130%;
+	}
+`
+
 class App extends Component {
 	render() {
 		return (
-			<>
+			<ResponsiveTypographyContainer>
 				<CSSReset/>
 				<LayoutHockney/>
-			</>
+			</ResponsiveTypographyContainer>
 		)
 	}
 }
