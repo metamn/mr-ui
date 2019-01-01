@@ -51,40 +51,28 @@ const GridLine = styled.div`
 * The main container
 */
 const Container = styled.div`
-	width: 100%;
-
 	display: grid;
-	justify-items: start;
-	justify-content: center;
 
-	// Stretch grid cells to occupy that space which is set with grid-column
-	// When a cell content is less than the cell size it is not stretched by default
-	> * {
-		width: 100%;
-	}
-
-	@media (min-width: var(--grid-column-width)) {
-		grid-template-columns: [col-1] var(--grid-column-width);
-	}
+	grid-template-columns: repeat(1, var(--grid-column-width)) auto;
 
 	@media (min-width: 640px) {
-		grid-template-columns: [col-1] var(--grid-column-width) [col-2] var(--grid-column-width);
+		grid-template-columns:  repeat(2, var(--grid-column-width)) auto;
 	}
 
 	@media (min-width: 960px) {
-		grid-template-columns: [col-1] var(--grid-column-width) [col-2] var(--grid-column-width) [col-3] var(--grid-column-width);
+		grid-template-columns: repeat(3, var(--grid-column-width)) auto;
 	}
 
 	@media (min-width: 1280px) {
-		grid-template-columns: [col-1] var(--grid-column-width) [col-2] var(--grid-column-width) [col-3] var(--grid-column-width) [col-4] var(--grid-column-width);
+		grid-template-columns: repeat(4, var(--grid-column-width)) auto;
 	}
 
 	@media (min-width: 1600px) {
-		grid-template-columns: [col-1] var(--grid-column-width) [col-2] var(--grid-column-width) [col-3] var(--grid-column-width) [col-4] var(--grid-column-width) [col-5] var(--grid-column-width);
+		grid-template-columns: repeat(5, var(--grid-column-width)) auto;
 	}
 
 	@media (min-width: 1920px) {
-		grid-template-columns: [col-1] var(--grid-column-width) [col-2] var(--grid-column-width) [col-3] var(--grid-column-width) [col-4] var(--grid-column-width) [col-5] var(--grid-column-width) [col-6] var(--grid-column-width);
+		grid-template-columns: repeat(6, var(--grid-column-width)) auto;
 	}
 `;
 

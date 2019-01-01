@@ -42,76 +42,15 @@ const HamburgerMenu = styled(Mockup)`
 `
 
 const Header = styled.div`
-	grid-column: 1;
-
-	display: flex;
-	justify-content: space-between;
-
-	@media (min-width: 640px) {
-		grid-column: 1 / 3;
-	}
-
-	@media (min-width: 1920px) {
-		grid-column: 2;
-	}
+	grid-column: 1 / 2;
 `
 
 const Menu = styled(Mockup)`
-	grid-column: 1;
-
-	@media (min-width: 320px) {
-		margin-top: var(--lem);
-	}
-
-	@media (min-width: 640px) {
-		grid-column: 1 / 3;
-	}
-
-	@media (min-width: 960px) {
-		grid-column: 2 / 3;
-		grid-row: 1;
-
-		ul {
-			display: flex;
-
-			li + li {
-				margin-left: var(--lem);
-			}
-		}
-	}
-
-	@media (min-width: 1920px) {
-		order: 1;
-	}
+	grid-column: 1 / 2;
 `
 
 const Content = styled(Mockup)`
-	grid-column: 1;
-
-	@media (min-width: 320px) {
-		margin-top: var(--lem);
-	}
-
-	@media (min-width: 640px) {
-		grid-column: 1 / 3;
-	}
-
-	@media (min-width: 960px) {
-		grid-column: 1 / 3;
-		grid-row: 2;
-	}
-
-	@media (min-width: 1280px) {
-		grid-column: 2;
-		grid-row: 1;
-	}
-
-	@media (min-width: 1600px) {
-	}
-
-	@media (min-width: 1920px) {
-		grid-column: 3;
-	}
+	grid-column: 1 / 2;
 `
 
 /**
