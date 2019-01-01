@@ -8,13 +8,16 @@
 
 ### Gotchas
 
-- Using `1fr` instead of `320px` it seems to be more `real` and error prone .... it's only drawback is that it breaks the typographic grid's horizontal positioning.
-- `justify-content: center` combined with `font-size: 110%` pushes content out of screen in landscape mode.
-- `justify-content: center` doesn't really makes sense in CSS Grids.
+- Showing gridlines is unnecessary since Firefox has a great, far better grid inspector.
+- Using `1fr` instead of `320px` it seems to be more `real` and error prone .... its only drawback is that it breaks the typographic grid's horizontal positioning.
+- Also, thinking in fixed column size, when the content doesn't justifies it, it's a bad practice.
+- `justify-content: center` combined with `font-size: 110%` and grid size `320px` pushes content left out of screen in landscape mode.
+- `justify-content: center` doesn't really makes sense in CSS Grids with `fr` metrics. With `fr` the grid always fills the container.
 
 
 ### Resources
 
+- [Playing with the CSS Grid](https://codepen.io/metamn/post/playing-with-the-css-grid)
 - [CSS Grid Cheatsheet](http://grid.malven.co/)
 - [A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
 - [Things I’ve Learned About CSS Grid Layout ](https://css-tricks.com/things-ive-learned-css-grid-layout/)
