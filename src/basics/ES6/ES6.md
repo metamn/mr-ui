@@ -1,6 +1,8 @@
 ## ES6
 
-React is Javascript / ES6. If you come from earlier versions of Javascript these snippets will help you to get familiar with the ES6 code you'll see in React components.
+React is Javascript / ES6. If you come from earlier versions of Javascript these snippets will help you to get familiar with the ES6 code you'll see in React components
+
+For a better, and more through explanation please read [ES6 Core Features](http://exploringjs.com/es6/ch_core-features.html)
 
 In short, the *rules* are:
 
@@ -141,6 +143,7 @@ console.log(add6(200)) // => args[0]: 200
 ```
 
 Sources:
+- http://exploringjs.com/es6.html - The most comprehensive book on ES6
 - https://repl.it/@metamn/FunctionArguments
 - https://simonsmith.io/destructuring-objects-as-function-parameters-in-es6/
 - https://javascript.info/function-basics
