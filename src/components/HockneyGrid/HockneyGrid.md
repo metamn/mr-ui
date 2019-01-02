@@ -10,12 +10,21 @@
 
 - Showing gridlines is unnecessary since Firefox has a great, far better grid inspector.
 - Using `1fr` instead of `320px` it seems to be more `real` and error prone.
- - Drawbacks:
-  - It breaks the typographic grid's horizontal positioning
-  - There is no media query for `fr`
-  - `fr` is a dynamic measure I mean a column of `1fr` might be wider than another column of `1fr`: https://imgur.com/a/xTEsmHD
- - Advantages over:
-  - `justify-content: center` combined with `font-size: 110%` and grid size `320px` pushes content left out of screen in landscape mode.
+
+Advantages of `fr` over `320px`:
+- `320px` has to be centered on large viewports (ie a 414px iPhone) and `justify-content: center` sometimes breaks the grid (combined with `font-size: 110%` and grid size `320px` pushes content left out of screen in landscape mode.)
+- Centering also excludes the layout to have edge-to-edge content, like images for example. Such constrains are not sustainable on small displays where every pixel counts.
+
+Drawbacks of `fr`:
+- It breaks the typographic grid's horizontal positioning
+- There is no media query for `fr`
+- `fr` is a dynamic measure I mean a column of `1fr` might be wider than another column of `1fr`: https://imgur.com/a/xTEsmHD. This case must be seriously examined.
+
+
+### To do
+
+- Get a real use case. Otherwise, without a concrete direction, the progress of the learning process is stale.
+- Go with grid areas. Go with `fr`. If not working switch to `px` on larger devices.
 
 ### Resources
 
