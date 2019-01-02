@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import styled, { css } from 'styled-components';
+import CSSReset from './components/CSSReset'
 
 import ReactMarkdown from 'react-markdown';
 import md from './App.md';
+
+import LayoutHockney from './basics/LayoutHockney'
 
 const Container = styled.div`
 	width: 100%;
@@ -18,12 +21,23 @@ const Container = styled.div`
 	line-height: 1.5;
 `;
 
+const ResponsiveTypographyContainer = styled.div`
+	@media (min-width: 640px) {
+		font-size: 120%;
+	}
+
+	@media (min-width: 1280px) {
+		font-size: 130%;
+	}
+`
+
 class App extends Component {
 	render() {
 		return (
-			<Container>
-				<ReactMarkdown source={md}/>
-			</Container>
+			<ResponsiveTypographyContainer>
+				<CSSReset/>
+				<LayoutHockney/>
+			</ResponsiveTypographyContainer>
 		)
 	}
 }
