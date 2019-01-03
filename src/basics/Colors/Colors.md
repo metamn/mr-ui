@@ -61,19 +61,25 @@ Color models can be specially tailored to mediums like print (Pantone, CMYK) and
 4. Pick up new colors scientifically.
 
 
-## An ideal tool.
+## An ideal tool
+
+### Computable color model
+
+An ideal tool to help us create a perfect color scheme would first of all come with a computable, programmable color model.
+
+One should be able to use code to generate a consistent color palette, and think about colors in the same way thinks about other programming artifacts like data and algorithms.
 
 ### Preloaded content types
 
-An ideal tool to help us create a perfect color scheme would first of all come preloaded with different content types. A simple blog, a simple landing page, a full product marketing site, and so on.
+An ideal tool should come preloaded with different content types. A simple blog, a simple landing page, a full product marketing site, and so on.
 
 Here we could test live how a color scheme works.
 
-Graphic artists have their own tools like [Adobe Color Wheel](https://color.adobe.com/create/color-wheel/) which might be great to design posters and flyers but surely not intuitive enough to help text based user interfaces.
+Graphic artists have their own tools like [Adobe Color Wheel](https://color.adobe.com/create/color-wheel/) which might be great to design posters and flyers but surely not intuitive enough to design text based user interfaces.
 
 [Paletton](http://paletton.com/) recognized this flaw and added a feature to preview a palette in a real webpage scenario. However, it's awful.
 
-[Google Color Tool](https://material.io/tools/color/) is far better.
+[Google Color Tool](https://material.io/tools/color/) is far better. It's a good start but not enough details.
 
 ### Monochromatic scheme generator
 
@@ -85,7 +91,7 @@ Google's Color Tool gives us two hints (Light, Dark) but there is more.
 
 We perhaps need a color wheel to help us choose warm and cold colors additional to our existing monochromatic scheme.
 
-Paletton has a fine tune mechanism for the generated palette but not to set the color wheel into a state where only best new colors can be picked up.
+Paletton has such a fine tune mechanism for the generated palette but not to set the color wheel into a state where only best new colors can be picked up.
 
 
 ### Resources

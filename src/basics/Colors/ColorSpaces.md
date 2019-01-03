@@ -1,12 +1,12 @@
 # Color Spaces
 
-To make colors quantifiable color models and color spaces like RGB or CMYK are used.
+To make colors quantifiable, computable color models and color spaces like RGB or CMYK are used.
 
 CMYK is specific for print, RGB, HSL is specific for computer monitors.
 
 ## RGB vs HSL
 
-RGB is a color model where each color has three main properties: the amount of red, green and blue in each color. Colors in RGB are created by adding / mixing these three basic colors / properties.
+RGB is a color model where each color has three main properties: the amount of `red`, `green` and `blue` in each color. Colors in RGB are created by adding / mixing these three basic colors / properties.
 
 There is a fourth, optional property: alpha transparency, or opacity, defining how transparent a color is.
 
@@ -32,9 +32,9 @@ In CSS notation:
 --white: rgba(255, 255, 255, 1);
 ```
 
-HSL is a color model based on RGB, used by artists to have a more intuitive framework to think in colors.
+HSL is a color model based on RGB. It is an enhancement of RGB to provide a more intuitive framework to think in colors, to mimic an age old best practice of how painters create and use colors.
 
-In HSL a color has again three main properties as hue, saturation and luminosity.
+In HSL a color has again three main properties as hue, saturation and luminosity. Colors in HSL are created by choosing a basic color (hue) and adding grey (saturation) and white or black (luminosity) to it.
 
 There is a fourth, optional property: alpha transparency, or opacity, defining how transparent a color is.
 
@@ -58,8 +58,19 @@ Where:
 --white: hsla(anything, anything, 100%, 1);
 ```
 
+With the RGB notation colors don't provide information about their nature and relation to other colors in a palette.
+
+For example `rgb(125, 125, 125)` means `a color with equal part of red, green, and blue`. `rgb(63, 63, 63)` means `a color with half of the red, green, blue of the previous color`.
+
+In HSL `hsl(123, 50%, 75%)` means `a color with 50% grey and 75% white`. `hsl(256, 50%, 75%)` means `another color with the same amount of grey and white`.
+
+With the HSL notation we've already formed a palette. We have two colors bound together by the same amount of grey and white mixed in. Perhaps they will look like a family of colors when used together.
+
+With the RGB notation we can't have such an intuitive way to pair two colors. We don't know if the two colors created above fit together, or not.
 
 
 ## Resources
 
 - https://en.wikipedia.org/wiki/Color_space
+- https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
+- https://www.w3schools.com/colors/colors_hsl.asp
