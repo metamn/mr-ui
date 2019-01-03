@@ -37,7 +37,7 @@ Theory says warm colors dominate, cool colors sink. On the classic color wheel w
 
 To pick the perfect red for an existing monochromatic color scheme we might need math. There are tons of reds &mdash; based on which criteria one can affirm *that* red is the perfect red for this scheme?
 
-To make colors computable they are collected into color models and color spaces like RGB or CMYK.
+To make colors quantifiable color models and color spaces like RGB or CMYK are used.
 
 Each model describes every color with certain properties like:
 
@@ -75,11 +75,11 @@ Graphic artists have their own tools like [Adobe Color Wheel](https://color.adob
 
 [Google Color Tool](https://material.io/tools/color/) is far better.
 
-### Monochromatic theme generator
+### Monochromatic scheme generator
 
 Once we've picked up the two primary colors we should have a glimpse of how many additional color pairs we've get with these colors.
 
-Color Tool gives us two hints (Light, Dark) but there is more.
+Google's Color Tool gives us two hints (Light, Dark) but there is more.
 
 ### A special color wheel
 
@@ -94,4 +94,4 @@ Paletton has a fine tune mechanism for the generated palette but not to set the 
 - https://github.com/metamn/color
 - [Adobe Color](https://color.adobe.com/create/color-wheel/)
 - [Paletton](http://paletton.com/)
-- [Google Material Design Color Tool](https://material.io/tools/color) 
+- [Google Material Design Color Tool](https://material.io/tools/color)
