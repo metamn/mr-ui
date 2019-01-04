@@ -77,6 +77,7 @@ const Swatch = styled(Text)`
 	width: calc(1.5 * 1.25em);
 	height: calc(1.5 * 1.25em);
 	border-radius: 50%;
+	border-color: transparent;
 
 	display: flex;
 	justify-content: center;
