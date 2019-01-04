@@ -129,38 +129,73 @@ class ColorsHSL extends React.Component {
 		);
 	}
 
-	scaleColor(color1, color2, property, step, direction) {
-		const palette = []
+	/**
+	 * Scales a color
+	 * @param  {string} color         The color to scale
+	 * @param  {string} contrastColor A contrast color for legibility
+	 * @param  {string} property      Which property to scale
+	 * @param  {float}  step          The step of the scale
+	 * @param  {string} direction     The direction of the scale
+	 * @return {array}                An array of new colors
+	 */
+	scaleColor(color, contrastColor, property, step, direction) {
+		const colors = []
 
-		let contrast = this.colorContrast(color1, color2)
-		let propertyToScale = chroma(color1).get(property)
+		let contrast = this.colorContrast(color, contrastColor)
+		let propertyToScale = chroma(color).get(property)
 
 		while ((contrast >= 4.5) && (propertyToScale >= step) && (propertyToScale <= 1)) {
 			propertyToScale = (direction == 'up') ? propertyToScale + step : propertyToScale - step
-			color1 = chroma(color1).set(property, propertyToScale)
-			contrast = this.colorContrast(color1, color2)
+			color = chroma(color).set(property, propertyToScale)
+			contrast = this.colorContrast(color, contrastColor)
 
 			if (contrast >= 4.5) {
-				palette.push({
-					backgroundColor: color1,
-					textColor: color2,
-				})
+				colors.push(color)
 			}
 		}
 
-		return palette;
+		return colors;
+	}
+
+	/**
+	 * Create color pairs
+	 * @param {array}  colors     An array of colors
+	 * @param {string} color      The other color of the color pair
+	 * @param {string} colorsType Is it a background, or a text color
+	 */
+	createColorPairs(colors, color, colorsType) {
+		const palette = []
+
+		for (let c of colors) {
+			(colorsType == 'background') ? palette.push({
+				backgroundColor: c,
+				textColor: color
+			}) : palette.push({
+				backgroundColor: color,
+				textColor: c
+			})
+		}
+
+		return palette
 	}
 
 	generateMonochromePalette(backgroundColor, textColor) {
-		let palette = []
-
-		palette = [
-			...this.scaleColor(backgroundColor, textColor, 'hsl.s', 0.1),
-			...this.scaleColor(backgroundColor, textColor, 'hsl.l', 0.1),
-			...this.scaleColor(textColor, backgroundColor, 'hsl.l', 0.1, 'up')
+		return [
+			...this.createColorPairs(
+				this.scaleColor(backgroundColor, textColor, 'hsl.s', 0.1),
+				textColor,
+				'background'
+			),
+			...this.createColorPairs(
+				this.scaleColor(backgroundColor, textColor, 'hsl.l', 0.1),
+				textColor,
+				'background'
+			),
+			...this.createColorPairs(
+				this.scaleColor(textColor, backgroundColor, 'hsl.l', 0.1, 'up'),
+				backgroundColor,
+			),
 		]
-
-		return palette;
 	}
 
 	colorContrast(backgroundColor, textColor) {
