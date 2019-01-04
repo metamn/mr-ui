@@ -10,6 +10,7 @@ import ReactMarkdown from 'react-markdown';
 import text from './ColorsHSL.md';
 
 import { ChromePicker } from 'react-color';
+import chroma from 'chroma-js'
 
 /**
 * The loading container
@@ -47,6 +48,15 @@ const Text = styled.div`
 	padding: 1.25em;
 `
 
+
+/**
+ * The inverted text container
+ */
+const TextInverted = styled(Text)`
+	background: ${props => props.textColor};
+	color: ${props => props.backgroundColor};
+`
+
 /**
  * The color pickers container
  */
@@ -61,7 +71,7 @@ class ColorsHSL extends React.Component {
 		super(props)
 
 		this.state = {
-			backgroundColor: 'hsl(180, 85%, 85%, 1)',
+			backgroundColor: 'hsla(180, 85%, 85%, 1)',
 			textColor: 'black',
 		}
 	}
@@ -73,6 +83,11 @@ class ColorsHSL extends React.Component {
 				backgroundColor: color.hex
 			}
 		);
+	}
+
+	colorContrast(backgroundColor, textColor) {
+		const contrast = chroma.contrast(chroma(backgroundColor), chroma(textColor))
+		return contrast.toFixed(1)
 	}
 
 	render() {
@@ -90,6 +105,7 @@ class ColorsHSL extends React.Component {
 				textColor={textColor}
 				>
 				<Text>
+					color contrast: {this.colorContrast(backgroundColor, textColor)}
 					<ReactMarkdown source={text} />
 				</Text>
 				<Pickers>
@@ -98,6 +114,13 @@ class ColorsHSL extends React.Component {
 						onChangeComplete={this.pickBackgroundColor}
 					/>
 				</Pickers>
+				<TextInverted
+					backgroundColor={backgroundColor}
+					textColor={textColor}
+					>
+					color contrast: {this.colorContrast(textColor, backgroundColor)}
+					<ReactMarkdown source={text} />
+				</TextInverted>
 			</Container>
 		)
 	}
