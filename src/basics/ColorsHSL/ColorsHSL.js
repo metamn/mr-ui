@@ -129,27 +129,36 @@ class ColorsHSL extends React.Component {
 		);
 	}
 
-	generateMonochromePalette(backgroundColor, textColor) {
+	scaleColor(color1, color2, property, step, direction) {
 		const palette = []
 
-		let contrast = this.colorContrast(backgroundColor, textColor)
-		let saturation = chroma(backgroundColor).get('hsl.s')
-		let bColor = backgroundColor
+		let contrast = this.colorContrast(color1, color2)
+		let propertyToScale = chroma(color1).get(property)
 
-		while ((contrast >= 4.5) && (saturation >= 0.1)) {
-			saturation -= 0.1
-			bColor = chroma(bColor).set('hsl.s', saturation)
-			contrast = this.colorContrast(bColor, textColor)
-
-			console.log('s, b:' + saturation + ', ' + bColor);
+		while ((contrast >= 4.5) && (propertyToScale >= step) && (propertyToScale <= 1)) {
+			propertyToScale = (direction == 'up') ? propertyToScale + step : propertyToScale - step
+			color1 = chroma(color1).set(property, propertyToScale)
+			contrast = this.colorContrast(color1, color2)
 
 			if (contrast >= 4.5) {
 				palette.push({
-					backgroundColor: bColor,
-					textColor: textColor,
+					backgroundColor: color1,
+					textColor: color2,
 				})
 			}
 		}
+
+		return palette;
+	}
+
+	generateMonochromePalette(backgroundColor, textColor) {
+		let palette = []
+
+		palette = [
+			...this.scaleColor(backgroundColor, textColor, 'hsl.s', 0.1),
+			...this.scaleColor(backgroundColor, textColor, 'hsl.l', 0.1),
+			...this.scaleColor(textColor, backgroundColor, 'hsl.l', 0.1, 'up')
+		]
 
 		return palette;
 	}
