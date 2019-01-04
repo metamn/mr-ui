@@ -22,11 +22,14 @@ const Loading = styled.div``;
 const Container = styled.div`
 	align-self: flex-start;
 	width: 100%;
+	height: 100%;
 	margin: 1.25em;
 
 	background: ${props => props.backgroundColor};
 	color: ${props => props.textColor};
+
 	font-family: monospace;
+	font-size: 150%;
 
 	display: grid;
 
@@ -58,7 +61,7 @@ class ColorsHSL extends React.Component {
 		super(props)
 
 		this.state = {
-			backgroundColor: 'transparent',
+			backgroundColor: 'hsl(180, 85%, 85%, 1)',
 			textColor: 'black',
 		}
 	}
