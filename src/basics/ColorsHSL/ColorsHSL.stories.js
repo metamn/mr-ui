@@ -7,7 +7,7 @@ import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
 import ColorsHSL from './ColorsHSL';
 
 storiesOf('Basics/Colors ✗/HSL', module)
-	.add('Overview',
+	.add('Monochrome palette',
 		() => ( <ColorsHSL/> ),
 		{
 			info: {

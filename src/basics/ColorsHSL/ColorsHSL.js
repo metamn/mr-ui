@@ -63,8 +63,8 @@ const TextInverted = styled(Text)`
  * The color swatch container
  */
 const SwatchContainer = styled.div`
-	grid-row: 3;
-	grid-column: 1 / 3;
+	//grid-row: 3;
+	//grid-column: 1 / 3;
 
 	display: flex;
 	flex-wrap: wrap;
@@ -79,6 +79,9 @@ const Swatch = styled(Text)`
 
 	width: calc(10 * 1.25em);
 	height: calc(5 * 1.25em);
+
+	margin: 1.25em
+	margin-bottom: 0;
 `
 
 /**
