@@ -3,5 +3,10 @@
 ### Pick a background color
 
 1. Perhaps it should be *warm*, which is the right half of the HSL scale, like hue starting from 180deg.
-2. Perhaps it should be *desaturated* a bit, not fully shiny.
-3. If you want the text color to be dark add more *light* to the background.
+2. Perhaps it should be *desaturated* a bit (100% &rarr; 85%), not fully shiny.
+3. If you want the text color to be dark add more *light* (50% &rarr; 85%) to the background.
+
+### Pick a Text color
+
+1. Start form black, which is set the same as the background color but with 0% lightness.
+2. You can increase lightness up to a level where the text color is still eligible on the background, ie. the color contrast ration is bigger than 4.5

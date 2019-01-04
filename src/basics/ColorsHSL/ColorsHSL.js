@@ -9,7 +9,7 @@ import styled, { css } from "styled-components";
 import ReactMarkdown from 'react-markdown';
 import text from './ColorsHSL.md';
 
-import { ChromePicker } from 'react-color';
+import ColorPicker from '@mapbox/react-colorpickr'
 import chroma from 'chroma-js'
 
 /**
@@ -60,7 +60,17 @@ const TextInverted = styled(Text)`
 /**
  * The color pickers container
  */
-const Pickers = styled.div``
+const Pickers = styled.div`
+	display: flex;
+	flex-wrap: wrap;
+`
+
+/**
+ * The color picker
+ */
+const Picker = styled.div`
+	padding: 1.25em;
+`
 
 
 /**
@@ -72,15 +82,23 @@ class ColorsHSL extends React.Component {
 
 		this.state = {
 			backgroundColor: 'hsla(180, 85%, 85%, 1)',
-			textColor: 'black',
+			textColor: 'hsla(180, 85%, 0%, 1)',
 		}
 	}
 
-	pickBackgroundColor = (color) => {
-		console.log(color.hex);
+	changeBackgroundColor = (color) => {
+		console.log(color);
 		this.setState(
 			{
-				backgroundColor: color.hex
+				backgroundColor: `#${color.hex}`
+			}
+		);
+	}
+
+	changeTextColor = (color) => {
+		this.setState(
+			{
+				textColor: `#${color.hex}`
 			}
 		);
 	}
@@ -109,10 +127,21 @@ class ColorsHSL extends React.Component {
 					<ReactMarkdown source={text} />
 				</Text>
 				<Pickers>
-					<ChromePicker
-						color={backgroundColor}
-						onChangeComplete={this.pickBackgroundColor}
-					/>
+					<Picker>
+						background color:
+						<ColorPicker
+							initialValue={backgroundColor}
+							onChange={this.changeBackgroundColor}
+						/>
+					</Picker>
+
+					<Picker>
+						text color:
+						<ColorPicker
+							initialValue={textColor}
+							onChange={this.changeTextColor}
+						/>
+					</Picker>
 				</Pickers>
 				<TextInverted
 					backgroundColor={backgroundColor}
