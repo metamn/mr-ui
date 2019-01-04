@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import styled, { css } from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 
-import 'normalize.css'
 import md from './Colors.md';
 import ColorSpaces from './ColorSpaces.md';
 
