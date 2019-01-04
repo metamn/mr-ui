@@ -92,6 +92,7 @@ const Swatch = styled(Text)`
  */
 const Pickers = styled.div`
 	display: flex;
+	justify-content: space-around;
 	flex-wrap: wrap;
 `
 
@@ -100,6 +101,21 @@ const Pickers = styled.div`
  */
 const Picker = styled.div`
 	padding: 1.25em;
+	margin: 1.25em;
+	border: 1px solid;
+
+	.toggle-group,
+	.cursor-pointer {
+		display: none;
+	}
+
+	.mb3 > div {
+		margin: .625em 0;
+	}
+
+	button {
+		margin: .625em 0 1.25em;
+	}
 `
 
 
