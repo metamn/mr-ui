@@ -63,9 +63,6 @@ const TextInverted = styled(Text)`
  * The color swatch container
  */
 const SwatchContainer = styled.div`
-	//grid-row: 3;
-	//grid-column: 1 / 3;
-
 	display: flex;
 	flex-wrap: wrap;
 `
@@ -77,8 +74,13 @@ const Swatch = styled(Text)`
 	background: ${props => props.backgroundColor};
 	color: ${props => props.textColor};
 
-	width: calc(10 * 1.25em);
-	height: calc(5 * 1.25em);
+	width: calc(1.5 * 1.25em);
+	height: calc(1.5 * 1.25em);
+	border-radius: 50%;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
 	margin: 1.25em
 	margin-bottom: 0;
@@ -144,7 +146,7 @@ class ColorsHSL extends React.Component {
 		let contrast = this.colorContrast(color, contrastColor)
 		let propertyToScale = chroma(color).get(property)
 
-		while ((contrast >= 4.5) && (propertyToScale >= step) && (propertyToScale <= 1)) {
+		while ((contrast >= 4.5) && (propertyToScale >= 0) && (propertyToScale <= 1)) {
 			propertyToScale = (direction == 'up') ? propertyToScale + step : propertyToScale - step
 			color = chroma(color).set(property, propertyToScale)
 			contrast = this.colorContrast(color, contrastColor)
@@ -182,18 +184,18 @@ class ColorsHSL extends React.Component {
 	generateMonochromePalette(backgroundColor, textColor) {
 		return [
 			...this.createColorPairs(
+				this.scaleColor(backgroundColor, textColor, 'hsl.l', 0.1).reverse(),
+				textColor,
+				'background'
+			),
+			...this.createColorPairs(
+				this.scaleColor(textColor, backgroundColor, 'hsl.l', 0.05, 'up').reverse(),
+				backgroundColor,
+			),
+			...this.createColorPairs(
 				this.scaleColor(backgroundColor, textColor, 'hsl.s', 0.1),
 				textColor,
 				'background'
-			),
-			...this.createColorPairs(
-				this.scaleColor(backgroundColor, textColor, 'hsl.l', 0.1),
-				textColor,
-				'background'
-			),
-			...this.createColorPairs(
-				this.scaleColor(textColor, backgroundColor, 'hsl.l', 0.1, 'up'),
-				backgroundColor,
 			),
 		]
 	}
@@ -217,13 +219,6 @@ class ColorsHSL extends React.Component {
 			<Container
 				className={className}
 				>
-				<Text
-					backgroundColor={backgroundColor}
-					textColor={textColor}
-					>
-					color contrast: {this.colorContrast(backgroundColor, textColor)}
-					<ReactMarkdown source={text} />
-				</Text>
 				<Pickers>
 					<Picker>
 						background color:
@@ -240,13 +235,6 @@ class ColorsHSL extends React.Component {
 						/>
 					</Picker>
 				</Pickers>
-				<TextInverted
-					backgroundColor={backgroundColor}
-					textColor={textColor}
-					>
-					color contrast: {this.colorContrast(textColor, backgroundColor)}
-					<ReactMarkdown source={text} />
-				</TextInverted>
 				<SwatchContainer>
 					<Repeat numberOfTimes={monochromePalette.length} startAt={0}>
 						{(i) => <Swatch
@@ -254,12 +242,27 @@ class ColorsHSL extends React.Component {
 									backgroundColor={monochromePalette[i].backgroundColor}
 									textColor={monochromePalette[i].textColor}
 								>
-								color contrast: {this.colorContrast(monochromePalette[i].textColor, monochromePalette[i].backgroundColor)}
-								<p>This is a text swatch for the monochrome palette</p>
+								<span>
+									{this.colorContrast(monochromePalette[i].textColor, monochromePalette[i].backgroundColor)}
+								</span>
 								</Swatch>
 						}
 					</Repeat>
 				</SwatchContainer>
+				<Text
+					backgroundColor={backgroundColor}
+					textColor={textColor}
+					>
+					color contrast: {this.colorContrast(backgroundColor, textColor)}
+					<ReactMarkdown source={text} />
+				</Text>
+				<TextInverted
+					backgroundColor={backgroundColor}
+					textColor={textColor}
+					>
+					color contrast: {this.colorContrast(textColor, backgroundColor)}
+					<ReactMarkdown source={text} />
+				</TextInverted>
 			</Container>
 		)
 	}
