@@ -19,7 +19,7 @@ Where:
 - Red: the percentage of red in a color, expressed in `%` or [0..255] where 255=100%
 - Green: the percentage of green in a color
 - Blue: the percentage of a blue in a color
-- Alpha transparency: how opaque the color is, in percentage. 0% is fully opaque
+- Alpha transparency: how opaque the color is, in percentage. 0 is fully opaque
 
 In CSS notation:
 
@@ -47,7 +47,7 @@ Where:
 - Hue: the color itself, like `red`, `green` or `blue`, expressed as an angle. 0deg = red = 360deg. green = 120deg, blue = 240deg.
 - Saturation: the amount of `grey` in a color, in percentage: 0% = the color is fully grey, 100% = no grey at all in the color
 - Lightness: The amount of `black` and `white` in a color, in percentage: 0% = the color is full black, 50% = the color is fully the color itself, 100% = the color is full white.
-- Alpha transparency: how opaque the color is, in percentage. 0% is fully opaque.
+- Alpha transparency: how opaque the color is, in percentage. 0 is fully opaque.
 
 ```CSS
 --red: hsla(0, 100%, 50%, 1);

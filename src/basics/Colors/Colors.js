@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown';
 
 import 'normalize.css'
 import md from './Colors.md';
+import ColorSpaces from './ColorSpaces.md';
 
 const Container = styled.div`
 	width: 100%;
@@ -21,9 +22,20 @@ const Container = styled.div`
 
 class Colors extends Component {
 	render() {
+		const {mdSource} = this.props
+		let source = ''
+
+		if (mdSource == 'Colors') {
+			source = md;
+		}
+
+		if (mdSource == 'ColorSpaces') {
+			source = ColorSpaces;
+		}
+
 		return (
 			<Container>
-				<ReactMarkdown source={md} />
+				<ReactMarkdown source={source} />
 			</Container>
 		)
 	}

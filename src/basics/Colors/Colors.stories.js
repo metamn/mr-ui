@@ -8,7 +8,15 @@ import Colors from './Colors';
 
 storiesOf('Basics/Colors ✗', module)
 	.add('Overview',
-		() => ( <Colors/> ),
+		() => ( <Colors mdSource={'Colors'}/> ),
+		{
+			info: {
+				disable: true
+			}
+		}
+	)
+	.add('Color Spaces',
+		() => ( <Colors mdSource={'ColorSpaces'}/> ),
 		{
 			info: {
 				disable: true
