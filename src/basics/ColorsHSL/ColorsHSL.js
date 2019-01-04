@@ -12,6 +12,8 @@ import text from './ColorsHSL.md';
 import ColorPicker from '@mapbox/react-colorpickr'
 import chroma from 'chroma-js'
 
+import Repeat from './../../helpers'
+
 /**
 * The loading container
 */
@@ -25,9 +27,6 @@ const Container = styled.div`
 	width: 100%;
 	height: 100%;
 	margin: 1.25em;
-
-	background: ${props => props.backgroundColor};
-	color: ${props => props.textColor};
 
 	font-family: monospace;
 	font-size: 150%;
@@ -44,6 +43,9 @@ const Container = styled.div`
  * The text container
  */
 const Text = styled.div`
+	background: ${props => props.backgroundColor};
+	color: ${props => props.textColor};
+
 	border: 1px solid;
 	padding: 1.25em;
 `
@@ -55,6 +57,28 @@ const Text = styled.div`
 const TextInverted = styled(Text)`
 	background: ${props => props.textColor};
 	color: ${props => props.backgroundColor};
+`
+
+/**
+ * The color swatch container
+ */
+const SwatchContainer = styled.div`
+	grid-row: 3;
+	grid-column: 1 / 3;
+
+	display: flex;
+	flex-wrap: wrap;
+`
+
+/**
+ * A color swatch
+ */
+const Swatch = styled(Text)`
+	background: ${props => props.textColor};
+	color: ${props => props.backgroundColor};
+
+	width: calc(10 * 1.25em);
+	height: calc(5 * 1.25em);
 `
 
 /**
@@ -87,7 +111,6 @@ class ColorsHSL extends React.Component {
 	}
 
 	changeBackgroundColor = (color) => {
-		console.log(color);
 		this.setState(
 			{
 				backgroundColor: `#${color.hex}`
@@ -103,6 +126,35 @@ class ColorsHSL extends React.Component {
 		);
 	}
 
+	generateMonochromePalette(backgroundColor, textColor) {
+		return [
+			{
+				backgroundColor: backgroundColor,
+				textColor: textColor
+			},
+			{
+				backgroundColor: backgroundColor,
+				textColor: textColor
+			},
+			{
+				backgroundColor: backgroundColor,
+				textColor: textColor
+			},
+			{
+				backgroundColor: backgroundColor,
+				textColor: textColor
+			},
+			{
+				backgroundColor: backgroundColor,
+				textColor: textColor
+			},
+			{
+				backgroundColor: backgroundColor,
+				textColor: textColor
+			}
+		]
+	}
+
 	colorContrast(backgroundColor, textColor) {
 		const contrast = chroma.contrast(chroma(backgroundColor), chroma(textColor))
 		return contrast.toFixed(1)
@@ -112,6 +164,8 @@ class ColorsHSL extends React.Component {
 		const { loading, className } = this.props;
 		const { backgroundColor, textColor} = this.state;
 
+		const monochromePalette = this.generateMonochromePalette(backgroundColor, textColor);
+
 		if (loading) {
 			return <Loading className={className}>Loading ...</Loading>;
 		}
@@ -119,10 +173,11 @@ class ColorsHSL extends React.Component {
 		return (
 			<Container
 				className={className}
-				backgroundColor={backgroundColor}
-				textColor={textColor}
 				>
-				<Text>
+				<Text
+					backgroundColor={backgroundColor}
+					textColor={textColor}
+					>
 					color contrast: {this.colorContrast(backgroundColor, textColor)}
 					<ReactMarkdown source={text} />
 				</Text>
@@ -150,6 +205,19 @@ class ColorsHSL extends React.Component {
 					color contrast: {this.colorContrast(textColor, backgroundColor)}
 					<ReactMarkdown source={text} />
 				</TextInverted>
+				<SwatchContainer>
+					<Repeat numberOfTimes={monochromePalette.length} startAt={0}>
+						{(i) => <Swatch
+									key={i}
+									backgroundColor={monochromePalette[i].backgroundColor}
+									textColor={monochromePalette[i].textColor}
+								>
+								color contrast: {this.colorContrast(monochromePalette[i].textColor, monochromePalette[i].backgroundColor)}
+								<p>This is a text swatch for the monochrome palette</p>
+								</Swatch>
+						}
+					</Repeat>
+				</SwatchContainer>
 			</Container>
 		)
 	}

@@ -9,4 +9,9 @@
 ### Pick a Text color
 
 1. Start form black, which is set the same as the background color but with 0% lightness.
-2. You can increase lightness up to a level where the text color is still eligible on the background, ie. the color contrast ration is bigger than 4.5
+2. You can increase lightness up to a level where the text color is still eligible on the background, ie. the color contrast ratio is bigger than 4.5
+
+### Auto generated monochrome palette
+
+1. You'll get the inverse color scheme.
+2. You'll get all other color schemes as shades of primary colors which are still eligible. 
