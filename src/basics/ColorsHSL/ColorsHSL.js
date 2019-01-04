@@ -74,8 +74,8 @@ const SwatchContainer = styled.div`
  * A color swatch
  */
 const Swatch = styled(Text)`
-	background: ${props => props.textColor};
-	color: ${props => props.backgroundColor};
+	background: ${props => props.backgroundColor};
+	color: ${props => props.textColor};
 
 	width: calc(10 * 1.25em);
 	height: calc(5 * 1.25em);
@@ -130,32 +130,28 @@ class ColorsHSL extends React.Component {
 	}
 
 	generateMonochromePalette(backgroundColor, textColor) {
-		return [
-			{
-				backgroundColor: backgroundColor,
-				textColor: textColor
-			},
-			{
-				backgroundColor: backgroundColor,
-				textColor: textColor
-			},
-			{
-				backgroundColor: backgroundColor,
-				textColor: textColor
-			},
-			{
-				backgroundColor: backgroundColor,
-				textColor: textColor
-			},
-			{
-				backgroundColor: backgroundColor,
-				textColor: textColor
-			},
-			{
-				backgroundColor: backgroundColor,
-				textColor: textColor
+		const palette = []
+
+		let contrast = this.colorContrast(backgroundColor, textColor)
+		let saturation = chroma(backgroundColor).get('hsl.s')
+		let bColor = backgroundColor
+
+		while ((contrast >= 4.5) && (saturation >= 0.1)) {
+			saturation -= 0.1
+			bColor = chroma(bColor).set('hsl.s', saturation)
+			contrast = this.colorContrast(bColor, textColor)
+
+			console.log('s, b:' + saturation + ', ' + bColor);
+
+			if (contrast >= 4.5) {
+				palette.push({
+					backgroundColor: bColor,
+					textColor: textColor,
+				})
 			}
-		]
+		}
+
+		return palette;
 	}
 
 	colorContrast(backgroundColor, textColor) {
@@ -192,7 +188,6 @@ class ColorsHSL extends React.Component {
 							onChange={this.changeBackgroundColor}
 						/>
 					</Picker>
-
 					<Picker>
 						text color:
 						<ColorPicker
