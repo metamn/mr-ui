@@ -16,3 +16,9 @@
 
 1. You'll get the inverse color scheme.
 2. You'll get all other color schemes as shades of primary colors which are still eligible.
+
+## To do
+
+- We need real use cases like a blog, a landing page, or a marketing site.
+- This need is also on the Hockney grid's to-do list.
+- These real use cases must be semantic, ie themeable. We should be able to throw a color pair on the hero, ie we should know the hero must have an inverted color scheme. In short, picking up two colors should be enough to completely style these use cases through semantics.
