@@ -37,7 +37,7 @@ const Container = styled.div`
 		grid-template-columns: 1fr 1fr;
 		grid-gap: 1.25em;
 	}
-`;
+`
 
 /**
  * The text container
@@ -49,8 +49,14 @@ const Text = styled.div`
 	border: 1px solid;
 	padding: 1.25em;
 	margin: 1.25em;
-`
 
+	.color-contrast {
+		border-bottom: 1px solid;
+		padding-bottom: 1.25em;
+		margin-bottom: 1.25em;
+		display: block;
+	}
+`
 
 /**
  * The inverted text container
@@ -119,6 +125,28 @@ const Picker = styled.div`
 	}
 `
 
+/**
+ * The reset button
+ */
+const Button = styled.div`
+	padding: 0.625em 1.25em;
+	margin: 1.25em;
+	border: 1px solid;
+
+	text-transform: uppercase;
+	font-size: smaller;
+	letter-spacing: 1.3px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	align-self: end;
+
+	cursor: pointer;
+
+	background: ${props => props.textColor};
+	color: ${props => props.backgroundColor};
+`
 
 /**
 * The main class
@@ -156,6 +184,14 @@ class ColorsHSL extends React.Component {
 		this.setState(
 			{
 				temporaryColors: colors,
+			}
+		);
+	}
+
+	resetTemporaryColors = () => {
+		this.setState(
+			{
+				temporaryColors: null,
 			}
 		);
 	}
@@ -311,13 +347,22 @@ class ColorsHSL extends React.Component {
 								</Swatch>
 						}
 					</Repeat>
+					<Button
+						backgroundColor={backgroundColor}
+						textColor={textColor}
+						onClick={() => this.resetTemporaryColors()}
+						>
+						Reset
+					</Button>
 				</SwatchContainer>
 				<Text
 					backgroundColor={backgroundColor}
 					textColor={textColor}
 					temporaryColors={temporaryColors}
 					>
-					{this.colorContrast(backgroundColor, textColor, temporaryColors, 'with colors')}
+					<span class="color-contrast">
+						{this.colorContrast(backgroundColor, textColor, temporaryColors, 'with colors')}
+					</span>
 					<ReactMarkdown source={text} />
 				</Text>
 				<TextInverted
@@ -325,7 +370,9 @@ class ColorsHSL extends React.Component {
 					textColor={textColor}
 					temporaryColors={temporaryColors}
 					>
-					{this.colorContrast(textColor, backgroundColor, temporaryColors, 'with colors')}
+					<span class="color-contrast">
+						{this.colorContrast(backgroundColor, textColor, temporaryColors, 'with colors')}
+					</span>
 					<ReactMarkdown source={text} />
 				</TextInverted>
 			</Container>
