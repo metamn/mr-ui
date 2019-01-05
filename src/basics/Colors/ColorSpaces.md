@@ -6,7 +6,7 @@ CMYK is specific for print, RGB, HSL is specific for computer monitors.
 
 ## RGB vs HSL
 
-RGB is a color model where each color has three main properties: the amount of `red`, `green` and `blue` in each color. Colors in RGB are created by adding / mixing these three basic colors / properties.
+RGB is a color model where each color has three main properties: the amount of `red`, `green` and `blue` present in each color. Colors in RGB are created by adding / mixing these three basic colors / properties.
 
 There is a fourth, optional property: alpha transparency, or opacity, defining how transparent a color is.
 
@@ -32,6 +32,8 @@ In CSS notation:
 --white: rgba(255, 255, 255, 1);
 ```
 
+## HSL
+
 HSL is a color model based on RGB. It is an enhancement of RGB to provide a more intuitive framework to think in colors, to mimic an age old best practice of how painters create and use colors.
 
 In HSL a color has again three main properties as hue, saturation and luminosity. Colors in HSL are created by choosing a basic color (hue) and adding grey (saturation) and white or black (luminosity) to it.
@@ -44,7 +46,7 @@ Notation:
 
 Where:
 
-- Hue: the color itself, like `red`, `green` or `blue`, expressed as an angle. 0deg = red = 360deg. green = 120deg, blue = 240deg.
+- Hue: the color itself, like `red`, `green` or `blue`, expressed as an angle. 0deg = red = 360deg, green = 120deg, blue = 240deg.
 - Saturation: the amount of `grey` in a color, in percentage: 0% = the color is fully grey, 100% = no grey at all in the color
 - Lightness: The amount of `black` and `white` in a color, in percentage: 0% = the color is full black, 50% = the color is fully the color itself, 100% = the color is full white.
 - Alpha transparency: how opaque the color is, in percentage. 0 is fully opaque.
@@ -64,9 +66,9 @@ For example `rgb(125, 125, 125)` means `a color with equal part of red, green, a
 
 In HSL `hsl(123, 50%, 75%)` means `a color with 50% grey and 75% white`. `hsl(256, 50%, 75%)` means `another color with the same amount of grey and white`.
 
-With the HSL notation we've already formed a palette. We have two colors bound together by the same amount of grey and white mixed in. Perhaps they will look like a family of colors when used together.
+With the HSL notation it's easy to form a palette. Choose two colors with the same saturation and lightness as primary colors, then iterate through saturation and lightness to get a set of monochromatic color pairs. Yes, this can be done programatically.
 
-With the RGB notation we can't have such an intuitive way to pair two colors. We don't know if the two colors created above fit together, or not.
+With the RGB notation we don't have such an intuitive way to iterate over colors and still keep them in the same family.
 
 
 ## Resources

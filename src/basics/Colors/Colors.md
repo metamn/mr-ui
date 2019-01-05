@@ -12,11 +12,11 @@ Two colors are good enough for a blog.
 
 When more content types are present &mdash; buttons for call to action; multiple visual sections like hero, features, testimonials &mdash; two colors might not be enough.
 
-## Monochromatic
+## A monochromatic palette
 
 With two colors we get additionally another good few color combinations. First an inverted color scheme, then a lot others in between.
 
-These combinations could be well enough for a basic landing page.
+These combinations could be well enough for a basic landing page or a simple marketing site.
 
 Hero is set with inverted colors, the button / call to action on hero with the default colors.
 Later, less important sections can have in between colors, such as gray in the case of black / white primary colors.
@@ -25,11 +25,11 @@ Later, less important sections can have in between colors, such as gray in the c
 
 It's so refreshing to break out a monochromatic color scheme with a vivid call to action button. That's why user interfaces tend to be built on more than two colors.
 
-When a new color is added to the two basic, primary colors the need is either to dominate them, or be dominated.
+When a new color is added to the two basic colors the need is either to dominate them, or be dominated by them.
 
 A call to action should dominate the existing color scheme by bringing its content forward, closer to the viewer.
 
-A less important section based on a new color should sink into the background.
+A less important content section should sink in the background with a dominated color.
 
 Theory says warm colors dominate, cool colors sink. On the classic color wheel warm colors are on the left: red, orange, yellow &mdash; cool colors on the right: violet, blue, green.
 
@@ -47,51 +47,43 @@ Each model describes every color with certain properties like:
 - Lightness - a relative property describing how many `white` and `black` is in the color
 - Contrast - a relative property to a third color
 
-With these properties the *perfect red* can be reformulated to *a red with the same saturation and lightness and a 4.5 contrast to the background color*.
+With these properties the *perfect red* can be reformulated to *a red with the same saturation and lightness as the current color scheme, and, with a 4.5 contrast to the background color*.
 
-What's next is to choose the best color model for screen user interfaces.
+Color models can be specially tailored to mediums like print (Pantone, CMYK) or monitor screens (RGB, HSL). And they might present surprises. In CMYK `blue` mixed with `yellow` gives `green`, in RGB gives `gray`.
 
-Color models can be specially tailored to mediums like print (Pantone, CMYK) and might present surprises on screen. In CMYK `blue` mixed with `yellow` gives `green`, in RGB gives `gray`.
-
-## Summing up
-
-1. Find the best color model for screen.
-2. Let content decide how many colors the scheme will need.
-3. Try to maximise the offer of a monochromatic scheme.
-4. Pick up new colors scientifically.
-
+It's important to choose a suitable color model for screen user interfaces.
 
 ## An ideal tool
 
 ### Computable color model
 
-An ideal tool to help us create a perfect color scheme would first of all come with a computable, programmable color model.
+An ideal tool to create a perfect color scheme would first of all come with a computable, programmable color model.
 
 One should be able to use code to generate a consistent color palette, and think about colors in the same way thinks about other programming artifacts like data and algorithms.
 
 ### Preloaded content types
 
-An ideal tool should come preloaded with different content types. A simple blog, a simple landing page, a full product marketing site, and so on.
+An ideal tool should come preloaded with different content types. For a simple blog, for a simple landing page, for a full product marketing site, and so on.
 
-Here we could test live how a color scheme works.
+With them a live test can be performed to see how a color scheme works.
 
 Graphic artists have their own tools like [Adobe Color Wheel](https://color.adobe.com/create/color-wheel/) which might be great to design posters and flyers but surely not intuitive enough to design text based user interfaces.
 
 [Paletton](http://paletton.com/) recognized this flaw and added a feature to preview a palette in a real webpage scenario. However, it's awful.
 
-[Google Color Tool](https://material.io/tools/color/) is far better. It's a good start but not enough details.
+[Google Color Tool](https://material.io/tools/color/) is far better. It's a good start but gives not enough details.
 
-### Monochromatic scheme generator
+### Monochromatic palette generator
 
-Once we've picked up the two primary colors we should have a glimpse of how many additional color pairs we've get with these colors.
+Once we've picked up the two primary colors we should be able to see how many additional color pairs we've get with these colors.
 
-Google's Color Tool gives us two hints (Light, Dark) but there is more.
+Google's Color Tool gives us two hints (Light, Dark) but there is more play here.
 
 ### A special color wheel
 
-We perhaps need a color wheel to help us choose warm and cold colors additional to our existing monochromatic scheme.
+Finally we need a color wheel to help us choose warm and cold colors additional to our existing monochromatic scheme.
 
-Paletton has such a fine tune mechanism for the generated palette but not to set the color wheel into a state where only best new colors can be picked up.
+Paletton has such a fine tune mechanism for the generated palette but not to set the color wheel into a state where only corresponding new colors can be picked up.
 
 
 ### Resources
