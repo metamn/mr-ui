@@ -48,6 +48,7 @@ const Text = styled.div`
 
 	border: 1px solid;
 	padding: 1.25em;
+	margin: 1.25em;
 `
 
 
@@ -83,7 +84,6 @@ const Swatch = styled(Text)`
 	justify-content: center;
 	align-items: center;
 
-	margin: 1.25em
 	margin-bottom: 0;
 `
 
@@ -200,17 +200,37 @@ class ColorsHSL extends React.Component {
 
 	generateMonochromePalette(backgroundColor, textColor) {
 		return [
+			// Scale L up
 			...this.createColorPairs(
-				this.scaleColor(backgroundColor, textColor, 'hsl.l', 0.1).reverse(),
+				this.scaleColor(backgroundColor, textColor, 'hsl.l', 0.1, 'up').reverse(),
 				textColor,
 				'background'
 			),
+			// Scale S up
 			...this.createColorPairs(
-				this.scaleColor(textColor, backgroundColor, 'hsl.l', 0.05, 'up').reverse(),
-				backgroundColor,
+				this.scaleColor(backgroundColor, textColor, 'hsl.s', 0.1, 'up').reverse(),
+				textColor,
+				'background'
 			),
+			// Scale S down
 			...this.createColorPairs(
 				this.scaleColor(backgroundColor, textColor, 'hsl.s', 0.1),
+				textColor,
+				'background'
+			),
+			// Scale text L up
+			...this.createColorPairs(
+				this.scaleColor(textColor, backgroundColor, 'hsl.l', 0.05, 'up'),
+				backgroundColor,
+			),
+			// Scale text L down
+			...this.createColorPairs(
+				this.scaleColor(textColor, backgroundColor, 'hsl.l', 0.05, 'down'),
+				backgroundColor,
+			),
+			// Scale L down
+			...this.createColorPairs(
+				this.scaleColor(backgroundColor, textColor, 'hsl.l', 0.1),
 				textColor,
 				'background'
 			),
