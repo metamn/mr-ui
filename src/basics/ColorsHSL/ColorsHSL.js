@@ -249,14 +249,22 @@ class ColorsHSL extends React.Component {
 		]
 	}
 
-	colorContrast(backgroundColor, textColor, temporaryColors) {
+	colorContrast(backgroundColor, textColor, temporaryColors, returnType) {
 		if (temporaryColors) {
 			backgroundColor = temporaryColors.backgroundColor
 			textColor = temporaryColors.textColor
 		}
 
-		const contrast = chroma.contrast(chroma(backgroundColor), chroma(textColor))
-		return contrast.toFixed(1)
+		const contrast = chroma.contrast(chroma(backgroundColor), chroma(textColor)).toFixed(1)
+
+		switch (returnType) {
+			case 'with colors':
+				return `${chroma(backgroundColor).css('hsla')}, ${chroma(textColor).css('hsla')}, contrast: ${contrast}`
+				break;
+			default:
+				return contrast
+		}
+
 	}
 
 	render() {
@@ -309,7 +317,7 @@ class ColorsHSL extends React.Component {
 					textColor={textColor}
 					temporaryColors={temporaryColors}
 					>
-					color contrast: {this.colorContrast(backgroundColor, textColor, temporaryColors)}
+					{this.colorContrast(backgroundColor, textColor, temporaryColors, 'with colors')}
 					<ReactMarkdown source={text} />
 				</Text>
 				<TextInverted
@@ -317,7 +325,7 @@ class ColorsHSL extends React.Component {
 					textColor={textColor}
 					temporaryColors={temporaryColors}
 					>
-					color contrast: {this.colorContrast(textColor, backgroundColor, temporaryColors)}
+					{this.colorContrast(textColor, backgroundColor, temporaryColors, 'with colors')}
 					<ReactMarkdown source={text} />
 				</TextInverted>
 			</Container>
