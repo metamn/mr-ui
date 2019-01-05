@@ -137,7 +137,8 @@ class ColorsHSL extends React.Component {
 	changeBackgroundColor = (color) => {
 		this.setState(
 			{
-				backgroundColor: `#${color.hex}`
+				backgroundColor: `#${color.hex}`,
+				temporaryColors: null,
 			}
 		);
 	}
@@ -145,7 +146,8 @@ class ColorsHSL extends React.Component {
 	changeTextColor = (color) => {
 		this.setState(
 			{
-				textColor: `#${color.hex}`
+				textColor: `#${color.hex}`,
+				temporaryColors: null,
 			}
 		);
 	}
@@ -216,15 +218,9 @@ class ColorsHSL extends React.Component {
 				textColor,
 				'background'
 			),
-			// Scale S up
-			...this.createColorPairs(
-				this.scaleColor(backgroundColor, textColor, 'hsl.s', 0.1, 'up').reverse(),
-				textColor,
-				'background'
-			),
 			// Scale S down
 			...this.createColorPairs(
-				this.scaleColor(backgroundColor, textColor, 'hsl.s', 0.1),
+				this.scaleColor(backgroundColor, textColor, 'hsl.s', 0.1).reverse(),
 				textColor,
 				'background'
 			),
@@ -237,6 +233,12 @@ class ColorsHSL extends React.Component {
 			...this.createColorPairs(
 				this.scaleColor(textColor, backgroundColor, 'hsl.l', 0.05, 'down'),
 				backgroundColor,
+			),
+			// Scale S up
+			...this.createColorPairs(
+				this.scaleColor(backgroundColor, textColor, 'hsl.s', 0.1, 'up').reverse(),
+				textColor,
+				'background'
 			),
 			// Scale L down
 			...this.createColorPairs(
@@ -252,7 +254,7 @@ class ColorsHSL extends React.Component {
 			backgroundColor = temporaryColors.backgroundColor
 			textColor = temporaryColors.textColor
 		}
-		
+
 		const contrast = chroma.contrast(chroma(backgroundColor), chroma(textColor))
 		return contrast.toFixed(1)
 	}
