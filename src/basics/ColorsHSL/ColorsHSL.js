@@ -43,8 +43,8 @@ const Container = styled.div`
  * The text container
  */
 const Text = styled.div`
-	background: ${props => props.backgroundColor};
-	color: ${props => props.textColor};
+	background: ${props => props.temporaryColors ? props.temporaryColors.backgroundColor : props.backgroundColor};
+	color: ${props => props.temporaryColors ? props.temporaryColors.textColor : props.textColor};
 
 	border: 1px solid;
 	padding: 1.25em;
@@ -56,8 +56,8 @@ const Text = styled.div`
  * The inverted text container
  */
 const TextInverted = styled(Text)`
-	background: ${props => props.textColor};
-	color: ${props => props.backgroundColor};
+	background: ${props => props.temporaryColors ? props.temporaryColors.textColor : props.textColor};
+	color: ${props => props.temporaryColors ? props.temporaryColors.backgroundColor : props.backgroundColor};
 `
 
 /**
@@ -85,6 +85,7 @@ const Swatch = styled(Text)`
 	align-items: center;
 
 	margin-bottom: 0;
+	cursor: pointer;
 `
 
 /**
@@ -129,6 +130,7 @@ class ColorsHSL extends React.Component {
 		this.state = {
 			backgroundColor: 'hsla(180, 85%, 85%, 1)',
 			textColor: 'hsla(180, 85%, 0%, 1)',
+			temporaryColors: null,
 		}
 	}
 
@@ -144,6 +146,14 @@ class ColorsHSL extends React.Component {
 		this.setState(
 			{
 				textColor: `#${color.hex}`
+			}
+		);
+	}
+
+	changeTextSampleColors = (colors) => {
+		this.setState(
+			{
+				temporaryColors: colors,
 			}
 		);
 	}
@@ -237,14 +247,19 @@ class ColorsHSL extends React.Component {
 		]
 	}
 
-	colorContrast(backgroundColor, textColor) {
+	colorContrast(backgroundColor, textColor, temporaryColors) {
+		if (temporaryColors) {
+			backgroundColor = temporaryColors.backgroundColor
+			textColor = temporaryColors.textColor
+		}
+		
 		const contrast = chroma.contrast(chroma(backgroundColor), chroma(textColor))
 		return contrast.toFixed(1)
 	}
 
 	render() {
 		const { loading, className } = this.props;
-		const { backgroundColor, textColor} = this.state;
+		const { temporaryColors, backgroundColor, textColor} = this.state;
 
 		const monochromePalette = this.generateMonochromePalette(backgroundColor, textColor);
 
@@ -278,6 +293,7 @@ class ColorsHSL extends React.Component {
 									key={i}
 									backgroundColor={monochromePalette[i].backgroundColor}
 									textColor={monochromePalette[i].textColor}
+									onClick={() => this.changeTextSampleColors(monochromePalette[i])}
 								>
 								<span>
 									{this.colorContrast(monochromePalette[i].textColor, monochromePalette[i].backgroundColor)}
@@ -289,15 +305,17 @@ class ColorsHSL extends React.Component {
 				<Text
 					backgroundColor={backgroundColor}
 					textColor={textColor}
+					temporaryColors={temporaryColors}
 					>
-					color contrast: {this.colorContrast(backgroundColor, textColor)}
+					color contrast: {this.colorContrast(backgroundColor, textColor, temporaryColors)}
 					<ReactMarkdown source={text} />
 				</Text>
 				<TextInverted
 					backgroundColor={backgroundColor}
 					textColor={textColor}
+					temporaryColors={temporaryColors}
 					>
-					color contrast: {this.colorContrast(textColor, backgroundColor)}
+					color contrast: {this.colorContrast(textColor, backgroundColor, temporaryColors)}
 					<ReactMarkdown source={text} />
 				</TextInverted>
 			</Container>
