@@ -4,11 +4,11 @@ import { action } from '@storybook/addon-actions';
 import { withInfo } from '@storybook/addon-info';
 import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
 
-import FontLoading from './FontLoading';
+import FontLoadingWFL from './FontLoadingWFL';
 
-storiesOf('Basics/Font loading ✓', module)
+storiesOf('Basics/Font loading ✓/Web Font Loader', module)
 	.add('Overview',
-		() => ( <FontLoading/> ),
+		() => ( <FontLoadingWFL/> ),
 		{
 			info: {
 				disable: true
