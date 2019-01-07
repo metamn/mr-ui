@@ -1,9 +1,3 @@
 ## Components
 
-Work in progress ...
-
-
-### Things to learn / add:
-
-* CSS Cube: https://css-tricks.com/simplifying-css-cubes-custom-properties/
-* Conic gradients: https://css-tricks.com/1-element-css-rainbow-gradient-infinity/
+Work in progress ... Please check the *Basics* section where a first iteration was done. The results from Basics will be distilled here as components, in a next phase.  
