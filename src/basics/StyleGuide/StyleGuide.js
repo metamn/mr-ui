@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled, { css } from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 
-import md from './Responsiveness.md';
+import md from './StyleGuide.md';
 
 const Container = styled.div`
 	width: 100%;
@@ -18,7 +18,7 @@ const Container = styled.div`
 	line-height: 1.5;
 `;
 
-class Responsiveness extends Component {
+class StyleGuide extends Component {
 	render() {
 		return (
 			<Container>
@@ -28,4 +28,4 @@ class Responsiveness extends Component {
 	}
 }
 
-export default Responsiveness;
+export default StyleGuide;
