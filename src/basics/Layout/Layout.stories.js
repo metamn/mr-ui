@@ -6,7 +6,7 @@ import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
 
 import Layout from './Layout';
 
-storiesOf('Basics/Layout ✗', module)
+storiesOf('Basics/Layout ✓', module)
 	.add('Overview',
 		() => ( <Layout/> ),
 		{

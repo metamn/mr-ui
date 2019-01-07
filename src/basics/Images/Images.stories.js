@@ -6,7 +6,7 @@ import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
 
 import Images from './Images';
 
-storiesOf('Basics/Images ✗', module)
+storiesOf('Basics/Images ✓', module)
 	.add('Overview',
 		() => ( <Images/> ),
 		{

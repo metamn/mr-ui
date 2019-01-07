@@ -6,7 +6,7 @@ import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
 
 import Colors from './Colors';
 
-storiesOf('Basics/Colors ✗', module)
+storiesOf('Basics/Colors ✓', module)
 	.add('Overview',
 		() => ( <Colors mdSource={'Colors'}/> ),
 		{

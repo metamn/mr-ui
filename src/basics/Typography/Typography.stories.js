@@ -6,7 +6,7 @@ import { withKnobs, text, boolean, number } from "@storybook/addon-knobs";
 
 import Typography from './Typography';
 
-storiesOf('Basics/Typography ✗', module)
+storiesOf('Basics/Typography ✓', module)
 	.add('Overview',
 		() => ( <Typography/> ),
 		{
