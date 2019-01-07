@@ -1,6 +1,6 @@
 ## Style guide
 
-Style guides associated with programming languages enhance code quality and reuse.
+Style guides associated with programming languages enhance code quality and code reuse.
 
 When code follows a style guide it is easy to understand and to extend by anybody else who also follows the same style guide.
 
@@ -11,7 +11,7 @@ React, unfortunately, has no official style guide provided by Facebook. This rol
 Just some bits:
 
 - Use `.jsx` as file extension instead of `.js`
-- Pass params as list instead of array, which contradicts the *loose couplings* general [coding principle](https://alistapart.com/article/coding-with-clarity#section3).
+- Pass params as list instead of array, which contradicts the [loose coupling](https://alistapart.com/article/coding-with-clarity#section3) general coding principle.
 
 ```javascript
 // bad
