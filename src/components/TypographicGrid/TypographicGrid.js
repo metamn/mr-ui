@@ -106,36 +106,38 @@ class TypographicGrid extends React.Component {
 		return (
 			<>
 				<GlobalStyle />
-				<Container className='typographic-grid'>
-					{displayHorizontalRhytm &&
-						<HorizontalRhythm
-							className='horizontal-lines'
-							displayHorizontalRhytm={displayHorizontalRhytm}
-							>
-							<Repeat numberOfTimes={numberOfHorizontalLines} startAt={0}>
-								{(i) => <HorizontalRhythmLine
-											key={i}
-											lineColor={lineColor}
-										/>
-								}
-							</Repeat>
-						</HorizontalRhythm>
-					}
-					{displayVerticalRhytm &&
-						<VerticalRhythm
-							className='vertical-lines'
-							displayVerticalRhytm={displayVerticalRhytm}
-							>
-							<Repeat numberOfTimes={numberOfVerticalLines} startAt={0}>
-								{(i) => <VerticalRhythmLine
-											key={i}
-											lineColor={lineColor}
-										/>
-								}
-							</Repeat>
-						</VerticalRhythm>
-					}
-				</Container>
+				{(displayHorizontalRhytm || displayVerticalRhytm) &&
+					<Container className='typographic-grid'>
+						{displayHorizontalRhytm &&
+							<HorizontalRhythm
+								className='horizontal-lines'
+								displayHorizontalRhytm={displayHorizontalRhytm}
+								>
+								<Repeat numberOfTimes={numberOfHorizontalLines} startAt={0}>
+									{(i) => <HorizontalRhythmLine
+												key={i}
+												lineColor={lineColor}
+											/>
+									}
+								</Repeat>
+							</HorizontalRhythm>
+						}
+						{displayVerticalRhytm &&
+							<VerticalRhythm
+								className='vertical-lines'
+								displayVerticalRhytm={displayVerticalRhytm}
+								>
+								<Repeat numberOfTimes={numberOfVerticalLines} startAt={0}>
+									{(i) => <VerticalRhythmLine
+												key={i}
+												lineColor={lineColor}
+											/>
+									}
+								</Repeat>
+							</VerticalRhythm>
+						}
+					</Container>
+				}
 			</>
 		)
 	}

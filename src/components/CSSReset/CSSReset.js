@@ -1,13 +1,16 @@
 /**
-* Component description
+* A CSS reset component
 *
 */
 import React from "react";
 import PropTypes from "prop-types";
 import { createGlobalStyle } from "styled-components";
 
-
+/**
+ * Based on Normalize.css
+ */
 import 'normalize.css'
+
 
 const GlobalReset = createGlobalStyle`
 	body {
