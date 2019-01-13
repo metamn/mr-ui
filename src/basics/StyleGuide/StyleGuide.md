@@ -48,6 +48,11 @@ It's not that the AirBnb styleguide is wrong. The fact is that even React itself
 -   it is easy to use: https://prettier.io/docs/en/configuration.html
 -   can re-format / prettify files on save
 
+### Styled components
+
+-   Autocomplete:
+-   Highlighting:
+
 ### Resources
 
 -   https://github.com/airbnb/javascript#destructuring
