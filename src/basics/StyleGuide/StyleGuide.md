@@ -46,7 +46,7 @@ It's not that the AirBnb styleguide is wrong. The fact is that even React itself
 ### Prettier
 
 -   it is easy to use: https://prettier.io/docs/en/configuration.html
--   can re-format / prettify files on save
+-   can re-format / prettify files on save, or all of them in a batch on the CLI
 
 ### Styled components
 
