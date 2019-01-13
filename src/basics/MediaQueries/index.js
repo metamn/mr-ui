@@ -1,1 +1,1 @@
-export { default } from "./MediaQueries";
+export { default } from './MediaQueries'

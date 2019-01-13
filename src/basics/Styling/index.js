@@ -1,1 +1,1 @@
-export { default } from "./Styling";
+export { default } from './Styling'

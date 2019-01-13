@@ -1,1 +1,1 @@
-export { default } from './Repeat';
+export { default } from './Repeat'

@@ -1,53 +1,51 @@
 /**
-* The Link element
-*
-*/
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
+ * The Link element
+ *
+ */
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 /**
-* The loading container
-*/
-const Loading = styled.div``;
+ * The loading container
+ */
+const Loading = styled.div``
 
 /**
-* The main container
-*/
-const Container = styled.a`
-
-`;
+ * The main container
+ */
+const Container = styled.a``
 
 /**
-* The main class
-*/
+ * The main class
+ */
 class Link extends React.Component {
-	render() {
-		const { loading, className } = this.props;
+    render() {
+        const { loading, className } = this.props
 
-		if (loading) {
-			return <Loading className={className}>Loading ...</Loading>;
-		}
+        if (loading) {
+            return <Loading className={className}>Loading ...</Loading>
+        }
 
-		return <Container className={className} />;
-	}
+        return <Container className={className} />
+    }
 }
 
 /**
-* The prop types
-*/
+ * The prop types
+ */
 Link.propTypes = {
-	/**
-	* Component is loading?
-	*/
-	loading: PropTypes.bool
-};
+    /**
+     * Component is loading?
+     */
+    loading: PropTypes.bool,
+}
 
 /**
-* Default props
-*/
+ * Default props
+ */
 Link.defaultProps = {
-	loading: false
-};
+    loading: false,
+}
 
-export default Link;
+export default Link

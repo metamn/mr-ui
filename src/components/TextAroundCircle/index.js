@@ -1,1 +1,1 @@
-export { default } from './TextAroundCircle';
+export { default } from './TextAroundCircle'

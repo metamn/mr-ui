@@ -1,28 +1,28 @@
 /**
-* Component description
-*
-*/
-import React from "react";
-import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
-import styledContainerQuery from 'styled-container-query';
+ * Component description
+ *
+ */
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled, { css } from 'styled-components'
+import styledContainerQuery from 'styled-container-query'
 
 /**
-* The loading container
-*/
-const Loading = styled.div``;
+ * The loading container
+ */
+const Loading = styled.div``
 
 /**
-* The Logo container
-*/
-const Logo = styled.div``;
+ * The Logo container
+ */
+const Logo = styled.div``
 
 /**
-* The main container
-* - all children containers must be defined in advance otherwise they'll reset the queries put in the parent.
-*/
+ * The main container
+ * - all children containers must be defined in advance otherwise they'll reset the queries put in the parent.
+ */
 const Container = styledContainerQuery.div`
-	width: ${props => props.width ? props.width : 'auto'};
+	width: ${props => (props.width ? props.width : 'auto')};
 	min-height: 90vh;
 
 	display: flex;
@@ -50,55 +50,52 @@ const Container = styledContainerQuery.div`
 			color: green;
 		}
 	}
-`;
-
+`
 
 /**
-* The main class
-*/
+ * The main class
+ */
 class ElementQueries extends React.Component {
-	render() {
-		const { width, loading, className } = this.props;
+    render() {
+        const { width, loading, className } = this.props
 
-		if (loading) {
-			return <Loading className={className}>Loading ...</Loading>;
-		}
+        if (loading) {
+            return <Loading className={className}>Loading ...</Loading>
+        }
 
-		return (
-			<Container
-				width={width}
-				className={className}
-			>
-				<Logo>
-					By default I'm red. If my container goes above 320px I'm blue. Above 769px I'm greeeen.
-					Change my container size with Knobs.
-				</Logo>
-			</Container>
-		)
-	}
+        return (
+            <Container width={width} className={className}>
+                <Logo>
+                    By default I'm red. If my container goes above 320px I'm
+                    blue. Above 769px I'm greeeen. Change my container size with
+                    Knobs.
+                </Logo>
+            </Container>
+        )
+    }
 }
 
 /**
-* The prop types
-*/
+ * The prop types
+ */
 ElementQueries.propTypes = {
-	/**
-	* Component is loading?
-	*/
-	loading: PropTypes.bool,
+    /**
+     * Component is loading?
+     */
+    loading: PropTypes.bool,
 
-	/**
-	 * The container's width
-	 */
-	width: PropTypes.sting,
-};
+    /**
+     * The container's width
+     */
+    width: PropTypes.sting,
+}
 
 /**
-* Default props
-*/
+ * Default props
+ */
 ElementQueries.defaultProps = {
-	loading: false,
-	width: '300px',
-};
+    loading: false,
+    width: '300px',
+}
 
-export default ElementQueries;
+export default ElementQueries

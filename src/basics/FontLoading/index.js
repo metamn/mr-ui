@@ -1,1 +1,1 @@
-export { default } from "./FontLoading";
+export { default } from './FontLoading'

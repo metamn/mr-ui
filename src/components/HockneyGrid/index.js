@@ -1,1 +1,1 @@
-export { default } from "./HockneyGrid";
+export { default } from './HockneyGrid'

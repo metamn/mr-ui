@@ -1,1 +1,1 @@
-export { default } from "./TypographicGrid";
+export { default } from './TypographicGrid'

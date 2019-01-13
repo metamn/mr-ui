@@ -1,1 +1,1 @@
-export { default } from "./ES6";
+export { default } from './ES6'

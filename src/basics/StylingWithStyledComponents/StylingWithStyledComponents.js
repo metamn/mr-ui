@@ -1,46 +1,41 @@
 /**
-* Component description
-*
-*/
-import React from "react";
-import PropTypes from "prop-types";
-import {Link} from "./DesignSystem";
-
+ * Component description
+ *
+ */
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Link } from './DesignSystem'
 
 /**
-* The main class
-*/
+ * The main class
+ */
 class StylingWithStyledComponents extends React.Component {
-	render() {
-		const { loading, className } = this.props
+    render() {
+        const { loading, className } = this.props
 
-		return (
-			<Link
-				className='link'
-				href='http://metamn.io'
-				title='metamn.io'
-			>
-				A custom made Link component pointing to http://metamn.io
-			</Link>
-		)
-	}
+        return (
+            <Link className="link" href="http://metamn.io" title="metamn.io">
+                A custom made Link component pointing to http://metamn.io
+            </Link>
+        )
+    }
 }
 
 /**
-* The prop types
-*/
+ * The prop types
+ */
 StylingWithStyledComponents.propTypes = {
-	/**
-	* Component is loading?
-	*/
-	loading: PropTypes.bool
-};
+    /**
+     * Component is loading?
+     */
+    loading: PropTypes.bool,
+}
 
 /**
-* Default props
-*/
+ * Default props
+ */
 StylingWithStyledComponents.defaultProps = {
-	loading: false
-};
+    loading: false,
+}
 
-export default StylingWithStyledComponents;
+export default StylingWithStyledComponents

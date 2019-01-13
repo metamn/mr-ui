@@ -1,1 +1,1 @@
-export { default } from "./ReactMeasure";
+export { default } from './ReactMeasure'

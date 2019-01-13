@@ -1,1 +1,1 @@
-export { default } from "./CSSReset";
+export { default } from './CSSReset'

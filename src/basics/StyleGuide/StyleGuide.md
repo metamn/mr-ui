@@ -10,27 +10,27 @@ React, unfortunately, has no official style guide provided by Facebook. This rol
 
 Just some bits:
 
-- Use `.jsx` as file extension instead of `.js`
-- Pass params as list instead of array, which contradicts the [loose coupling](https://alistapart.com/article/coding-with-clarity#section3) general coding principle.
+-   Use `.jsx` as file extension instead of `.js`
+-   Pass params as list instead of array, which contradicts the [loose coupling](https://alistapart.com/article/coding-with-clarity#section3) general coding principle.
 
 ```javascript
 // bad
 function getFullName(user) {
-  const firstName = user.firstName;
-  const lastName = user.lastName;
+    const firstName = user.firstName
+    const lastName = user.lastName
 
-  return `${firstName} ${lastName}`;
+    return `${firstName} ${lastName}`
 }
 
 // good
 function getFullName(user) {
-  const { firstName, lastName } = user;
-  return `${firstName} ${lastName}`;
+    const { firstName, lastName } = user
+    return `${firstName} ${lastName}`
 }
 
 // best
 function getFullName({ firstName, lastName }) {
-  return `${firstName} ${lastName}`;
+    return `${firstName} ${lastName}`
 }
 ```
 
@@ -45,9 +45,9 @@ It's not that the AirBnb styleguide is wrong. The fact is that even React itself
 
 ### Prettier
 
--
-
+-   it is easy to use: https://prettier.io/docs/en/configuration.html
+-   can re-format / prettify files on save
 
 ### Resources
 
-- https://github.com/airbnb/javascript#destructuring   
+-   https://github.com/airbnb/javascript#destructuring

@@ -1,1 +1,1 @@
-export { default } from "./StylingWithStyledComponents";
+export { default } from './StylingWithStyledComponents'

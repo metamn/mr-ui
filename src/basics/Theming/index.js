@@ -1,1 +1,1 @@
-export { default } from "./Theming";
+export { default } from './Theming'

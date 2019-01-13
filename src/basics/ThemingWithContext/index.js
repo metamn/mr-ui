@@ -1,1 +1,1 @@
-export { default } from "./ThemingWithContext";
+export { default } from './ThemingWithContext'

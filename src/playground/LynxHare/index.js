@@ -1,1 +1,1 @@
-export { default } from "./LynxHare";
+export { default } from './LynxHare'

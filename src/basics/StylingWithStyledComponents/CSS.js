@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react'
 
-export function LinkCSS({...props}) {
-	return {
-		color: 'blue',
-		textDecoration: 'underline',
-	}
+export function LinkCSS({ ...props }) {
+    return {
+        color: 'blue',
+        textDecoration: 'underline',
+    }
 }

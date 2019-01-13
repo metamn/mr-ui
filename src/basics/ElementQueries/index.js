@@ -1,1 +1,1 @@
-export { default } from "./ElementQueries";
+export { default } from './ElementQueries'

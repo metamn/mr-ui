@@ -1,1 +1,1 @@
-export { default } from "./ColorsHSL";
+export { default } from './ColorsHSL'

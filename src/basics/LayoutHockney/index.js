@@ -1,1 +1,1 @@
-export { default } from "./LayoutHockney";
+export { default } from './LayoutHockney'
