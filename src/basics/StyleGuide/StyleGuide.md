@@ -38,6 +38,16 @@ As a conclusion we do not use any styleguide for now. We rather wait for the off
 
 It's not that the AirBnb styleguide is wrong. The fact is that even React itself doesn't stick to it.
 
+## Enforcing a coding style
+
+> If you want to enforce a coding style for your project, consider using Prettier instead of ESLint style rules.
+> [Create React App](https://facebook.github.io/create-react-app/docs/setting-up-your-editor)
+
+### Prettier
+
+-
+
+
 ### Resources
 
 - https://github.com/airbnb/javascript#destructuring   
