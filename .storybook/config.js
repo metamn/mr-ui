@@ -1,6 +1,6 @@
 import React from 'react'
 import { configure, addParameters, addDecorator } from '@storybook/react'
-import { withKnobs } from '@storybook/addon-knobs'
+//import { withKnobs } from '@storybook/addon-knobs'
 import { withConsole } from '@storybook/addon-console'
 import theme from './theme'
 
@@ -8,6 +8,7 @@ import theme from './theme'
 addParameters({
     options: {
         theme: theme,
+        panelPosition: 'right',
     },
     backgrounds: [
         { name: 'beige', value: 'beige', default: true },
@@ -16,7 +17,7 @@ addParameters({
 })
 
 // Global addons
-addDecorator(withKnobs)
+//addDecorator(withKnobs)
 addDecorator((storyFn, context) => withConsole()(storyFn)(context))
 
 // Load stories into the sidebar
