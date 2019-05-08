@@ -5,6 +5,7 @@ import TextAroundCircle from './TextAroundCircle'
 import markdownNotes from './TextAroundCircle.md'
 
 storiesOf('Components/Text/Text Around Circle', module)
+    .addDecorator(withKnobs)
     .add(
         'Overview',
         () => (

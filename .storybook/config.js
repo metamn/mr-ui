@@ -1,10 +1,13 @@
 import React from 'react'
 import { configure, addParameters, addDecorator } from '@storybook/react'
-import { withKnobs } from '@storybook/addon-knobs'
-import { withConsole } from '@storybook/addon-console'
 import theme from './theme'
 
-// Settings
+// Console imports ... more complicated than the rest
+import { withConsole } from '@storybook/addon-console'
+import { setConsoleOptions } from '@storybook/addon-console'
+import '@storybook/addon-console'
+
+// General settings
 addParameters({
     options: {
         theme: theme,
@@ -16,8 +19,10 @@ addParameters({
     ],
 })
 
-// Global addons
-addDecorator(withKnobs)
+// Console settings
+setConsoleOptions({
+    panelExclude: [],
+})
 addDecorator((storyFn, context) => withConsole()(storyFn)(context))
 
 // Load stories into the sidebar
