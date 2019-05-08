@@ -1,11 +1,8 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
-import { withInfo } from '@storybook/addon-info'
 import { withKnobs, text, boolean, number } from '@storybook/addon-knobs'
-
 import TextAroundCircle from './TextAroundCircle'
-import description from './TextAroundCircle.md'
+import markdownNotes from './TextAroundCircle.md'
 
 storiesOf('Components/Text/Text Around Circle', module)
     .add(
@@ -17,10 +14,7 @@ storiesOf('Components/Text/Text Around Circle', module)
             />
         ),
         {
-            info: {
-                inline: true,
-                text: description,
-            },
+            notes: { markdown: markdownNotes },
         }
     )
     .add(
@@ -31,11 +25,7 @@ storiesOf('Components/Text/Text Around Circle', module)
                 size={text('Size', '20em')}
             />
         ),
-        {
-            info: {
-                disable: true,
-            },
-        }
+        {}
     )
     .add(
         'Semi circle',
@@ -46,11 +36,7 @@ storiesOf('Components/Text/Text Around Circle', module)
                 angleSpan={text('Angle span', '180deg')}
             />
         ),
-        {
-            info: {
-                disable: true,
-            },
-        }
+        {}
     )
     .add(
         'Semi circle rotated',
@@ -62,9 +48,5 @@ storiesOf('Components/Text/Text Around Circle', module)
                 angleOffset={text('Angle offset', '-90deg')}
             />
         ),
-        {
-            info: {
-                disable: true,
-            },
-        }
+        {}
     )
